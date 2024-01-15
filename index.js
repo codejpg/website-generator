@@ -8,7 +8,7 @@ let topics = myModule.hello();
 const app = express();
 const port = 4000;
 
-const apiKey = process.env.CHATGPT_API_KEY; // Replace with your ChatGPT API key
+const apiKey = process.env.CHATGPT_API_KEY;
 
 const prompts = [
   'Use CSS Grids in an interesting way.',
@@ -24,25 +24,12 @@ const prompts = [
   'Create a charming and informative one-page website dedicated to the topic, tailored for older ladies. Craft an elegant and welcoming title that resonates with a mature audience. Begin with a warm introduction, highlighting the joy and companionship that the topic can bring to older individuals. Ensure the website is user-friendly with simple navigation and an intuitive layout.',
 ];
 
-// const colors = [
-//     ["50514f","b4adea", 'fdfff7', '59ffa0', 'ffed65'],
-//     ["a63a50","f0e7d8","ab9b96","a1674a","ba6e6e"],
-//     ["ef476f","ffd166","06d6a0","118ab2","073b4c"],
-//     ["d1c6ad","bbada0","a1869e","797596","0b1d51"],
-//     ["395e66","387d7a","32936f","26a96c","2bc016"],
-//     ["4b4237","d5a021","ede7d9","a49694","736b60"],
-//     ["0d0630","18314f","384e77","8bbeb2","e6f9af"],
-//     ["210f04","452103","690500","934b00","bb6b00"],
-// ];
 
 
 function getRandomPrompt() {
     const randomIndex = Math.floor(Math.random() * prompts.length);
-    // const randomColor = colors[Math.floor(Math.random() * colors.length)];
     const randomTopic = Math.floor(Math.random() * topics.length);
- 
-    //const prompt = `Output only the HTML and CSS code for the one-page website in HTML format. Exclude any conversation, comments, or unnecessary text. Ensure that the HTML file includes embedded CSS styles. ${prompts[randomIndex]} Include all 5 colors ${randomColor}.`;
-    const prompt = `Output only the HTML and CSS code for the one-page website in HTML format. Exclude any conversation, comments, or unnecessary text. Ensure that the HTML file includes embedded CSS styles. The left and right margin of the body element should at least be 5%. Use CSS Grids to structure the website. This is the topic of the website: ${topics[randomTopic]}. Fill the site with information on the topic like lists, interesting facts and an explanation. Use colors that fit the topic. ${prompts[randomIndex]} Do not use any images. `;
+     const prompt = `Output only the HTML and CSS code for the one-page website in HTML format. Exclude any conversation, comments, or unnecessary text. Ensure that the HTML file includes embedded CSS styles. The left and right margin of the body element should at least be 5%. Use CSS Grids to structure the website. This is the topic of the website: ${topics[randomTopic]}. Fill the site with information on the topic like lists, interesting facts and an explanation. Use colors that fit the topic. ${prompts[randomIndex]} Do not use any images. `;
   
     return prompt;
   }
@@ -51,13 +38,12 @@ app.get('/', async (req, res) => {
   try {
     const prompt = getRandomPrompt();
 
-    // Fetch a response from the ChatGPT API
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
-        model: 'gpt-3.5-turbo', // Specify the model parameter
+        model: 'gpt-3.5-turbo',
         messages: [
-          { role: 'system', content: 'You are a code generator who is designed to output HTML. The HTML contains information on a specific topic that you randomly choose. Use different colors to reflect the topic. Choose interesting fonts to represent the topic. You can go crazy in the css part. Try to come up with unusual layouts and font-sizing. The website does not need to have common elements. If suitable add hyperlinks on the to wikipedia, imdb, goodreads. The first line of your output should be the opening html-tag and the last line is the closing html-tag.' },
+          { role: 'system', content: 'You are a code generator who is designed to output HTML. The HTML contains information on a specific topic that you randomly choose. Use different colors to reflect the topic. Choose interesting fonts to represent the topic. You can go crazy in the css part. Try to come up with unusual layouts and font-sizing. The website does not need to have common elements. The first line of your output should be the opening html-tag and the last line is the closing html-tag.' },
           { role: 'user', content: prompt },
         ],
       },
@@ -71,7 +57,6 @@ app.get('/', async (req, res) => {
 
     const chatGPTResponse = response.data.choices[0].message.content;
 
-    // Generate a simple HTML page with the ChatGPT response
     const html = `
      ${chatGPTResponse}
     `;
