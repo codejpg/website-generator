@@ -1,0 +1,30 @@
+<!-- generate.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated Content</title>
+</head>
+<body>
+  <h1>Generated Content</h1>
+  <div id="generated-content-container"></div>
+
+  <script>
+    // JavaScript to fetch generated content dynamically
+    async function fetchGeneratedContent() {
+      try {
+        const response = await fetch('/generate-content');
+        const content = await response.text();
+        document.getElementById('generated-content-container').innerHTML = content;
+      } catch (error) {
+        console.error('Error fetching generated content:', error);
+      }
+    }
+
+    // Fetch content when the page loads
+    window.onload = fetchGeneratedContent;
+  </script>
+</body>
+</html>
