@@ -1,0 +1,123 @@
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(171, 213, 244, 0.8);
+  color: black;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: "Ubuntu", sans-serif;
+  backdrop-filter: blur(10px);
+}
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  position: absolute;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #000;
+}
+.loader::before {
+  box-shadow: -25px 0;
+  animation: l8-1 1s infinite linear;
+}
+.loader::after {
+  transform: rotate(0deg) translateX(25px);
+  animation: l8-2 1s infinite linear;
+}
+
+@keyframes l8-1 {
+  100% {
+    transform: translateX(25px);
+  }
+}
+@keyframes l8-2 {
+  100% {
+    transform: rotate(-180deg) translateX(25px);
+  }
+}
+#head {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: "Ubuntu", sans-serif;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  justify-items: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 10px 2px;
+}
+
+#head h1 {
+  font-family: "Ubuntu", sans-serif !important;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-size: 30px;
+  margin: 10px;
+  text-transform: none;
+}
+#generateButton {
+  font-family: "Ubuntu", sans-serif !important;
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+body{
+  margin: 0;
+  margin-bottom: 70px;
+}
+#content-container{
+  margin-bottom: 70px;
+}
+
+
+#startContent{
+  background-color: antiquewhite;
+  font-size: 20pt;
+  color: black;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  margin-bottom: 70px;
+  height: 92vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#infoContent{
+  display: none;
+  background-color: white;
+  border-radius: 20px;
+  font-size: 20pt;
+  color: black;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  margin-bottom: 70px;
+  height: 92vh;
+  overflow: hidden;
+}

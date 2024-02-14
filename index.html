@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Generator 2</title>
+  <!-- Add any head content if needed -->
+  <style>
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    #loader img {
+      width: 50px; /* Adjust the loader image size as needed */
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <img src="loading.gif" alt="Loading..."> <!-- Replace loading.gif with your loader image -->
+  </div>
+
+  <button id="generateButton">Generate</button>
+  <div id="content-container"></div>
+
+  <script>
+    document.getElementById("generateButton").addEventListener("click", async function () {
+      try {
+        // Display loader while waiting for response
+        document.getElementById("loader").style.display = "flex";
+
+        const response = await fetch('/generate-html');
+        const html = await response.text();
+        document.getElementById("content-container").innerHTML = html;
+
+        // Hide loader after HTML is loaded
+        document.getElementById("loader").style.display = "none";
+      } catch (error) {
+        console.error('Error fetching HTML:', error.message);
+
+        // Hide loader in case of an error
+        document.getElementById("loader").style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
