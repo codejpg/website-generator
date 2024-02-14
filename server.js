@@ -70,7 +70,7 @@ function resetContent() {
 }
 app.get("/", (req, res) => {
   try {
-    const cssContent = fs.readFileSync("public/style.css", "utf8");
+    const cssContent = fs.readFileSync("style.css", "utf8");
 
     const html = `
 
