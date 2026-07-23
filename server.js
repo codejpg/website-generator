@@ -638,7 +638,7 @@ app.get("/generate-html", async (req, res) => {
       const topicResponse = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-5.4-mini",
+          model: "gpt-5.4-nano",
           temperature: 1.3,
           messages: [
             { role: "system", content: topicSystemMessage },
@@ -689,56 +689,15 @@ app.get("/generate-html", async (req, res) => {
 
     const titleSystemMessage =
       "You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.";
-    const title = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-5.4-mini",
-        temperature: 0.9,
-        messages: [
-          { role: "system", content: titleSystemMessage },
-          { role: "user", content: titlePrompt },
-        ],
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-      },
-    );
     const contentSystemMessage =
       'You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.';
-    const content = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-5.4-mini",
-        temperature: 1.15,
-        messages: [
-          { role: "system", content: contentSystemMessage },
-          { role: "user", content: prompt },
-        ],
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-      },
-    );
     const designSystemMessage =
       "You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.";
 
-    async function requestDesignCss(extraUserNote) {
-      const messages = [
-        { role: "system", content: designSystemMessage },
-        { role: "user", content: designPrompt },
-      ];
-      if (extraUserNote) {
-        messages.push({ role: "user", content: extraUserNote });
-      }
-      const response = await axios.post(
+    function postChatCompletion(model, temperature, messages) {
+      return axios.post(
         "https://api.openai.com/v1/chat/completions",
-        { model: "gpt-5.4-mini", temperature: 1.3, messages },
+        { model, temperature, messages },
         {
           headers: {
             "Content-Type": "application/json",
@@ -746,15 +705,31 @@ app.get("/generate-html", async (req, res) => {
           },
         },
       );
-      return response.data.choices[0].message.content;
     }
 
-    let chatGPTResponseDesign = await requestDesignCss();
+    // Title, content, and design have no data dependency on one another (each only
+    // needs chosenTopic plus the already-computed random directive strings), so they
+    // are fired concurrently instead of one-after-another. This cuts wall-clock time
+    // roughly to the slowest of the three calls instead of the sum of all three,
+    // with no change to prompts, models, or behavior.
+    const [titleResult, contentResult, designResult] = await Promise.all([
+      postChatCompletion("gpt-5.4-nano", 0.9, [
+        { role: "system", content: titleSystemMessage },
+        { role: "user", content: titlePrompt },
+      ]).then((r) => r.data.choices[0].message.content),
+      postChatCompletion("gpt-5.4-mini", 1.15, [
+        { role: "system", content: contentSystemMessage },
+        { role: "user", content: prompt },
+      ]).then((r) => stripEmbeddedStyleTags(r.data.choices[0].message.content)),
+      postChatCompletion("gpt-5.4-mini", 1.3, [
+        { role: "system", content: designSystemMessage },
+        { role: "user", content: designPrompt },
+      ]).then((r) => r.data.choices[0].message.content),
+    ]);
 
-    const chatGPTResponseContent = stripEmbeddedStyleTags(
-      content.data.choices[0].message.content,
-    );
-    const chatGPTResponseTitle = title.data.choices[0].message.content;
+    const chatGPTResponseContent = contentResult;
+    const chatGPTResponseTitle = titleResult;
+    let chatGPTResponseDesign = designResult;
 
     let criticNote = null;
     try {
