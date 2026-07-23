@@ -38,7 +38,7 @@ const designPrompts = [
 ];
 
 function chooseTopic() {
-  const topic = "Name a topic from a randomly selected category. Never choose Quantum Physics or Quantum Mechanics as topics.";
+  const topic = "Name a random topic outside of your favorite topics";
   return topic;
 }
 let topic2 = chooseTopic();
@@ -288,17 +288,17 @@ app.get("/generate-html", async (req, res) => {
     const topic = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
+        model: "gpt-5.4-mini",
         messages: [
           {
             role: "system",
             content:
-              "You are ChatGPT and your task is to randomly choose a topic from a random category from your entire knowledge. Do not answer anything else except for that topic.",
+              "You are ChatGPT and your task is to choose a topic from your entire knowledge. Do not answer anything else except for that topic. You are not aware of anything relating to quantum theory or black holes.",
           },
           {
             role: "user",
             content:
-              "Randomly select a catergory and then randomly select a topic from that category.",
+              "Randomly select a category and then randomly select a topic from that category.",
           },
         ],
       },
@@ -307,7 +307,7 @@ app.get("/generate-html", async (req, res) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`,
         },
-      }
+      },
     );
     const chosenTopic = topic.data.choices[0].message.content;
     const prompt = getCombinedPrompt(chosenTopic);
@@ -317,7 +317,7 @@ app.get("/generate-html", async (req, res) => {
     const title = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
+        model: "gpt-5.4-mini",
         messages: [
           {
             role: "system",
@@ -332,12 +332,12 @@ app.get("/generate-html", async (req, res) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`,
         },
-      }
+      },
     );
     const content = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
+        model: "gpt-5.4-mini",
         messages: [
           {
             role: "system",
@@ -352,17 +352,17 @@ app.get("/generate-html", async (req, res) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`,
         },
-      }
+      },
     );
     const design = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
+        model: "gpt-5.4-mini",
         messages: [
           {
             role: "system",
             content:
-              "You are a code generator who is designed to output CSS. The output is only the CSS that belongs inside the style-tag. Use different colors to reflect the topic. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing. The website does not need to have common elements. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.",
+              "You are a code generator who is designed to output CSS. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Use different colors to reflect the topic. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.",
           },
           { role: "user", content: designPrompt },
         ],
@@ -372,7 +372,7 @@ app.get("/generate-html", async (req, res) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`,
         },
-      }
+      },
     );
 
     const chatGPTResponseContent = content.data.choices[0].message.content;
@@ -400,7 +400,7 @@ app.get("/generate-html", async (req, res) => {
   } catch (error) {
     console.error(
       "Error fetching ChatGPT API:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
     res.status(500).send("Internal Server Error");
   }
