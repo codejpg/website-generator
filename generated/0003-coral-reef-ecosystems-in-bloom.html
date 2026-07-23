@@ -1,0 +1,570 @@
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Coral Reef Ecosystems in Bloom</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        :root {
+  --bg: #e7dfd2;
+  --panel: #f2eadf;
+  --ink: #2f2a26;
+  --muted: #6d645b;
+  --sea: #5d8a84;
+  --reef: #c9898a;
+  --sand: #d7c2a0;
+  --moss: #8f9b6a;
+  --deep: #26434a;
+  --line: #3f372f;
+  --shadow: #1f1a16;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: radial-gradient(circle at top, #f5efe7 0%, var(--bg) 45%, #d8cfbf 100%);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  padding: 5vh 5vw;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Mukta", "Inter", sans-serif;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  background:
+    linear-gradient(135deg, rgba(197, 169, 152, 0.16) 0 16%, transparent 16% 32%, rgba(93, 138, 132, 0.12) 32% 48%, transparent 48% 64%, rgba(143, 155, 106, 0.11) 64% 80%, transparent 80% 100%),
+    linear-gradient(180deg, #efe6da 0%, #e2d7c8 100%);
+  overflow-x: hidden;
+}
+
+main, .page, .wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: start;
+}
+
+header, .hero, .masthead {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem;
+  border: 3px solid var(--line);
+  background: linear-gradient(135deg, rgba(242, 234, 223, 0.92), rgba(231, 223, 210, 0.94));
+  box-shadow: 10px 10px 0 var(--shadow);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+h1 {
+  font-family: "Bungee", sans-serif;
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  color: var(--deep);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+  color: var(--reef);
+}
+
+h3 {
+  font-family: "Zilla Slab Highlight", serif;
+  font-size: clamp(1.05rem, 2vw, 1.5rem);
+  color: var(--sea);
+}
+
+p, li, a, blockquote {
+  font-family: "Mukta", sans-serif;
+  font-size: 1.02rem;
+  max-width: 68ch;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+a {
+  color: var(--deep);
+  text-decoration-thickness: 0.14em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--reef);
+}
+
+section, article, aside {
+  border: 3px solid var(--line);
+  background: linear-gradient(180deg, var(--panel), rgba(245, 239, 230, 0.96));
+  box-shadow: 8px 8px 0 var(--shadow);
+  padding: 1rem;
+}
+
+section:nth-child(3n),
+article:nth-child(4n) {
+  background: linear-gradient(180deg, rgba(225, 237, 231, 0.96), rgba(242, 234, 223, 0.98));
+}
+
+.magazine-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.feature {
+  grid-column: span 2;
+}
+
+.kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: var(--moss);
+  letter-spacing: 0.16em;
+}
+
+.columns {
+  column-width: 240px;
+  column-gap: 1.6rem;
+  column-rule: 3px solid rgba(63, 55, 47, 0.35);
+}
+
+.columns > * {
+  break-inside: avoid;
+}
+
+blockquote {
+  margin: 0;
+  padding: 1rem 1rem 1rem 1.2rem;
+  border-left: 6px solid var(--reef);
+  background: rgba(210, 196, 175, 0.35);
+  font-style: italic;
+}
+
+ul, ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+nav a {
+  display: block;
+  padding: 0.8rem 0.95rem;
+  border: 2px solid var(--line);
+  background: rgba(229, 220, 208, 0.75);
+  box-shadow: 5px 5px 0 rgba(31, 26, 22, 0.8);
+  font-family: "Ubuntu Mono", monospace;
+  text-transform: uppercase;
+}
+
+nav a:nth-child(odd) {
+  background: rgba(199, 137, 138, 0.12);
+}
+
+nav a:nth-child(even) {
+  background: rgba(93, 138, 132, 0.12);
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+figure {
+  margin: 0;
+  padding: 0.8rem;
+  border: 3px solid var(--line);
+  background: linear-gradient(180deg, rgba(230, 221, 209, 0.95), rgba(244, 239, 232, 0.95));
+}
+
+figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  border: 2px solid var(--line);
+  background: var(--sand);
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.aside-note {
+  position: sticky;
+  top: 5vh;
+}
+
+@media (max-width: 780px) {
+  .feature {
+    grid-column: auto;
+  }
+
+  .aside-note {
+    position: static;
+  }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 8px 8px 0 var(--shadow); }
+  50% { box-shadow: 12px 12px 0 rgba(31, 26, 22, 0.85); }
+}
+
+header, section, article, aside, figure {
+  animation: drift 9s ease-in-out infinite;
+}
+
+section:nth-child(2n), article:nth-child(3n), aside:nth-child(2n) {
+  animation-delay: -2.5s;
+}
+
+h1 {
+  animation: pulse 7s steps(2, end) infinite;
+}
+      </style>
+      <body style="margin:0; background:linear-gradient(135deg,#03111d 0%,#06283d 34%,#0f4c5c 68%,#1b998b 100%); color:#f3fbff; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.65;">
+  <style>
+    :root{
+      --ink:#effcff;
+      --muted:#b9dbe6;
+      --sea:#0b7285;
+      --reef:#2ec4b6;
+      --sun:#ffd166;
+      --coral:#ff6b6b;
+      --deep:#04111f;
+      --panel:rgba(4,17,31,.62);
+      --panel2:rgba(7,39,54,.72);
+      --border:rgba(255,255,255,.14);
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,209,102,.12), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(255,107,107,.12), transparent 22%),
+        radial-gradient(circle at 30% 80%, rgba(46,196,182,.14), transparent 28%),
+        linear-gradient(135deg,#03111d 0%,#06283d 34%,#0f4c5c 68%,#1b998b 100%);
+    }
+    .wrap{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:24px;
+      max-width:1200px;
+      margin:0 auto;
+      padding:24px;
+      min-height:100vh;
+      align-items:stretch;
+    }
+    .hero, .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      border-radius:28px;
+      overflow:hidden;
+    }
+    .hero{
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-40px -60px auto auto;
+      width:220px; height:220px; border-radius:50%;
+      background:radial-gradient(circle, rgba(255,209,102,.23), rgba(255,209,102,0) 68%);
+      pointer-events:none;
+    }
+    .eyebrow{
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--sun);
+      font-weight:700;
+      font-size:.82rem;
+      margin:0 0 12px;
+    }
+    h1,h2,h3{
+      line-height:1.06;
+      margin:0;
+      text-wrap:balance;
+    }
+    h1{
+      font-size:clamp(3rem, 7vw, 6.5rem);
+      font-weight:900;
+      font-family:Georgia, "Times New Roman", serif;
+      color:#f6ffff;
+      text-shadow:0 4px 20px rgba(0,0,0,.28);
+      max-width:10ch;
+      margin-bottom:16px;
+    }
+    .lede{
+      font-size:clamp(1.02rem, 1.4vw, 1.2rem);
+      max-width:62ch;
+      color:var(--ink);
+    }
+    .grid{
+      display:grid;
+      gap:18px;
+    }
+    .mosaic{
+      grid-template-columns:repeat(2, minmax(0,1fr));
+    }
+    .panel{
+      background:var(--panel2);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px 18px;
+    }
+    .panel h2{
+      font-size:clamp(1.3rem, 2vw, 1.9rem);
+      color:#ffffff;
+      margin-bottom:10px;
+      font-weight:800;
+      font-family: "Trebuchet MS", system-ui, sans-serif;
+    }
+    .panel p, .panel li{
+      color:var(--muted);
+      margin:0;
+      font-size:1rem;
+    }
+    .panel ul{
+      margin:10px 0 0 20px;
+      padding:0;
+    }
+    .accent{
+      color:var(--reef);
+      font-weight:700;
+    }
+    .tagrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
+    .tag{
+      border-radius:999px;
+      padding:10px 14px;
+      background:rgba(255,255,255,.09);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+      font-weight:700;
+      font-size:.92rem;
+    }
+    .right{
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:18px;
+    }
+    .vertical{
+      writing-mode:vertical-rl;
+      text-orientation:mixed;
+      position:absolute;
+      right:18px;
+      top:18px;
+      color:rgba(255,255,255,.45);
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      font-size:.72rem;
+      font-weight:800;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .stat{
+      padding:16px 14px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.14);
+      text-align:center;
+    }
+    .stat b{
+      display:block;
+      font-size:1.6rem;
+      color:var(--sun);
+      margin-bottom:6px;
+    }
+    .stat span{ color:var(--muted); font-size:.9rem; }
+    .note{
+      font-family: "Courier New", Courier, monospace;
+      font-size:.94rem;
+      color:#d8f7ff;
+      background:rgba(0,0,0,.18);
+      padding:16px;
+      border-left:4px solid var(--coral);
+      border-radius:16px;
+    }
+    .twin{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .plant{
+      background:linear-gradient(180deg, rgba(21,104,90,.65), rgba(4,17,31,.55));
+    }
+    .pen{
+      background:linear-gradient(180deg, rgba(69,54,142,.55), rgba(4,17,31,.55));
+    }
+    .footer{
+      color:rgba(255,255,255,.7);
+      font-size:.92rem;
+      padding:0 4px 10px;
+    }
+    @media (max-width: 980px){
+      .wrap{grid-template-columns:1fr; padding:16px}
+      .mosaic,.twin,.stats{grid-template-columns:1fr}
+      h1{max-width:none}
+      .vertical{writing-mode:horizontal-tb; position:static; margin-bottom:10px}
+    }
+  </style>
+
+  <div class="wrap">
+    <section class="hero" aria-label="Coral reef introduction">
+      <div class="vertical">Marine Biology / Coral Reef Ecosystems</div>
+      <div>
+        <p class="eyebrow">Where sunlight, skeletons, and symbiosis build underwater cities</p>
+        <h1>Reef Metropolis</h1>
+        <p class="lede">
+          Coral reefs are living architectures made by tiny coral polyps working with algae, water, and time.
+          They shimmer with the energy of tropical seas, shelter astonishing biodiversity, and act like the rainforest
+          of the ocean: dense, interconnected, and impossible to separate from the species that depend on them.
+        </p>
+        <div class="tagrow" aria-label="Key themes">
+          <div class="tag">Symbiosis</div>
+          <div class="tag">Biodiversity</div>
+          <div class="tag">Calcium Carbonate</div>
+          <div class="tag">Shallow Sunlit Waters</div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:24px;">
+        Coral reefs thrive when water is clear, warm, and stable. Their beauty is not decoration alone:
+        it is an ecological engine that supports fish nurseries, reef-dwelling invertebrates, sea turtles,
+        and countless microorganisms moving through an intricate web of feeding, shelter, and recycling.
+      </div>
+    </section>
+
+    <section class="right" aria-label="Information panels">
+      <div class="stats" role="list" aria-label="Reef essentials">
+        <div class="stat" role="listitem"><b>1%</b><span>of the seafloor can support a huge share of marine life</span></div>
+        <div class="stat" role="listitem"><b>3</b><span>major players: corals, algae, and countless reef neighbors</span></div>
+        <div class="stat" role="listitem"><b>24/7</b><span>cycling of energy, nutrients, and tiny living alliances</span></div>
+      </div>
+
+      <div class="grid mosaic">
+        <article class="panel">
+          <h2>Living Lacework</h2>
+          <p>
+            Each coral polyp is a small animal that secretes a stony skeleton. Many colonies join together,
+            producing branchy, boulder-like, or plate-shaped forms. The structure they create becomes homes,
+            hunting grounds, hiding places, and nurseries for thousands of reef residents.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h2>Sunlit Chemistry</h2>
+          <p>
+            Reef-building corals often partner with photosynthetic algae called zooxanthellae. The algae
+            provide sugars from sunlight, while the coral offers shelter and nutrients. This partnership is
+            central to reef growth and helps explain why reefs favor bright, shallow water.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h2>Neighbors in Motion</h2>
+          <p>
+            Cleaner shrimp pick parasites from fish; parrotfish scrape algae from rock; crabs, worms, sponges,
+            and sea stars each occupy a specialized niche. Reef ecosystems are not a single habitat but a stacked
+            neighborhood of microhabitats, each filled with delicate interactions.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h2>Pressure Points</h2>
+          <p>
+            Warming seas, ocean acidification, pollution, and destructive fishing can stress reefs beyond their
+            natural resilience. When corals bleach, the partnership with algae is disrupted, leaving reefs more
+            vulnerable and less colorful until conditions improve.
+          </p>
+        </article>
+      </div>
+
+      <div class="twin">
+        <article class="panel plant">
+          <h2>Houseplant Logic, Underwater</h2>
+          <p>
+            Think of a coral reef like a crowded indoor garden: every organism needs the right light, space,
+            and nutrient balance. Just as a pothos wilts in harsh sun or soggy soil, coral communities struggle
+            if the water becomes too hot, muddy, or chemically shifted. Reef algae are a little like a plant’s
+            chlorophyll-powered leaves—tiny solar panels helping the system flourish.
+          </p>
+        </article>
+
+        <article class="panel pen">
+          <h2>Ink, Pens, and Reef Lines</h2>
+          <p>
+            Reef study often begins with a field notebook. Marine biologists map coral shapes with waterproof pens,
+            sketch fish schools, and jot notes on color, cover, and behavior. Fine pen strokes can capture the branching
+            silhouette of staghorn coral or the round geometry of brain coral—living forms translated into line, scale,
+            and pattern.
+          </p>
+        </article>
+      </div>
+
+      <article class="panel">
+        <h2>The Reef as a Story of Resilience</h2>
+        <p>
+          Coral reefs grow slowly yet respond quickly to change. They can recover after storms, competition, and
+          seasonal shifts if the broader environment remains healthy. Their resilience depends on diversity:
+          different coral species, fish, and microbes each play a role in keeping the ecosystem functional.
+          A thriving reef is therefore less like a static sculpture and more like a well-tended greenhouse, where
+          balance matters as much as beauty.
+        </p>
+        <p style="margin-top:10px;">
+          Protecting reefs means reducing carbon emissions, improving water quality, supporting sustainable fishing,
+          and respecting the links between land and sea. What washes off streets, farms, and coastlines can eventually
+          reach the reef. In marine biology, the shoreline is never just an edge—it is a conversation.
+        </p>
+      </article>
+    </section>
+  </div>
+
+  <div class="footer" style="max-width:1200px; margin:0 auto; padding:0 24px 22px;">
+    Coral reefs are vibrant, fragile, and remarkably collaborative—an ecosystem where sunlight becomes structure,
+    structure becomes shelter, and shelter becomes life.
+  </div>
+</body>
+      </html>
+    
