@@ -52,7 +52,6 @@ const fontsList = fontsString.split(", ");
 const topicPrompts = [
   "create an animated p5.js sketch and integrate it in the website",
   "Relate the topic to cats",
-  "Relate the topic to pens",
   "relate the topic to vampires",
   "use as many colors as possible",
   "Take a religious spin on the topic",
@@ -77,6 +76,33 @@ const topicPrompts = [
   "Include a short quiz with 3 questions about the topic",
   "Include a fictional interview with an expert on the topic",
   "Sometimes add way too much information, going off on tangents",
+  "Write the content as a wrestling match hype reel, building the topic up like a championship showdown",
+  "Write the content as a bewildered grandma explaining the topic to her grandchildren, getting little details charmingly wrong",
+  "Write the content as an alien anthropologist encountering the topic for the very first time and documenting it with wide-eyed confusion",
+  "Write the content as a heist movie trailer, treating the topic like the target of an elaborate crew's master plan",
+  "Write the content as a game show host revealing the topic behind door number three with maximum suspense",
+  "Write the content as an over-caffeinated podcast host who keeps going on wild tangents about the topic",
+  "Write the content as a nature documentary narrator describing the topic with the hushed, dramatic reverence usually reserved for lions on the savanna",
+  "Write the content as a soap opera plot recap, full of betrayal, twists, and cliffhangers about the topic",
+  "Write the content as the liner notes of a heavy metal concept album inspired by the topic",
+  "Write the content as a breaking news bulletin interrupting regular programming for an urgent update about the topic",
+  "Write the content as a fortune teller reading tarot cards to reveal the mystical truth about the topic",
+  "Write the content as a group chat between overexcited friends who just discovered the topic",
+  "Write the content as a scandalous Victorian-era gossip column about the topic",
+  "Write the content as an origin story for a superhero whose powers are directly inspired by the topic",
+  "Write the content as a suspiciously specific late-night infomercial that oversells the topic",
+  "Write the content as a courtroom trial transcript, with the topic on trial for being too impressive",
+  "Write the content as a pirate's treasure map, with cryptic clues leading to the secrets of the topic",
+  "Write the content as a rap battle between two rival experts arguing about the topic",
+  "Write the content as an over-the-top theme park ride announcement hyping up the topic as the next big attraction",
+  "Relate the topic to a heist gone hilariously wrong",
+  "Relate the topic to a secret underground society that has guarded it for centuries",
+  "Relate the topic to an intense rivalry between two ancient rival kingdoms",
+  "Relate the topic to a reality TV talent show competition",
+  "Include a dramatic countdown of the 5 most shocking facts about the topic",
+  "Include a made-up urban legend or cryptid inspired by the topic",
+  "Write the content as a bedtime story about the topic that gets increasingly unhinged with every paragraph",
+  "Write the content as an alien broadcast warning the rest of the galaxy about the topic",
 ];
 
 const designPrompts = [
@@ -211,7 +237,33 @@ function getRandomDesignTokens() {
 }
 
 const designCriticSystemMessage =
-  "You are a meticulous QA reviewer for auto-generated one-page website CSS. You will be given the topic, its angle, and the directives that were handed to the generator (viewport size, max readable text columns, layout style, container style, corner style, brightness) plus the actual CSS and HTML it produced. Note that the generator was deliberately given permission to deviate from the corner-style and brightness directives when the topic's real character justifies it (e.g. a serious or scientific topic legitimately rendered darker/more muted than the brightness directive suggested, or a playful topic rendered more colorful) — that is intended behavior, not a bug, and must never be 'corrected' back to blind compliance. Check specifically for these known, previously-observed failure modes — do not just skim, actually resolve values: (1) Any column of running body text, created via CSS Grid tracks, Flexbox, or the columns/column-count/column-width properties, that computes to less than 300px at the given viewport width (accounting for the required 5% side margins and any gaps) — resolve minmax()/fr values against the real viewport width rather than assuming they're fine. (2) Any badge, pill, tag, decorative shape, or fixed/absolutely positioned element that visually overlaps or sits on top of readable text. (3) The actual rendered background (resolve html/body/pseudo-elements, var(--x) via :root, gradients by dominant stop, hex/rgb()/hsl() all included): flag this ONLY if it looks like an unintentional accident with no coherent relationship to the topic (for example, a scattered mix of leftover unused dark AND light color variables with no clear final palette, or a background that contradicts the given brightness with no plausible topic-based reason at all) — a deliberate, coherent dark or bright palette that reasonably fits the topic is correct behavior even if it differs from the brightness directive, and must be left alone. (4) Corner roundedness: flag this ONLY if it looks accidental (e.g. random inconsistent radius values with no discernible pattern) rather than a deliberate, coherent choice — a clean, consistent departure from the given corner style is fine and must be left alone. (5) A width-constrained content block that hugs one edge of the screen with empty dead space only on the other side, instead of being centered or intentionally full-width. If, after actually resolving values, none of these are present, respond with exactly the single word OK and nothing else — no punctuation, no explanation. If one or more are present, respond with the complete corrected CSS only (same rules as the original generator: only the CSS that belongs inside the style tag, no commentary, no markdown fences) that fixes the specific violations found while preserving as much of the original creative intent — colors, fonts, general structure — as possible.";
+  "You are a meticulous QA reviewer for auto-generated one-page website CSS. You will be given the topic, its angle, and the directives that were handed to the generator (viewport size, max readable text columns, layout style, container style, corner style, brightness) plus the actual CSS and HTML it produced. Note that the generator was deliberately given permission to deviate from the corner-style and brightness directives when the topic's real character justifies it (e.g. a serious or scientific topic legitimately rendered darker/more muted than the brightness directive suggested, or a playful topic rendered more colorful) — that is intended behavior, not a bug, and must never be 'corrected' back to blind compliance. Check specifically for these known, previously-observed failure modes — do not just skim, actually resolve values: (1) Any column of running body text, created via CSS Grid tracks, Flexbox, or the columns/column-count/column-width properties, that computes to less than 300px at the given viewport width (accounting for the required 5% side margins and any gaps) — resolve minmax()/fr values against the real viewport width rather than assuming they're fine. (2) Any badge, pill, tag, decorative shape, or fixed/absolutely positioned element that visually overlaps or sits on top of readable text. (3) The actual rendered background (resolve html/body/pseudo-elements, var(--x) via :root, gradients by dominant stop, hex/rgb()/hsl() all included): flag this ONLY if it looks like an unintentional accident with no coherent relationship to the topic (for example, a scattered mix of leftover unused dark AND light color variables with no clear final palette, or a background that contradicts the given brightness with no plausible topic-based reason at all) — a deliberate, coherent dark or bright palette that reasonably fits the topic is correct behavior even if it differs from the brightness directive, and must be left alone. (4) Corner roundedness: flag this ONLY if it looks accidental (e.g. random inconsistent radius values with no discernible pattern) rather than a deliberate, coherent choice — a clean, consistent departure from the given corner style is fine and must be left alone. (5) A width-constrained content block that hugs one edge of the screen with empty dead space only on the other side, instead of being centered or intentionally full-width. If, after actually resolving values, none of these are present, respond with exactly the single word OK and nothing else — no punctuation, no explanation. If one or more are present, respond with the complete corrected CSS only (same rules as the original generator: only the CSS that belongs inside the style tag, no commentary, no markdown fences) that fixes the specific violations found while preserving as much of the original creative intent — colors, fonts, general structure — as possible. Two hard rules govern how you write that corrected CSS, because both have caused real regressions before: (6) Never drop, rename, or forget to define any CSS custom property. Every var(--x) you keep in your output that has no fallback value (i.e. not written as var(--x, some-fallback)) must have a matching --x: value defined somewhere in your output, normally in a :root block. If the original CSS built its palette, spacing, or type scale from a :root custom-property system, that system must still be present in your corrected CSS, adjusted only where a listed violation requires it — never quietly omitted. (7) Your corrected CSS must preserve the overall richness and creative ambition of the original: its colors, gradients, decorative elements, animations, and font choices should all still be there unless directly implicated in one of the violations above. You are fixing specific, listed problems, not producing a shorter, simpler, safer rewrite of the whole page — a corrected CSS that is dramatically shorter or plainer than the original is itself a failure, even if it no longer has the originally-flagged bug. Your output is automatically checked for both of these afterward, and if it fails, your correction will be discarded and the original CSS will be kept instead, bug and all — so it is in your interest to get this right rather than to simplify.";
+
+function extractDefinedCustomProperties(css) {
+  const defined = new Set();
+  const defRe = /(--[a-zA-Z0-9-_]+)\s*:/g;
+  let match;
+  while ((match = defRe.exec(css))) {
+    defined.add(match[1]);
+  }
+  return defined;
+}
+
+function findUndefinedCustomProperties(css) {
+  const defined = extractDefinedCustomProperties(css);
+  const undefinedVars = new Set();
+  const useRe =
+    /var\(\s*(--[a-zA-Z0-9-_]+)\s*(,[^()]*(?:\([^()]*\)[^()]*)*)?\)/g;
+  let match;
+  while ((match = useRe.exec(css))) {
+    const name = match[1];
+    const hasFallback = Boolean(match[2]);
+    if (!hasFallback && !defined.has(name)) {
+      undefinedVars.add(name);
+    }
+  }
+  return Array.from(undefinedVars);
+}
 
 function buildDesignCriticUserMessage({
   topic,
@@ -267,6 +319,25 @@ async function runDesignCritic(css, contentHtml, directives) {
   if (result.toUpperCase() === "OK") {
     return { revised: false, css };
   }
+
+  const undefinedVars = findUndefinedCustomProperties(result);
+  if (undefinedVars.length > 0) {
+    return {
+      revised: false,
+      css,
+      rejectedReason: `critic's correction referenced undefined CSS custom properties (${undefinedVars.join(", ")}) — discarded, original design CSS kept instead`,
+    };
+  }
+
+  const lengthRatio = result.length / Math.max(css.length, 1);
+  if (lengthRatio < 0.5) {
+    return {
+      revised: false,
+      css,
+      rejectedReason: `critic's correction was only ${Math.round(lengthRatio * 100)}% the length of the original CSS, suggesting it simplified the design rather than fixing a specific bug — discarded, original design CSS kept instead`,
+    };
+  }
+
   return { revised: true, css: result };
 }
 
@@ -753,6 +824,12 @@ app.get("/generate-html", async (req, res) => {
         criticNote =
           "critic found one or more known issues and supplied a corrected CSS";
         chatGPTResponseDesign = criticResult.css;
+      } else if (criticResult.rejectedReason) {
+        console.warn(
+          "Design critic correction rejected:",
+          criticResult.rejectedReason,
+        );
+        criticNote = criticResult.rejectedReason;
       }
     } catch (criticError) {
       console.warn(
@@ -761,6 +838,13 @@ app.get("/generate-html", async (req, res) => {
       );
       criticNote =
         "critic check failed to run (network/API error), CSS was not reviewed";
+    }
+
+    const undefinedVarsInFinalCss = findUndefinedCustomProperties(
+      chatGPTResponseDesign,
+    );
+    if (undefinedVarsInFinalCss.length > 0) {
+      criticNote = `${criticNote ? criticNote + "; " : ""}warning: final CSS still references undefined custom properties (${undefinedVarsInFinalCss.join(", ")}) — these came from the original design call, not the critic`;
     }
 
     const debugComment = buildDebugComment({
