@@ -45,6 +45,43 @@ function saveGeneratedPageLocally(html, title) {
   }
 }
 
+const TIMINGS_FILE = path.join(__dirname, "generation-timings.log");
+
+function computeAverageGenerationTime() {
+  try {
+    if (!fs.existsSync(TIMINGS_FILE)) return null;
+    const durations = fs
+      .readFileSync(TIMINGS_FILE, "utf8")
+      .split("\n")
+      .filter(Boolean)
+      .map((line) => parseFloat(line.split(",")[1]))
+      .filter((n) => Number.isFinite(n));
+    if (durations.length === 0) return null;
+    const sum = durations.reduce((a, b) => a + b, 0);
+    return { count: durations.length, average: sum / durations.length };
+  } catch (err) {
+    console.warn("Could not compute average generation time:", err.message);
+    return null;
+  }
+}
+
+function recordGenerationTiming(seconds) {
+  try {
+    const line = `${new Date().toISOString()},${seconds.toFixed(2)}\n`;
+    fs.appendFileSync(TIMINGS_FILE, line, "utf8");
+    const stats = computeAverageGenerationTime();
+    if (stats) {
+      console.log(
+        `Generation took ${seconds.toFixed(2)}s (average over ${stats.count} run${stats.count === 1 ? "" : "s"}: ${stats.average.toFixed(2)}s)`,
+      );
+    }
+    return stats;
+  } catch (err) {
+    console.warn("Could not record generation timing locally:", err.message);
+    return null;
+  }
+}
+
 const fontsString =
   "Bungee, Chakra Petch, Climate Crisis, Codystar, Creepster, DM Serif Display, Faustina, Grape Nuts, Inter, Inter Tight, JetBrains Mono, M PLUS Code Latin, Mukta, Noto Sans, Odibee Sans, Open Sans, Orbitron, Pirata One, Roboto, Roboto Slab, Rubik, Rubik Doodle Shadow, Rubik Mono One, Share Tech, Share Tech Mono, Source Code Pro, Titillium Web, Ubuntu, Ubuntu Mono, Yanone Kaffeesatz, Zilla Slab Highlight";
 const fontsList = fontsString.split(", ");
@@ -716,6 +753,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/generate-html", async (req, res) => {
+  const generationStart = Date.now();
   try {
     const userTopic = sanitizeUserTopic(req.query.topic);
 
@@ -914,9 +952,18 @@ app.get("/generate-html", async (req, res) => {
       </html>
     `;
 
-    saveGeneratedPageLocally(html, chatGPTResponseTitle);
+    const generationSeconds = (Date.now() - generationStart) / 1000;
+    const timingStats = recordGenerationTiming(generationSeconds);
+    const timingComment = `\n<!--\nGeneration time: ${generationSeconds.toFixed(2)}s${
+      timingStats
+        ? ` (average over ${timingStats.count} run${timingStats.count === 1 ? "" : "s"}: ${timingStats.average.toFixed(2)}s)`
+        : ""
+    }\n-->\n`;
+    const htmlWithTiming = html + timingComment;
 
-    res.send(html);
+    saveGeneratedPageLocally(htmlWithTiming, chatGPTResponseTitle);
+
+    res.send(htmlWithTiming);
   } catch (error) {
     console.error(
       "Error fetching ChatGPT API:",
