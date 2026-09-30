@@ -89,8 +89,8 @@ const fontsList = fontsString.split(", ");
 const topicPrompts = [
   "create an animated p5.js sketch and integrate it in the website",
   "Relate the topic to cats",
+  "Relate the topic to pens",
   "relate the topic to vampires",
-  "use as many colors as possible",
   "Take a religious spin on the topic",
   "Write the content in the language of Donald Trump",
   'Create a delightful and child-friendly one-page website. Design an engaging website suitable for children of various ages. Start with a whimsical and inviting title that captures the essence of the theme. Include a brief introduction to the topic, highlighting their playful and entertaining nature. Organize the content into sections such as "A Story," "Fun Facts," and "10 Funny Names" all relating to the topic. Design the website with vibrant and cheerful colors, incorporating cartoonish elements to make it visually appealing for children. Use friendly and easy-to-read fonts. Consider adding interactive elements like buttons or simple games to enhance engagement. Remember to maintain simplicity in navigation and layout, ensuring that children can easily explore the content.',
@@ -370,12 +370,7 @@ async function runDesignCritic(css, contentHtml, directives) {
     return { revised: false, css };
   }
 
-  // Safety net: the critic sometimes "fixes" a real bug by quietly rewriting the CSS
-  // into something far plainer or with a broken/dropped custom-property system —
-  // exactly the "too sparsely styled" regression this is meant to guard against.
-  // Both checks are cheap and deterministic, so a bad correction is discarded here
-  // in code rather than trusted blindly.
-  const undefinedVars = findUndefinedCustomProperties(result);
+   const undefinedVars = findUndefinedCustomProperties(result);
   if (undefinedVars.length > 0) {
     return {
       revised: false,
@@ -686,7 +681,10 @@ app.get("/", (req, res) => {
           <input type="text" id="topicInput" placeholder="Eigenes Thema (optional)" maxlength="150" />
           <button id="generateButton">Generate new page!</button>
         </div>
-        <div>more information</div>
+        <div>
+          more information
+          <div id="timingStats" style="font-size: 11px; color: #555;"></div>
+        </div>
       </div>
       <div id="startContent">
       <p>This is a Website Generator using ChatGPT. Type an optional topic, or leave it empty for a random one, then click the button to generate a new page.</p>
@@ -702,11 +700,35 @@ app.get("/", (req, res) => {
         <div id="loader">
         <div class="loader"></div>
         <br><br> <br><br>
-        [the loading of a new page can take up to 60 seconds, please be patient!]
+        <p id="loaderMessage">Generating your page, please be patient!</p>
       </div>
 
 
       <script>
+      let knownAverageSeconds = null;
+      let knownCount = null;
+
+      function loaderMessageText() {
+        if (knownAverageSeconds) {
+          return "Generating your page — usually takes about " + knownAverageSeconds + "s (average over " + knownCount + " page" + (knownCount === "1" ? "" : "s") + "), please be patient!";
+        }
+        return "Generating your page, please be patient!";
+      }
+
+      (async function loadInitialTimingStats() {
+        try {
+          const res = await fetch("/timing-stats");
+          const stats = await res.json();
+          if (stats && stats.average !== null) {
+            knownAverageSeconds = stats.average.toFixed(2);
+            knownCount = String(stats.count);
+            document.getElementById("loaderMessage").textContent = loaderMessageText();
+          }
+        } catch (error) {
+          console.error("Could not load timing stats:", error.message);
+        }
+      })();
+
       document.getElementById("startPage").addEventListener("click", async function () {
 
           document.getElementById("startContent").style.display = "flex";
@@ -714,6 +736,7 @@ app.get("/", (req, res) => {
       });
       document.getElementById("generateButton").addEventListener("click", async function () {
         try {
+          document.getElementById("loaderMessage").textContent = loaderMessageText();
           document.getElementById("loader").style.display = "flex";
           document.getElementById("generateButton").style.display = "none";
 
@@ -730,6 +753,20 @@ app.get("/", (req, res) => {
           const frame = document.getElementById("contentFrame");
           frame.srcdoc = html;
           frame.style.display = "block";
+
+          const seconds = response.headers.get("X-Generation-Seconds");
+          const avgSeconds = response.headers.get("X-Generation-Average-Seconds");
+          const count = response.headers.get("X-Generation-Count");
+          if (avgSeconds) {
+            knownAverageSeconds = avgSeconds;
+            knownCount = count;
+          }
+          const timingStatsEl = document.getElementById("timingStats");
+          if (timingStatsEl && seconds) {
+            timingStatsEl.textContent =
+              "Last generation: " + seconds + "s" +
+              (avgSeconds ? " · avg " + avgSeconds + "s over " + count + " pages" : "");
+          }
 
           document.getElementById("loader").style.display = "none";
           document.getElementById("startContent").style.display = "none";
@@ -769,8 +806,7 @@ app.get("/generate-html", async (req, res) => {
       const topicResponse = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-5.4-nano",
-          temperature: 1.3,
+          model: "gpt-6-luna",
           messages: [
             { role: "system", content: topicSystemMessage },
             { role: "user", content: topicUserMessage },
@@ -827,10 +863,10 @@ app.get("/generate-html", async (req, res) => {
     const designSystemMessage =
       "You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.";
 
-    function postChatCompletion(model, temperature, messages) {
+    function postChatCompletion(model, messages) {
       return axios.post(
         "https://api.openai.com/v1/chat/completions",
-        { model, temperature, messages },
+        { model, messages },
         {
           headers: {
             "Content-Type": "application/json",
@@ -846,15 +882,15 @@ app.get("/generate-html", async (req, res) => {
     // roughly to the slowest of the three calls instead of the sum of all three,
     // with no change to prompts, models, or behavior.
     const [titleResult, contentResult, designResult] = await Promise.all([
-      postChatCompletion("gpt-5.4-nano", 0.9, [
+      postChatCompletion("gpt-6-luna", [
         { role: "system", content: titleSystemMessage },
         { role: "user", content: titlePrompt },
       ]).then((r) => r.data.choices[0].message.content),
-      postChatCompletion("gpt-5.4-mini", 1.15, [
+      postChatCompletion("gpt-6-luna", [
         { role: "system", content: contentSystemMessage },
         { role: "user", content: prompt },
       ]).then((r) => stripEmbeddedStyleTags(r.data.choices[0].message.content)),
-      postChatCompletion("gpt-5.4-mini", 1.3, [
+      postChatCompletion("gpt-6-luna", [
         { role: "system", content: designSystemMessage },
         { role: "user", content: designPrompt },
       ]).then((r) => r.data.choices[0].message.content),
@@ -963,6 +999,12 @@ app.get("/generate-html", async (req, res) => {
 
     saveGeneratedPageLocally(htmlWithTiming, chatGPTResponseTitle);
 
+    res.set("X-Generation-Seconds", generationSeconds.toFixed(2));
+    if (timingStats) {
+      res.set("X-Generation-Average-Seconds", timingStats.average.toFixed(2));
+      res.set("X-Generation-Count", String(timingStats.count));
+    }
+
     res.send(htmlWithTiming);
   } catch (error) {
     console.error(
@@ -971,6 +1013,15 @@ app.get("/generate-html", async (req, res) => {
     );
     res.status(500).send("Internal Server Error");
   }
+});
+
+app.get("/timing-stats", (req, res) => {
+  const stats = computeAverageGenerationTime();
+  res.json(
+    stats
+      ? { count: stats.count, average: stats.average }
+      : { count: 0, average: null },
+  );
 });
 
 app.listen(port, () => {
