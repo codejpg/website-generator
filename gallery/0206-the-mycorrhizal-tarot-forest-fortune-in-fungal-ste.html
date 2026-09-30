@@ -1,0 +1,418 @@
+
+      <!DOCTYPE html>
+      <!--
+GENERATOR DEBUG INFO (why this page looks the way it does)
+
+Topic: Ecology — Mycorrhizal networks
+Topic source: chosen randomly by the topic-selection call
+Viewport: 2199x1323 (landscape, aspect 1.66); max text columns allowed: 6
+Design tokens: accent hue 21, secondary hue 231, spacing unit 8px, type scale ratio 1.618
+
+MODE & VISITOR INPUTS
+Mode: fun
+Style direction: (not used in fun mode)
+Brightness: (no fixed light/dark choice in fun mode — follows topic/mood instead)
+Visitor info text: (none provided)
+Visitor design text: (none provided)
+Extras selected: (none)
+
+RANDOM DIRECTIVE PICKS
+Topic angle(s): Turn the topic into a recipe, complete with bizarre ingredients and a totally unnecessary garnish Write the content as a fortune teller reading tarot cards to reveal the mystical truth about the topic
+Design flavor(s): make the website look feminine Use a brutalist web design aesthetic: raw, blocky, unpolished on purpose
+Color mood: a rich jewel-tone color palette
+Layout style: a layout centered around one large hero section followed by short blocks
+Container style: a single large, low-opacity watermark-style word or numeral placed only in genuinely empty background space (a margin, a corner, behind whitespace) — it must never sit behind, overlap, or come near any paragraph of text
+Corner style: a small, subtle border-radius (around 4-8px) on boxed or bordered elements
+Header style: a huge, oversized type-only header where the page title is the dominant visual element, filling most of the viewable width, with no imagery or decorative shapes competing for attention
+Brightness: (not fixed — fun mode, follows topic/mood)
+Content structure: a numbered list, but avoid the generic default of exactly 3 or 4 items — pick a number between 5 and 9, or between 2 and 3, anything but the usual 3-4
+Content length directive: Go long: this should feel like a rich, thorough exploration of the topic with substantially more content than a minimal page, covering many angles and details.
+Font subset offered: Rubik Mono One, Titillium Web, JetBrains Mono, Odibee Sans, Creepster, DM Serif Display, Inter, M PLUS Code Latin
+
+Design critic check: no issues found, CSS used as-is
+
+PROMPT SENT FOR THE CONTENT (HTML) CALL
+System message:
+You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. Structural contract with the separate CSS step, this matters a lot: wrap everything after the header in a single <main> element, and make every major, page-level content block (the things a grid/card/column layout would treat as separate cells) its own <section> or <article> that is a DIRECT child of <main> — never nest the page's top-level content blocks inside a shared <ol> or <ul>, even when the content-structure instruction below calls for something list-like or numbered. Express numbering, list-like framing, Q&A pairs, glossary terms, etc. through the heading and content of each individual <section> (e.g. a visible "01" prefix or number badge inside the section's own heading) rather than real list markup wrapping the whole set of sections — the CSS step will target these direct <section>/<article> children by tag name to build the layout, and if they are nested one level deeper inside an <ol>/<ul> instead, the layout CSS silently fails to apply and the page collapses into a narrow single column with a lot of empty unused space. Small inline lists WITHIN a single section (e.g. a short bullet list of examples inside one topic block) are completely fine and encouraged — this rule is only about how the page's overall, top-level content blocks are nested, not a ban on <ol>/<ul> everywhere. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.
+
+User message:
+Output only the HTML for the one-page website in HTML format. Exclude any conversation, comments, markdown or unnecessary text. This is the topic of the website: Ecology — Mycorrhizal networks. Fill the site with information on the topic. If you use facts, never use facts as a title but choose fitting titles instead. Use captivating titles for each part. If the text has less than 500 words add more information — that is always the minimum, regardless of the length guidance below. Go long: this should feel like a rich, thorough exploration of the topic with substantially more content than a minimal page, covering many angles and details. Turn the topic into a recipe, complete with bizarre ingredients and a totally unnecessary garnish Write the content as a fortune teller reading tarot cards to reveal the mystical truth about the topic. This page needs real structural richness, not just a couple of paragraphs: aim for at least 4-6 distinct content blocks/sections, and actually use elements like subheadings, at least one real bullet or numbered list, short callouts, or pull-quotes — a 'Fun Facts' or 'Did you know?' list of several bite-sized facts is a great device here. This matters beyond just tone: a page with too few blocks looks visually broken later (one side full of text, the other empty), so more distinct pieces of content is a functional requirement, not decoration. Follow the content-structure instruction below for the overall shape, but within it, still favor more, shorter blocks over fewer, longer ones. Always start the page with a <header> element containing an <h1> with the page's title and, optionally, one short tagline or subtitle line — this header must be present no matter which content structure is used below, since a separate step will give it a distinctive visual treatment. Everything the content-structure instruction below says about headings, subdivisions, or sparseness applies only to the body content that follows this header, never to the header itself. Structure the body content after the header using this format instead of defaulting to a generic hero-title-plus-intro-paragraph-plus-a-grid-of-3-4-numbered-feature-cards pattern: a numbered list, but avoid the generic default of exactly 3 or 4 items — pick a number between 5 and 9, or between 2 and 3, anything but the usual 3-4. Do not use any images. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE DESIGN (CSS) CALL
+System message:
+You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The content step has been told to make every top-level, page-level content block its own <section> or <article> that is a direct child of <main> — never nested inside a shared <ol>/<ul>. Rely on that when you write grid/card/multi-column selectors: target the direct children directly (e.g. `main > section`, `main > article`), and as cheap extra insurance also include `main > ol > li`, `main > ul > li` in the same selector list in case the content step ever nests things one level deeper than expected — a grid container that ends up applying to only a single effective child (because everything landed inside one shared wrapper) is exactly the width-constrained, empty-dead-space bug described below, so guard against it. Relatedly, you do not know in advance exactly how many content blocks the HTML contains, so never use a hardcoded `repeat(3, ...)`/`repeat(4, ...)` for a card/dashboard/multi-column layout of repeating content blocks — a fixed column count that doesn't match the actual number of blocks leaves an empty gap on one side, exactly as badly as the wrapper-nesting bug above. `repeat(auto-fit, minmax(300px, 1fr))` looks like the fix but has its own gap: it only collapses a column that is empty across every row, not leftover space in a partial final row — so when the block count isn't a clean multiple of however many columns fit at that viewport width (e.g. 7 blocks at a width that fits 6 columns), the last row's leftover block(s) still end up stranded at the left edge with dead space trailing beside them, same bug via a different route. For this exact pattern — a repeating row of card/block elements where the count is unpredictable — use Flexbox instead of Grid: `display: flex; flex-wrap: wrap;` on the container with each item sized via `flex: 1 1 300px;` (or similar) plus `justify-content: center`, so a leftover final row's item(s) center or stretch within that row instead of being pinned to a shared column track the way Grid rows are. Grid remains fine for layouts with a known, fixed number of cells (e.g. a header split into exactly two halves) — this specific caution is only about repeating content blocks whose count varies with the topic. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.
+
+User message:
+Concrete, measured facts about this specific visitor, use them instead of guessing: their browser window is exactly 2199px wide and 1323px tall (aspect ratio 1.66, landscape). Given the required 5% side margins, at most 6 column(s) of readable body text at 300px+ each can fit side by side at this width — never plan a layout with more simultaneous text columns than that number, even temporarily at any point in the page; when in doubt use fewer.
+
+Two required numeric design tokens, do not override them with your own preference: build the entire color palette starting from HSL hue 21 as the primary accent and HSL hue 231 as a secondary/complementary accent (pick whatever saturation/lightness fits the brightness instruction below, but the hues themselves are fixed); base all spacing (margins, paddings, gaps) on multiples of 8px rather than a generic 8px/16px/24px scale; scale heading sizes from the body text size using a ratio of 1.618 per level.
+
+Non-negotiable layout safety rules, follow these before anything else in this message: (1) Never use CSS Grid, Flexbox, or the CSS multi-column properties (`columns`/`column-count`/`column-width`) to create a column of running body text narrower than 300px — if the container is not wide enough for the number of columns you want, use fewer columns (2 is often enough) or stack content vertically instead of narrowing columns further; this applies especially to `column-count`, which silently divides width evenly and easily produces unreadably narrow columns, so avoid `column-count` above 2 for paragraph text entirely. (2) Never let body text wrap down to one word per line — that always means the column is too narrow and must be fixed. (3) Actual readable paragraph text (including headings, body copy, and small elements like badges/pills/tags/labels that contain real words) must never visually overlap, sit behind, or be partially covered by any other text or element. Only large, purely decorative elements without their own necessary meaning (background numerals, icons, big outline shapes) may bleed outside their grid cell, and only into genuinely empty space — never on top of or touching any text. (4) If any element uses fixed or absolute positioning, add enough margin/padding so it never overlaps or covers other readable content.
+
+Starting points for this generation, chosen at random — treat them as your default direction, but you have explicit permission (see below) to shift them if the topic genuinely calls for it: (5) Corners: a small, subtle border-radius (around 4-8px) on boxed or bordered elements. (6) Overall brightness is intentionally not fixed here — no light/dark toggle applies to this mode. Default to bright, colorful, light-leaning palettes, but let the topic and design mood genuinely pull it darker or moodier when that's the better fit (e.g. a spooky, noir, or somber angle) — this should read as following the topic's character, not as picking from a fixed light/dark choice. (7) Balance, not sameness: the layout style given below (a layout centered around one large hero section followed by short blocks) should genuinely shape the composition — a full-bleed poster, a magazine multi-column spread, a sticky sidebar, a hero-then-blocks page, a dashboard of cards, and a single scrolling narrative should all look structurally different from each other, and none of them should default to "one narrow centered column with symmetric margins" unless that specific layout style calls for exactly that. The only mistake to actively avoid is a width-constrained block accidentally hugging one edge of the screen with empty dead space stacked only on the other side (e.g. forgetting margin-inline: auto on an off-center max-width block) — fix only that specific accident, do not impose uniform centering as a style choice on top of every layout.
+
+Let the topic's real character guide your judgment: this page's angle is "Turn the topic into a recipe, complete with bizarre ingredients and a totally unnecessary garnish Write the content as a fortune teller reading tarot cards to reveal the mystical truth about the topic" and the topic itself is "Ecology — Mycorrhizal networks". A fun, playful, or silly angle should read as bolder and more colorful — lean into more saturated colors, and boxes/cards/rounded corners are great here, don't hold back. A serious, somber, or weighty angle can be more restrained and sophisticated, and a dark or moody palette is a genuinely good fit here if it suits the topic, not something to avoid. A scientific, technical, or academic angle should feel appropriate to that specific field (e.g. an ocean topic can lean aquatic blues/teals, a botany topic can lean natural greens, an astronomy topic can lean toward deep space tones) rather than a generic, disconnected palette. Boxes, rounded corners, and dark backgrounds are all completely legitimate choices whenever they genuinely fit — the only thing to avoid is applying the exact same look regardless of what the topic actually is. Use this judgment to decide how far to lean into or away from the brightness/corner starting points above.
+
+The HTML always includes a <header> containing the page title (an h1, and possibly a short tagline). Give this header its own distinctive, deliberate visual treatment rather than styling it like just another section: a huge, oversized type-only header where the page title is the dominant visual element, filling most of the viewable width, with no imagery or decorative shapes competing for attention. This header style is chosen independently from the layout and container styles above, so make sure it actually looks different from one generation to the next — vary its scale, placement, color treatment, and how much of the viewport it commands, according to the direction given. It must still follow the non-negotiable layout safety rules above (no overlapping text, no fixed/absolute element covering other content, no column narrower than 300px).
+
+Now the actual design brief: Output only the CSS for a coherent one-page Website. Exclude any conversation, comments, markdown or unnecessary text. The left and right margin of the body should always be at least be 5%. This is the topic of the website: Ecology — Mycorrhizal networks. Use colors that fit the topic, leaning towards a rich jewel-tone color palette unless your topic-driven judgment above suggests otherwise. make the website look feminine Use a brutalist web design aesthetic: raw, blocky, unpolished on purpose. Structure the page using a layout centered around one large hero section followed by short blocks. For how grid cells/sections are visually expressed, use this container style: a single large, low-opacity watermark-style word or numeral placed only in genuinely empty background space (a margin, a corner, behind whitespace) — it must never sit behind, overlap, or come near any paragraph of text. It's fine for this to be full boxes, partial structure, or no visible containers at all depending on the style given — follow it as written rather than defaulting to any one look. Use one or more of these fonts: Rubik Mono One, Titillium Web, JetBrains Mono, Odibee Sans, Creepster, DM Serif Display, Inter, M PLUS Code Latin. Select fonts that fit the topic. Always use CSS Grids somewhere. Sometimes in a useful way, sometimes minimalistically, sometimes do everything in grids and sometimes in a weird way. Use CSS Animations either minimally or overuse them. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE TITLE CALL
+System message:
+You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.
+
+User message:
+Output only a short but very fitting title for the topic Ecology — Mycorrhizal networks. You may include this information to write the title: Turn the topic into a recipe, complete with bizarre ingredients and a totally unnecessary garnish Write the content as a fortune teller reading tarot cards to reveal the mystical truth about the topic. Never use any exclamation marks in the beginning or end of the title. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE RANDOM TOPIC-SELECTION CALL
+System message:
+You are an interesting person and your task is to choose a topic from your entire knowledge. Do not answer anything else except for that topic. You are not aware of anything relating to quantum theory or black holes.
+
+User message:
+Randomly select a category and then randomly select a topic from that category.
+-->
+      <html>
+      <head>
+        <title>The Mycorrhizal Tarot: Forest Fortune in Fungal Stew</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=M+PLUS+Code+Latin:wght@400;600;700&display=swap');
+
+:root {
+  --ember: hsl(21 88% 54%);
+  --ember-dark: hsl(21 76% 34%);
+  --indigo: hsl(231 62% 28%);
+  --indigo-light: hsl(231 76% 44%);
+  --paper: hsl(39 48% 94%);
+  --rose: hsl(21 48% 86%);
+  --ink: hsl(231 42% 16%);
+  --body-size: 18px;
+  --h3-size: 1.618rem;
+  --h2-size: 2.618rem;
+  --h1-size: 4.236rem;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  padding: 0 5vw 64px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "M PLUS Code Latin", monospace;
+  font-size: var(--body-size);
+  line-height: 1.65;
+}
+
+header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 0 -5.56vw 48px;
+  padding: 40px 5.56vw 24px;
+  overflow-wrap: anywhere;
+  background: var(--indigo);
+  color: var(--paper);
+  border-bottom: 16px solid var(--ember);
+}
+
+header h1 {
+  max-width: 18ch;
+  margin: 0;
+  color: var(--ember);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: var(--h1-size);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+header p {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--paper);
+  font-size: 1rem;
+}
+
+header::after {
+  content: "XVII";
+  justify-self: end;
+  padding-top: 8px;
+  color: hsl(39 48% 94% / 0.16);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 96px;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+}
+
+main > ol,
+main > ul {
+  display: contents;
+}
+
+main > section,
+main > article,
+main > ol > li,
+main > ul > li {
+  flex: 1 1 320px;
+  min-width: 0;
+  margin: 0;
+  padding: 32px;
+  border: 4px solid var(--ink);
+  border-radius: 6px;
+  background: var(--rose);
+  overflow-wrap: anywhere;
+}
+
+main > section:first-child,
+main > article:first-child,
+main > ol > li:first-child,
+main > ul > li:first-child {
+  flex-basis: 100%;
+  min-height: 432px;
+  padding: 48px;
+  border-color: var(--ember-dark);
+  background: var(--ember);
+  color: var(--ink);
+}
+
+main > section h2,
+main > article h2,
+main > ol > li h2,
+main > ul > li h2 {
+  margin: 0 0 24px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: var(--h2-size);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+main > section h3,
+main > article h3,
+main > ol > li h3,
+main > ul > li h3 {
+  margin: 0 0 16px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: var(--h3-size);
+  font-weight: 400;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+main > section p,
+main > article p,
+main > ol > li p,
+main > ul > li p {
+  max-width: 68ch;
+  margin: 0 0 24px;
+}
+
+main > section p:last-child,
+main > article p:last-child,
+main > ol > li p:last-child,
+main > ul > li p:last-child {
+  margin-bottom: 0;
+}
+
+main > section:first-child p,
+main > article:first-child p,
+main > ol > li:first-child p,
+main > ul > li:first-child p {
+  max-width: 62ch;
+}
+
+main > section:nth-child(even),
+main > article:nth-child(even),
+main > ol > li:nth-child(even),
+main > ul > li:nth-child(even) {
+  background: var(--indigo);
+  color: var(--paper);
+}
+
+main > section:nth-child(even) h2,
+main > section:nth-child(even) h3,
+main > article:nth-child(even) h2,
+main > article:nth-child(even) h3,
+main > ol > li:nth-child(even) h2,
+main > ol > li:nth-child(even) h3,
+main > ul > li:nth-child(even) h2,
+main > ul > li:nth-child(even) h3 {
+  color: var(--ember);
+}
+
+main > section:nth-child(odd):not(:first-child),
+main > article:nth-child(odd):not(:first-child),
+main > ol > li:nth-child(odd):not(:first-child),
+main > ul > li:nth-child(odd):not(:first-child) {
+  background: var(--paper);
+}
+
+a {
+  color: var(--indigo-light);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+strong,
+b {
+  color: var(--ember-dark);
+}
+
+@media (max-width: 700px) {
+  body {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  header {
+    margin-right: -5.56vw;
+    margin-left: -5.56vw;
+    padding: 32px 5.56vw 24px;
+  }
+
+  header h1 {
+    font-size: var(--h2-size);
+  }
+
+  header::after {
+    font-size: 64px;
+  }
+
+  main {
+    gap: 24px;
+  }
+
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li {
+    padding: 24px;
+  }
+
+  main > section:first-child,
+  main > article:first-child,
+  main > ol > li:first-child,
+  main > ul > li:first-child {
+    min-height: 0;
+    padding: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li {
+    animation: reveal-in 520ms ease-out both;
+  }
+
+  main > section:nth-child(2),
+  main > article:nth-child(2),
+  main > ol > li:nth-child(2),
+  main > ul > li:nth-child(2) {
+    animation-delay: 80ms;
+  }
+
+  @keyframes reveal-in {
+    from {
+      opacity: 0.72;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+      </style>
+      <body>
+  <header>
+    <h1>The Tarot of the Underground Forest</h1>
+    <p>A fortune teller’s field guide to mycorrhizal networks—and a recipe for reading the roots.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>01 — The Fool: Step Beneath the Leaf Litter</h2>
+      <p>Come closer, seeker. I turn the first card and find no throne, no jeweled crown—only a root tip and a thread so fine it vanishes into the soil. This is the beginning of a mycorrhizal relationship: a partnership between certain fungi and the roots of plants. The fungal threads, called hyphae, grow through soil and can reach beyond the area a root can readily explore alone.</p>
+      <p>In many partnerships, the fungus helps a plant take up nutrients, especially phosphorus, and may help it access water. In exchange, the plant supplies the fungus with carbon-rich compounds made through photosynthesis. The bargain is ancient, widespread, and variable: not every plant partners with fungi in the same way, and not every exchange is equally generous.</p>
+      <p><strong>Oracle’s note:</strong> Think partnership, not magic. The wonder is real enough without asking it to break the laws of biology.</p>
+    </section>
+
+    <section>
+      <h2>02 — The Magician: Gather the Ingredients</h2>
+      <p>To prepare the Oracle’s Underground Stew, assemble these ingredients—not in a kitchen, but in your imagination, where ecology simmers best:</p>
+      <ul>
+        <li>One living plant root, preferably attached to a plant that actually forms a mycorrhizal partnership.</li>
+        <li>A pinch of compatible fungal spores or an established patch of fungal hyphae; never assume one fungus suits every plant.</li>
+        <li>A handful of soil with a varied community of organisms, gathered ethically and without stripping a wild habitat.</li>
+        <li>Moisture enough to keep soil life active, but not so much that oxygen disappears from waterlogged ground.</li>
+        <li>A teaspoon of patience, because fungal partnerships unfold over time, not on a fortune teller’s schedule.</li>
+        <li>One utterly unnecessary garnish: a silver paper moon, placed beside the pot and not in it.</li>
+      </ul>
+      <p>Leave out the miracle powder. A commercial inoculant cannot guarantee a thriving network: success depends on the fungus, host plant, soil conditions, local competitors, and the wider community of microbes. The best first ingredient is a suitable habitat.</p>
+    </section>
+
+    <section>
+      <h2>03 — The High Priestess: Read the Hidden Exchange</h2>
+      <p>The second card is veiled. Beneath it, hyphae branch through pores and gaps in the soil, sometimes joining a fungal individual with multiple plant roots. Such connections can create pathways along which resources move. Researchers have observed transfers of carbon or nutrients in some experimental systems, but the amount, direction, and ecological importance depend on the organisms and conditions involved.</p>
+      <p>Here is where the fortune teller lowers her voice: a network is not necessarily a benevolent forest telephone. A fungal connection does not prove that plants intentionally send warnings, recognize their relatives, or share resources according to a moral code. Plants communicate through several mechanisms, including airborne chemicals and root-zone processes, but popular stories about the “wood wide web” can make uncertain or context-dependent findings sound universal.</p>
+      <blockquote>
+        <p>“The unseen connection is a question to investigate, not a promise that every tree is whispering.”</p>
+      </blockquote>
+      <p>Follow the evidence carefully, seeker. Ask which species were connected, what was measured, whether other explanations were ruled out, and whether a laboratory result also occurs in a natural forest.</p>
+    </section>
+
+    <section>
+      <h2>04 — The Wheel of Fortune: Stir with the Seasons</h2>
+      <p>Now stir the stew gently: no shovel-churning, no sudden spell. Mycorrhizal partnerships respond to changing circumstances. Soil disturbance can break hyphae and alter the habitats fungi depend on. Fertilizer, drought, pollution, plant species, and the availability of nutrients can all influence how plants and fungi interact. The wheel turns differently in a garden, a grassland, a farm field, and an old forest.</p>
+      <p>Two broad kinds of mycorrhizae offer different readings. Arbuscular mycorrhizal fungi enter the outer root tissues of many plants and form finely branched structures involved in exchange. Ectomycorrhizal fungi form sheaths around the roots of many tree species and grow between root cells. These are not the only forms, but they reveal why “the network” is not one uniform underground web.</p>
+      <p>For a practical tending ritual, protect living soil where possible, avoid unnecessary disturbance, grow plants suited to the place, and be cautious about adding fertilizer or fungal products without a clear reason. In restoration, local ecological knowledge matters: introducing the wrong organism can be ineffective or harmful.</p>
+    </section>
+
+    <section>
+      <h2>05 — The Hermit: Three Clues in the Dark</h2>
+      <p>The Hermit carries a lamp, not a shortcut. Hold these small truths up to the soil:</p>
+      <ul>
+        <li><strong>Clue one:</strong> A hypha is a fungal filament; a mass of hyphae is called mycelium.</li>
+        <li><strong>Clue two:</strong> Mycorrhizal fungi are not interchangeable. Different fungi associate with different plant groups and perform differently across environments.</li>
+        <li><strong>Clue three:</strong> A visible mushroom is a reproductive structure of some fungi, not a map showing every underground connection.</li>
+        <li><strong>Clue four:</strong> Many plants form mycorrhizal associations, but some plant families and species do not, and certain plants rely on other relationships.</li>
+      </ul>
+      <p>These clues complicate the charming image of a single forest-wide internet. Real soils contain overlapping biological relationships, competing organisms, and changing connections. That complexity is not a flaw in the story. It is the story.</p>
+    </section>
+
+    <section>
+      <h2>06 — The Star: Serve the Unnecessary Garnish</h2>
+      <p>The stew is ready when you can describe both the marvel and its limits. Set the silver paper moon beside the soil: the garnish is ridiculous, but the living partnership deserves serious attention. Mycorrhizal fungi contribute to nutrient cycling and plant ecology, and researchers continue to investigate how these associations affect communities and ecosystems. Their importance can vary widely; no single tale explains every root and fungus.</p>
+      <p>So the cards offer this final fortune: look after the conditions that let diverse soil communities persist, and resist turning ecological relationships into human allegories too quickly. A forest is not a committee meeting, a charity, or a flawless communication network. It is a changing community whose organisms interact in ways we are still learning to measure.</p>
+      <p>When you next walk beneath trees, remember the hidden threads—not as proof of a secret kingdom, but as an invitation to observe. The deepest reading is not “everything is connected in the same way.” It is “connections matter, and their details matter too.”</p>
+    </section>
+  </main>
+</body>
+      </html>
+    
+<!--
+Generation time: 35.21s (average over 127 runs: 33.09s)
+-->

@@ -10,18 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@now/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
-  ],
   "author": "Anna Brauwers",
   "license": "MIT",
   "dependencies": {

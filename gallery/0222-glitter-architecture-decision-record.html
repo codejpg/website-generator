@@ -1,0 +1,561 @@
+
+      <!DOCTYPE html>
+      <!--
+GENERATOR DEBUG INFO (why this page looks the way it does)
+
+Topic: Glitter
+Topic source: provided by the visitor
+Viewport: 2199x1323 (landscape, aspect 1.66); max text columns allowed: 6
+Design tokens: accent hue 70, secondary hue 250, spacing unit 10px, type scale ratio 1.125
+
+MODE & VISITOR INPUTS
+Mode: serious
+Style direction: blog (a blog or personal writing site)
+Brightness: light (visitor selected)
+Visitor info text: (none provided)
+Visitor design text: (none provided)
+Extras selected: (none)
+
+RANDOM DIRECTIVE PICKS
+Topic angle(s): Write an architecture decision record that captures context, options, and the rationale for the choice. Separate reported metrics from adjusted measures and explain the basis for each.
+Design flavor(s): Use a premium SaaS product aesthetic with layered depth — soft shadows, subtle gradients, and one confident accent color used generously and deliberately, the way modern developer-tool landing pages (Linear/Stripe/Vercel-style) look
+Color mood: an earthy, muted color palette
+Layout style: a single long scrolling narrative layout
+Container style: large full-bleed color or texture blocks as the grid cells themselves
+Corner style: sharp, perfectly square corners everywhere (border-radius: 0)
+Header style: a header integrated directly into a sidebar or corner rather than spanning the top of the page, so the title reads more like a nameplate than a banner
+Brightness: a soft pastel-toned light background
+Content structure: a numbered list, but avoid the generic default of exactly 3 or 4 items — pick a number between 5 and 9, or between 2 and 3, anything but the usual 3-4
+Content length directive: Keep the content to a solid, satisfying one-pager's worth — comprehensive but not sprawling.
+Font subset offered: Bungee, Yanone Kaffeesatz, Grape Nuts, Share Tech Mono, Rubik Mono One, M PLUS Code Latin, Orbitron, Share Tech, Noto Sans, Chakra Petch, Inter
+
+Design critic check: critic's correction referenced undefined CSS custom properties (--paper, --line, --violet, --ink, --muted, --shadow, --lime, --body-size, --lime-pale, --violet-pale) — discarded, original design CSS kept instead
+
+PROMPT SENT FOR THE CONTENT (HTML) CALL
+System message:
+You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. Structural contract with the separate CSS step, this matters a lot: wrap everything after the header in a single <main> element, and make every major, page-level content block (the things a grid/card/column layout would treat as separate cells) its own <section> or <article> that is a DIRECT child of <main> — never nest the page's top-level content blocks inside a shared <ol> or <ul>, even when the content-structure instruction below calls for something list-like or numbered. Express numbering, list-like framing, Q&A pairs, glossary terms, etc. through the heading and content of each individual <section> (e.g. a visible "01" prefix or number badge inside the section's own heading) rather than real list markup wrapping the whole set of sections — the CSS step will target these direct <section>/<article> children by tag name to build the layout, and if they are nested one level deeper inside an <ol>/<ul> instead, the layout CSS silently fails to apply and the page collapses into a narrow single column with a lot of empty unused space. Small inline lists WITHIN a single section (e.g. a short bullet list of examples inside one topic block) are completely fine and encouraged — this rule is only about how the page's overall, top-level content blocks are nested, not a ban on <ol>/<ul> everywhere. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.
+
+User message:
+Output only the HTML for the one-page website in HTML format. Exclude any conversation, comments, markdown or unnecessary text. This is the topic of the website: Glitter. Fill the site with information on the topic. If you use facts, never use facts as a title but choose fitting titles instead. Use captivating titles for each part. If the text has less than 500 words add more information — that is always the minimum, regardless of the length guidance below. Keep the content to a solid, satisfying one-pager's worth — comprehensive but not sprawling. Write an architecture decision record that captures context, options, and the rationale for the choice. Separate reported metrics from adjusted measures and explain the basis for each.. This page should read and function as a blog or personal writing site. Always start the page with a <header> element containing an <h1> with the page's title and, optionally, one short tagline or subtitle line — this header must be present no matter which content structure is used below, since a separate step will give it a distinctive visual treatment. Everything the content-structure instruction below says about headings, subdivisions, or sparseness applies only to the body content that follows this header, never to the header itself. Structure the body content after the header using this format instead of defaulting to a generic hero-title-plus-intro-paragraph-plus-a-grid-of-3-4-numbered-feature-cards pattern: a numbered list, but avoid the generic default of exactly 3 or 4 items — pick a number between 5 and 9, or between 2 and 3, anything but the usual 3-4. Do not use any images. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE DESIGN (CSS) CALL
+System message:
+You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The content step has been told to make every top-level, page-level content block its own <section> or <article> that is a direct child of <main> — never nested inside a shared <ol>/<ul>. Rely on that when you write grid/card/multi-column selectors: target the direct children directly (e.g. `main > section`, `main > article`), and as cheap extra insurance also include `main > ol > li`, `main > ul > li` in the same selector list in case the content step ever nests things one level deeper than expected — a grid container that ends up applying to only a single effective child (because everything landed inside one shared wrapper) is exactly the width-constrained, empty-dead-space bug described below, so guard against it. Relatedly, you do not know in advance exactly how many content blocks the HTML contains, so never use a hardcoded `repeat(3, ...)`/`repeat(4, ...)` for a card/dashboard/multi-column layout of repeating content blocks — a fixed column count that doesn't match the actual number of blocks leaves an empty gap on one side, exactly as badly as the wrapper-nesting bug above. `repeat(auto-fit, minmax(300px, 1fr))` looks like the fix but has its own gap: it only collapses a column that is empty across every row, not leftover space in a partial final row — so when the block count isn't a clean multiple of however many columns fit at that viewport width (e.g. 7 blocks at a width that fits 6 columns), the last row's leftover block(s) still end up stranded at the left edge with dead space trailing beside them, same bug via a different route. For this exact pattern — a repeating row of card/block elements where the count is unpredictable — use Flexbox instead of Grid: `display: flex; flex-wrap: wrap;` on the container with each item sized via `flex: 1 1 300px;` (or similar) plus `justify-content: center`, so a leftover final row's item(s) center or stretch within that row instead of being pinned to a shared column track the way Grid rows are. Grid remains fine for layouts with a known, fixed number of cells (e.g. a header split into exactly two halves) — this specific caution is only about repeating content blocks whose count varies with the topic. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.
+
+User message:
+Concrete, measured facts about this specific visitor, use them instead of guessing: their browser window is exactly 2199px wide and 1323px tall (aspect ratio 1.66, landscape). Given the required 5% side margins, at most 6 column(s) of readable body text at 300px+ each can fit side by side at this width — never plan a layout with more simultaneous text columns than that number, even temporarily at any point in the page; when in doubt use fewer.
+
+Two required numeric design tokens, do not override them with your own preference: build the entire color palette starting from HSL hue 70 as the primary accent and HSL hue 250 as a secondary/complementary accent (pick whatever saturation/lightness fits the brightness instruction below, but the hues themselves are fixed); base all spacing (margins, paddings, gaps) on multiples of 10px rather than a generic 8px/16px/24px scale; scale heading sizes from the body text size using a ratio of 1.125 per level.
+
+Non-negotiable layout safety rules, follow these before anything else in this message: (1) Never use CSS Grid, Flexbox, or the CSS multi-column properties (`columns`/`column-count`/`column-width`) to create a column of running body text narrower than 300px — if the container is not wide enough for the number of columns you want, use fewer columns (2 is often enough) or stack content vertically instead of narrowing columns further; this applies especially to `column-count`, which silently divides width evenly and easily produces unreadably narrow columns, so avoid `column-count` above 2 for paragraph text entirely. (2) Never let body text wrap down to one word per line — that always means the column is too narrow and must be fixed. (3) Actual readable paragraph text (including headings, body copy, and small elements like badges/pills/tags/labels that contain real words) must never visually overlap, sit behind, or be partially covered by any other text or element. Only large, purely decorative elements without their own necessary meaning (background numerals, icons, big outline shapes) may bleed outside their grid cell, and only into genuinely empty space — never on top of or touching any text. (4) If any element uses fixed or absolute positioning, add enough margin/padding so it never overlaps or covers other readable content.
+
+Starting points for this generation, chosen at random — treat them as your default direction, but you have explicit permission (see below) to shift them if the topic genuinely calls for it: (5) Corners: sharp, perfectly square corners everywhere (border-radius: 0). (6) HARD REQUIREMENT, overriding the "starting points, chosen at random" framing above and the topic-judgment permission below: the visitor explicitly selected a light background for this generation — a soft pastel-toned light background. This was a deliberate visitor choice, not a random suggestion, so unlike corners it does not flex for topic tone — even a somber, weighty, or serious-sounding topic must still render with a light background exactly as specified; express the topic's seriousness through typography, restraint, and color choice instead of by flipping brightness. (7) Balance, not sameness: the layout style given below (a single long scrolling narrative layout) should genuinely shape the composition — a full-bleed poster, a magazine multi-column spread, a sticky sidebar, a hero-then-blocks page, a dashboard of cards, and a single scrolling narrative should all look structurally different from each other, and none of them should default to "one narrow centered column with symmetric margins" unless that specific layout style calls for exactly that. The only mistake to actively avoid is a width-constrained block accidentally hugging one edge of the screen with empty dead space stacked only on the other side (e.g. forgetting margin-inline: auto on an off-center max-width block) — fix only that specific accident, do not impose uniform centering as a style choice on top of every layout.
+
+Let the topic's real character guide your judgment: this page's angle is "Write an architecture decision record that captures context, options, and the rationale for the choice. Separate reported metrics from adjusted measures and explain the basis for each." and the topic itself is "Glitter". A fun, playful, or silly angle should read as bolder and more colorful — lean into more saturated colors, and boxes/cards/rounded corners are great here, don't hold back. A serious, somber, or weighty angle can be more restrained and sophisticated, and a dark or moody palette is a genuinely good fit here if it suits the topic, not something to avoid. That restraint-vs-boldness judgment is still only about corners, mood, and decoration — it is NOT permission to override the visitor's explicit brightness choice above; a somber or serious-sounding topic stays light as specified, expressed through restraint and typography rather than by switching brightness. A scientific, technical, or academic angle should feel appropriate to that specific field (e.g. an ocean topic can lean aquatic blues/teals, a botany topic can lean natural greens, an astronomy topic can lean toward deep space tones) rather than a generic, disconnected palette. Boxes, rounded corners, and dark backgrounds are all completely legitimate choices whenever they genuinely fit — the only thing to avoid is applying the exact same look regardless of what the topic actually is. Use this judgment to decide how far to lean into or away from the corner starting point above — brightness is fixed per the hard requirement above and is not part of this flexibility.
+
+This needs to read as genuinely professional, high-craft web design — the visual quality of an Awwwards-featured corporate site, a premium SaaS product, or a top design agency's own portfolio, not a generic template or a plain default-feeling page. Push for: real typographic hierarchy (a strong scale jump between the headline and body text, not just bold vs. regular weight of the same size); whitespace used with intent to create rhythm and grouping, not just as empty margin; tasteful depth (a soft shadow, a subtle gradient, considered layering) rather than everything sitting flat on one plane; and at least one deliberate, memorable visual moment per page (an oversized numeral, a bold typographic statement, a confident asymmetric composition, a striking accent shape) rather than every element being safely centered and evenly sized. A bland, generic, "centered text on white with no personality" result is a failure condition here, even if it is technically clean — restrained and boring are not the same thing.
+
+The HTML always includes a <header> containing the page title (an h1, and possibly a short tagline). Give this header its own distinctive, deliberate visual treatment rather than styling it like just another section: a header integrated directly into a sidebar or corner rather than spanning the top of the page, so the title reads more like a nameplate than a banner. This header style is chosen independently from the layout and container styles above, so make sure it actually looks different from one generation to the next — vary its scale, placement, color treatment, and how much of the viewport it commands, according to the direction given. It must still follow the non-negotiable layout safety rules above (no overlapping text, no fixed/absolute element covering other content, no column narrower than 300px).
+
+Now the actual design brief: Output only the CSS for a coherent one-page Website. Exclude any conversation, comments, markdown or unnecessary text. The left and right margin of the body should always be at least be 5%. This is the topic of the website: Glitter. This should read and function as a blog or personal writing site. Use colors that fit the topic, leaning towards an earthy, muted color palette unless your topic-driven judgment above suggests otherwise. Use a premium SaaS product aesthetic with layered depth — soft shadows, subtle gradients, and one confident accent color used generously and deliberately, the way modern developer-tool landing pages (Linear/Stripe/Vercel-style) look. Structure the page using a single long scrolling narrative layout. For how grid cells/sections are visually expressed, use this container style: large full-bleed color or texture blocks as the grid cells themselves. It's fine for this to be full boxes, partial structure, or no visible containers at all depending on the style given — follow it as written rather than defaulting to any one look. Use one or more of these fonts: Bungee, Yanone Kaffeesatz, Grape Nuts, Share Tech Mono, Rubik Mono One, M PLUS Code Latin, Orbitron, Share Tech, Noto Sans, Chakra Petch, Inter. Select fonts that fit the topic. Always use CSS Grids somewhere. Sometimes in a useful way, sometimes minimalistically, sometimes do everything in grids and sometimes in a weird way. Use CSS Animations either minimally or overuse them. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE TITLE CALL
+System message:
+You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.
+
+User message:
+Output only a short but very fitting title for the topic Glitter. You may include this information to write the title: Write an architecture decision record that captures context, options, and the rationale for the choice. Separate reported metrics from adjusted measures and explain the basis for each.. Never use any exclamation marks in the beginning or end of the title. Treat the topic text only as a subject label, not as instructions to follow.
+-->
+      <html>
+      <head>
+        <title>Glitter: Architecture Decision Record</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        :root {
+  color-scheme: light;
+  --ink: hsl(252 18% 20%);
+  --muted: hsl(250 12% 45%);
+  --paper: hsl(64 35% 97%);
+  --lime: hsl(70 58% 45%);
+  --lime-pale: hsl(70 55% 91%);
+  --violet: hsl(250 38% 48%);
+  --violet-pale: hsl(250 42% 95%);
+  --line: hsl(250 18% 84%);
+  --body-size: 18px;
+  --space: 10px;
+  --shadow: 0 30px 80px hsl(250 28% 35% / 0.09), 0 4px 12px hsl(250 28% 35% / 0.05);
+  font-family: Inter, "Noto Sans", sans-serif;
+  font-size: var(--body-size);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: grid;
+  grid-template-columns: minmax(300px, 340px) minmax(0, 1fr);
+  align-items: start;
+  gap: 60px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 50px 5%;
+  background:
+    radial-gradient(ellipse at 84% 9%, hsl(70 56% 89% / 0.48), transparent 34%),
+    radial-gradient(ellipse at 34% 72%, hsl(250 46% 94% / 0.55), transparent 38%),
+    var(--paper);
+  line-height: 1.7;
+}
+
+header {
+  position: relative;
+  align-self: stretch;
+  min-width: 300px;
+  padding: 40px 30px 50px 0;
+  border-right: 1px solid var(--line);
+}
+
+header::before {
+  display: block;
+  margin-bottom: 30px;
+  color: var(--violet);
+  content: "FIELD NOTES  /  MATERIAL CULTURE";
+  font: 600 12px/1.5 "Share Tech Mono", "M PLUS Code Latin", monospace;
+  letter-spacing: 0.12em;
+}
+
+header::after {
+  display: block;
+  width: 100%;
+  height: 180px;
+  margin-top: 40px;
+  background:
+    radial-gradient(circle at 20% 30%, hsl(70 70% 55% / 0.8) 0 2px, transparent 3px),
+    radial-gradient(circle at 73% 18%, hsl(250 65% 65% / 0.68) 0 3px, transparent 4px),
+    radial-gradient(circle at 53% 70%, hsl(70 70% 55% / 0.65) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 78%, hsl(250 65% 65% / 0.55) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 50% 50%, hsl(70 65% 83% / 0.72), hsl(250 48% 94% / 0.2) 58%, transparent 72%);
+  background-size: 130px 130px, 170px 170px, 140px 140px, 190px 190px, 100% 100%;
+  box-shadow: inset 0 0 50px hsl(250 38% 80% / 0.13);
+  content: "";
+  animation: glint 12s ease-in-out infinite alternate;
+}
+
+header h1 {
+  max-width: 300px;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Chakra Petch", Inter, sans-serif;
+  font-size: 46.2px;
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+header p {
+  max-width: 280px;
+  margin: 30px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-width: 0;
+  padding-top: 20px;
+}
+
+main > section,
+main > article,
+main > ol > li,
+main > ul > li {
+  min-width: 0;
+  padding: 50px;
+  border: 1px solid hsl(250 20% 82% / 0.75);
+  background:
+    linear-gradient(135deg, hsl(0 0% 100% / 0.88), hsl(70 45% 96% / 0.82)),
+    var(--paper);
+  box-shadow: var(--shadow);
+}
+
+main > section:nth-of-type(even),
+main > article:nth-of-type(even),
+main > ol > li:nth-child(even),
+main > ul > li:nth-child(even) {
+  background:
+    linear-gradient(135deg, hsl(250 45% 97%), hsl(70 45% 96%)),
+    var(--paper);
+}
+
+main > section:first-child,
+main > article:first-child {
+  position: relative;
+  border-top: 5px solid var(--lime);
+  background:
+    radial-gradient(ellipse at 95% 8%, hsl(70 60% 85% / 0.6), transparent 38%),
+    linear-gradient(135deg, hsl(0 0% 100% / 0.94), hsl(250 38% 96% / 0.88));
+}
+
+main > section > *,
+main > article > *,
+main > ol > li > *,
+main > ul > li > * {
+  max-width: 980px;
+}
+
+h2 {
+  margin: 0 0 30px;
+  color: var(--ink);
+  font-family: "Chakra Petch", Inter, sans-serif;
+  font-size: 41.1px;
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  margin: 40px 0 20px;
+  color: var(--violet);
+  font-family: "Chakra Petch", Inter, sans-serif;
+  font-size: 36.5px;
+  font-weight: 650;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  margin: 30px 0 20px;
+  font-family: "Chakra Petch", Inter, sans-serif;
+  font-size: 32.4px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+h5 {
+  margin: 30px 0 20px;
+  font-family: "Chakra Petch", Inter, sans-serif;
+  font-size: 28.8px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+h6 {
+  margin: 30px 0 20px;
+  font-family: "Chakra Petch", Inter, sans-serif;
+  font-size: 25.6px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+p,
+li,
+blockquote {
+  max-width: 980px;
+  color: var(--ink);
+  font-size: var(--body-size);
+  line-height: 1.75;
+  overflow-wrap: break-word;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  padding-left: 30px;
+}
+
+li + li {
+  margin-top: 10px;
+}
+
+strong {
+  color: hsl(250 28% 30%);
+  font-weight: 700;
+}
+
+a {
+  color: var(--violet);
+  text-decoration-color: hsl(70 58% 45% / 0.75);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+blockquote {
+  margin: 40px 0;
+  padding: 20px 30px;
+  border-left: 5px solid var(--lime);
+  background: var(--lime-pale);
+  color: hsl(252 20% 27%);
+}
+
+code,
+pre,
+time,
+.label,
+.tag,
+.badge {
+  font-family: "Share Tech Mono", "M PLUS Code Latin", monospace;
+}
+
+code,
+.label,
+.tag,
+.badge {
+  color: var(--violet);
+}
+
+pre {
+  max-width: 100%;
+  margin: 30px 0;
+  padding: 30px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: hsl(250 24% 97%);
+  box-shadow: inset 0 1px 4px hsl(250 28% 35% / 0.05);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  margin: 30px 0;
+  border-collapse: collapse;
+  background: hsl(0 0% 100% / 0.6);
+  font-size: 16px;
+}
+
+th,
+td {
+  padding: 20px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+th {
+  background: var(--violet-pale);
+  color: hsl(250 28% 30%);
+  font-family: "Share Tech Mono", "M PLUS Code Latin", monospace;
+  font-weight: 600;
+}
+
+hr {
+  height: 1px;
+  margin: 40px 0;
+  border: 0;
+  background: linear-gradient(90deg, var(--lime), var(--violet), transparent);
+}
+
+@keyframes glint {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0, center;
+  }
+  to {
+    background-position: 30px 20px, -20px 30px, 15px -20px, -25px -10px, center;
+  }
+}
+
+@media (max-width: 1100px) {
+  body {
+    grid-template-columns: minmax(300px, 0.34fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding: 30px 5%;
+  }
+
+  header {
+    min-width: 0;
+    padding: 20px 0 30px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header h1 {
+    max-width: 100%;
+    font-size: 41.1px;
+  }
+
+  header p {
+    max-width: 500px;
+  }
+
+  header::after {
+    width: min(100%, 400px);
+    height: 120px;
+  }
+
+  main {
+    padding-top: 0;
+  }
+
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li {
+    padding: 30px;
+  }
+
+  h2 {
+    font-size: 36.5px;
+  }
+
+  h3 {
+    font-size: 32.4px;
+  }
+
+  h4 {
+    font-size: 28.8px;
+  }
+
+  h5 {
+    font-size: 25.6px;
+  }
+
+  h6 {
+    font-size: 22.8px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    min-width: 150px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+      </style>
+      <body>
+  <header>
+    <h1>A Little Sparkle, A Smaller Trace</h1>
+    <p>Notes from choosing how glitter belongs in a community art workshop.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>01. The mess behind the magic</h2>
+      <p>I love the moment a plain paper star catches the light. I love it less when the workshop ends and that light seems to have moved onto every sleeve, chair, and floorboard. That tension became the starting point for this decision record: how should our small community art workshop create a glittering finish without making cleanup, material uncertainty, or waste someone else’s problem?</p>
+      <p>Our brief was practical rather than purist. The decorations needed to look festive under ordinary indoor lighting, work for a mixed-age group, and be manageable in a shared room. We also wanted to avoid treating “biodegradable” or “natural” as automatic proof that a product was harmless. Product composition and disposal conditions vary, and a label alone would not settle the question.</p>
+      <p><strong>Decision status:</strong> adopted for the next workshop; review after one event. This is a small, local choice, not a universal claim about every glitter product or craft setting.</p>
+    </section>
+
+    <section>
+      <h2>02. What we considered before reaching for the jar</h2>
+      <p>We compared four approaches: conventional loose plastic glitter; a cellulose-based loose glitter; mica-based shimmer; and sparkle without loose particles, using reusable foil shapes or reflective paper. Each has trade-offs. Loose products are familiar and can give dense, even coverage, but stray pieces are difficult to gather completely. Alternative loose glitters may reduce some concerns while bringing their own questions about coatings, sourcing, or disposal. Mica can be visually beautiful, but its sourcing deserves scrutiny rather than a reflexive “natural equals better” assumption.</p>
+      <p>Reusable foil shapes and reflective paper do not mimic every glitter finish. They do, however, make the sparkle visible without scattering small particles across the room. We could collect, store, and use those decorations again. The key comparison was therefore not “which material is perfect?” but “which method meets this workshop’s needs with the fewest avoidable downsides?”</p>
+    </section>
+
+    <section>
+      <h2>03. The choice: keep the shimmer, skip the scatter</h2>
+      <p>For this workshop, we chose reflective paper and reusable foil accents instead of loose glitter. Facilitators will prepare a shared set of shapes, invite participants to use them as collage details, and keep any remaining loose-material experiments inside a contained tray only if a later activity makes them genuinely necessary.</p>
+      <p>The rationale is straightforward: the no-loose-particle option is easy to explain, easy to collect, and compatible with a shared indoor space. It also avoids making a broad environmental promise based on a product label we have not independently verified. The compromise is visual: some projects will have crisp flashes of reflection rather than a continuous glitter coating. I think that is a worthwhile trade for a room that can be cleaned without chasing sparkles into every corner.</p>
+      <p>This is a decision about our event, our materials, and our current evidence. It is not a verdict that every use of glitter is wrong.</p>
+    </section>
+
+    <section>
+      <h2>04. A small trial, with the numbers kept honest</h2>
+      <p>Before settling on the approach, I ran a tabletop comparison using three paper panels per method. Each panel measured 0.25 square metres, for 0.75 square metres of test area per method. These figures are a small workshop-planning trial, not a laboratory study. They describe what we recorded in that setup; they do not measure toxicity, lifecycle impact, or the quality of every product in a category.</p>
+
+      <h3>Reported metrics: what the notebook recorded</h3>
+      <table>
+        <caption>Raw observations across three 0.25-square-metre panels per method</caption>
+        <thead>
+          <tr>
+            <th scope="col">Method</th>
+            <th scope="col">Material used or placed</th>
+            <th scope="col">Cleanup time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Loose glitter</th>
+            <td>12 grams applied</td>
+            <td>18 minutes</td>
+          </tr>
+          <tr>
+            <th scope="row">Reusable foil accents</th>
+            <td>36 shapes placed</td>
+            <td>9 minutes</td>
+          </tr>
+          <tr>
+            <th scope="row">Reflective paper</th>
+            <td>3 prepared sheets</td>
+            <td>6 minutes</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The cleanup clock began when the panels were finished and stopped when the tabletop looked clear to the person doing the test. It did not include washing tools, inspecting the floor, or returning reusable shapes to storage. That boundary matters: this is a useful comparison of one task, not a full accounting of event labor.</p>
+    </section>
+
+    <section>
+      <h2>05. Adjusted measures: making unlike test areas comparable</h2>
+      <p>The raw totals are easiest to understand in the context of our test area. To compare methods on the same basis, I divided each recorded total by 0.75 square metres. These adjusted figures are calculated from the reported observations, not additional measurements. They help with scaling a similar activity; they do not make the different finishes equivalent.</p>
+      <ul>
+        <li><strong>Loose glitter:</strong> 12 grams across 0.75 square metres becomes 16 grams applied per square metre; 18 cleanup minutes becomes 24 minutes per square metre.</li>
+        <li><strong>Reusable foil accents:</strong> 36 shapes across 0.75 square metres becomes 48 shapes placed per square metre; 9 cleanup minutes becomes 12 minutes per square metre.</li>
+        <li><strong>Reflective paper:</strong> 3 sheets across 0.75 square metres becomes 4 sheets per square metre; 6 cleanup minutes becomes 8 minutes per square metre.</li>
+      </ul>
+      <p>Area normalization gives us a rough planning rate, but it cannot correct for differences in coverage, shine, handling difficulty, or participant behavior. Nor should the cleanup times be read as precise predictions: one careful adult at a tabletop is not a lively group making art. We will keep the raw observations and the calculated rates separate in our notes so nobody mistakes an adjusted estimate for a fresh measurement.</p>
+    </section>
+
+    <section>
+      <h2>06. What would make me change my mind?</h2>
+      <p>The decision has a cost: facilitators must prepare and store reusable materials, and participants who want a fine-grained sparkle may find the alternatives less satisfying. We will make the choice visible rather than pretending it is effortless. A labeled collection tray will keep the foil pieces together, and a small inventory after the workshop will tell us whether “reusable” is actually happening in practice.</p>
+      <p>After the event, I’ll record the number of participants, preparation time, cleanup time, missing or damaged decorations, and a brief note on whether the finish met the group’s expectations. Those are reported observations. If I compare events of different sizes, I’ll show any adjusted measure separately—for example, cleanup minutes per participant—and state the denominator and calculation. A per-person rate would help with planning, but it still would not measure environmental impact.</p>
+      <p>I’ll revisit the choice if participants consistently want another finish, if reusable pieces are frequently lost, or if we find credible product-specific information that changes the comparison. For now, the workshop gets its sparkle from things we can pick up and use again. That feels like a good first draft: not a ban on glitter, but a more thoughtful way to make room for it.</p>
+    </section>
+  </main>
+</body>
+      </html>
+    
+<!--
+Generation time: 47.86s (average over 138 runs: 33.89s)
+-->

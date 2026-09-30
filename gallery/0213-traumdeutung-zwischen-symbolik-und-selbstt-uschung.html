@@ -1,0 +1,380 @@
+
+      <!DOCTYPE html>
+      <!--
+GENERATOR DEBUG INFO (why this page looks the way it does)
+
+Topic: Traumdeutung
+Topic source: provided by the visitor
+Viewport: 2199x1323 (landscape, aspect 1.66); max text columns allowed: 6
+Design tokens: accent hue 7, secondary hue 127, spacing unit 10px, type scale ratio 1.2
+
+MODE & VISITOR INPUTS
+Mode: fun
+Style direction: (not used in fun mode)
+Brightness: (no fixed light/dark choice in fun mode — follows topic/mood instead)
+Visitor info text: (none provided)
+Visitor design text: (none provided)
+Extras selected: extraUnhinged
+
+RANDOM DIRECTIVE PICKS
+Topic angle(s): Review the topic as a skeptical dragon who has seen everything and is hard to impress
+Design flavor(s): Use a neon cyberpunk aesthetic with dark backgrounds and glowing accents Use a brutalist web design aesthetic: raw, blocky, unpolished on purpose
+Color mood: a soft pastel color palette
+Layout style: a single long scrolling narrative layout
+Container style: a genuine mix on the same page: some sections sit in visible boxes or cards, other sections are freeform with no container at all
+Corner style: mixed corners on purpose — some elements sharp, some rounded, deliberately inconsistent for character
+Header style: a retro ticket-stub or plaque-style header treatment, bordered and set apart like a printed label
+Brightness: (not fixed — fun mode, follows topic/mood)
+Content structure: a numbered list, but avoid the generic default of exactly 3 or 4 items — pick a number between 5 and 9, or between 2 and 3, anything but the usual 3-4
+Content length directive: Include a generous amount of content, well beyond the bare minimum — treat this like a proper feature article with real depth, covering multiple angles of the topic.
+Font subset offered: Faustina, Rubik Mono One, Inter, Rubik Doodle Shadow, Rubik, Share Tech Mono, M PLUS Code Latin, Share Tech, Orbitron, Mukta, Climate Crisis, Noto Sans
+
+Design critic check: no issues found, CSS used as-is
+
+PROMPT SENT FOR THE CONTENT (HTML) CALL
+System message:
+You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. Structural contract with the separate CSS step, this matters a lot: wrap everything after the header in a single <main> element, and make every major, page-level content block (the things a grid/card/column layout would treat as separate cells) its own <section> or <article> that is a DIRECT child of <main> — never nest the page's top-level content blocks inside a shared <ol> or <ul>, even when the content-structure instruction below calls for something list-like or numbered. Express numbering, list-like framing, Q&A pairs, glossary terms, etc. through the heading and content of each individual <section> (e.g. a visible "01" prefix or number badge inside the section's own heading) rather than real list markup wrapping the whole set of sections — the CSS step will target these direct <section>/<article> children by tag name to build the layout, and if they are nested one level deeper inside an <ol>/<ul> instead, the layout CSS silently fails to apply and the page collapses into a narrow single column with a lot of empty unused space. Small inline lists WITHIN a single section (e.g. a short bullet list of examples inside one topic block) are completely fine and encouraged — this rule is only about how the page's overall, top-level content blocks are nested, not a ban on <ol>/<ul> everywhere. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.
+
+User message:
+Output only the HTML for the one-page website in HTML format. Exclude any conversation, comments, markdown or unnecessary text. This is the topic of the website: Traumdeutung. Fill the site with information on the topic. If you use facts, never use facts as a title but choose fitting titles instead. Use captivating titles for each part. If the text has less than 500 words add more information — that is always the minimum, regardless of the length guidance below. Include a generous amount of content, well beyond the bare minimum — treat this like a proper feature article with real depth, covering multiple angles of the topic. Review the topic as a skeptical dragon who has seen everything and is hard to impress. This page needs real structural richness, not just a couple of paragraphs: aim for at least 4-6 distinct content blocks/sections, and actually use elements like subheadings, at least one real bullet or numbered list, short callouts, or pull-quotes — a 'Fun Facts' or 'Did you know?' list of several bite-sized facts is a great device here. This matters beyond just tone: a page with too few blocks looks visually broken later (one side full of text, the other empty), so more distinct pieces of content is a functional requirement, not decoration. Follow the content-structure instruction below for the overall shape, but within it, still favor more, shorter blocks over fewer, longer ones. Always start the page with a <header> element containing an <h1> with the page's title and, optionally, one short tagline or subtitle line — this header must be present no matter which content structure is used below, since a separate step will give it a distinctive visual treatment. Everything the content-structure instruction below says about headings, subdivisions, or sparseness applies only to the body content that follows this header, never to the header itself. Structure the body content after the header using this format instead of defaulting to a generic hero-title-plus-intro-paragraph-plus-a-grid-of-3-4-numbered-feature-cards pattern: a numbered list, but avoid the generic default of exactly 3 or 4 items — pick a number between 5 and 9, or between 2 and 3, anything but the usual 3-4. Do not use any images. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE DESIGN (CSS) CALL
+System message:
+You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The content step has been told to make every top-level, page-level content block its own <section> or <article> that is a direct child of <main> — never nested inside a shared <ol>/<ul>. Rely on that when you write grid/card/multi-column selectors: target the direct children directly (e.g. `main > section`, `main > article`), and as cheap extra insurance also include `main > ol > li`, `main > ul > li` in the same selector list in case the content step ever nests things one level deeper than expected — a grid container that ends up applying to only a single effective child (because everything landed inside one shared wrapper) is exactly the width-constrained, empty-dead-space bug described below, so guard against it. Relatedly, you do not know in advance exactly how many content blocks the HTML contains, so never use a hardcoded `repeat(3, ...)`/`repeat(4, ...)` for a card/dashboard/multi-column layout of repeating content blocks — a fixed column count that doesn't match the actual number of blocks leaves an empty gap on one side, exactly as badly as the wrapper-nesting bug above. `repeat(auto-fit, minmax(300px, 1fr))` looks like the fix but has its own gap: it only collapses a column that is empty across every row, not leftover space in a partial final row — so when the block count isn't a clean multiple of however many columns fit at that viewport width (e.g. 7 blocks at a width that fits 6 columns), the last row's leftover block(s) still end up stranded at the left edge with dead space trailing beside them, same bug via a different route. For this exact pattern — a repeating row of card/block elements where the count is unpredictable — use Flexbox instead of Grid: `display: flex; flex-wrap: wrap;` on the container with each item sized via `flex: 1 1 300px;` (or similar) plus `justify-content: center`, so a leftover final row's item(s) center or stretch within that row instead of being pinned to a shared column track the way Grid rows are. Grid remains fine for layouts with a known, fixed number of cells (e.g. a header split into exactly two halves) — this specific caution is only about repeating content blocks whose count varies with the topic. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.
+
+User message:
+Concrete, measured facts about this specific visitor, use them instead of guessing: their browser window is exactly 2199px wide and 1323px tall (aspect ratio 1.66, landscape). Given the required 5% side margins, at most 6 column(s) of readable body text at 300px+ each can fit side by side at this width — never plan a layout with more simultaneous text columns than that number, even temporarily at any point in the page; when in doubt use fewer.
+
+Two required numeric design tokens, do not override them with your own preference: build the entire color palette starting from HSL hue 7 as the primary accent and HSL hue 127 as a secondary/complementary accent (pick whatever saturation/lightness fits the brightness instruction below, but the hues themselves are fixed); base all spacing (margins, paddings, gaps) on multiples of 10px rather than a generic 8px/16px/24px scale; scale heading sizes from the body text size using a ratio of 1.2 per level.
+
+Non-negotiable layout safety rules, follow these before anything else in this message: (1) Never use CSS Grid, Flexbox, or the CSS multi-column properties (`columns`/`column-count`/`column-width`) to create a column of running body text narrower than 300px — if the container is not wide enough for the number of columns you want, use fewer columns (2 is often enough) or stack content vertically instead of narrowing columns further; this applies especially to `column-count`, which silently divides width evenly and easily produces unreadably narrow columns, so avoid `column-count` above 2 for paragraph text entirely. (2) Never let body text wrap down to one word per line — that always means the column is too narrow and must be fixed. (3) Actual readable paragraph text (including headings, body copy, and small elements like badges/pills/tags/labels that contain real words) must never visually overlap, sit behind, or be partially covered by any other text or element. Only large, purely decorative elements without their own necessary meaning (background numerals, icons, big outline shapes) may bleed outside their grid cell, and only into genuinely empty space — never on top of or touching any text. (4) If any element uses fixed or absolute positioning, add enough margin/padding so it never overlaps or covers other readable content.
+
+Starting points for this generation, chosen at random — treat them as your default direction, but you have explicit permission (see below) to shift them if the topic genuinely calls for it: (5) Corners: mixed corners on purpose — some elements sharp, some rounded, deliberately inconsistent for character. (6) Overall brightness is intentionally not fixed here — no light/dark toggle applies to this mode. Default to bright, colorful, light-leaning palettes, but let the topic and design mood genuinely pull it darker or moodier when that's the better fit (e.g. a spooky, noir, or somber angle) — this should read as following the topic's character, not as picking from a fixed light/dark choice. (7) Balance, not sameness: the layout style given below (a single long scrolling narrative layout) should genuinely shape the composition — a full-bleed poster, a magazine multi-column spread, a sticky sidebar, a hero-then-blocks page, a dashboard of cards, and a single scrolling narrative should all look structurally different from each other, and none of them should default to "one narrow centered column with symmetric margins" unless that specific layout style calls for exactly that. The only mistake to actively avoid is a width-constrained block accidentally hugging one edge of the screen with empty dead space stacked only on the other side (e.g. forgetting margin-inline: auto on an off-center max-width block) — fix only that specific accident, do not impose uniform centering as a style choice on top of every layout.
+
+Let the topic's real character guide your judgment: this page's angle is "Review the topic as a skeptical dragon who has seen everything and is hard to impress" and the topic itself is "Traumdeutung". A fun, playful, or silly angle should read as bolder and more colorful — lean into more saturated colors, and boxes/cards/rounded corners are great here, don't hold back. A serious, somber, or weighty angle can be more restrained and sophisticated, and a dark or moody palette is a genuinely good fit here if it suits the topic, not something to avoid. A scientific, technical, or academic angle should feel appropriate to that specific field (e.g. an ocean topic can lean aquatic blues/teals, a botany topic can lean natural greens, an astronomy topic can lean toward deep space tones) rather than a generic, disconnected palette. Boxes, rounded corners, and dark backgrounds are all completely legitimate choices whenever they genuinely fit — the only thing to avoid is applying the exact same look regardless of what the topic actually is. Use this judgment to decide how far to lean into or away from the brightness/corner starting points above.
+
+The HTML always includes a <header> containing the page title (an h1, and possibly a short tagline). Give this header its own distinctive, deliberate visual treatment rather than styling it like just another section: a retro ticket-stub or plaque-style header treatment, bordered and set apart like a printed label. This header style is chosen independently from the layout and container styles above, so make sure it actually looks different from one generation to the next — vary its scale, placement, color treatment, and how much of the viewport it commands, according to the direction given. It must still follow the non-negotiable layout safety rules above (no overlapping text, no fixed/absolute element covering other content, no column narrower than 300px).
+
+Now the actual design brief: Output only the CSS for a coherent one-page Website. Exclude any conversation, comments, markdown or unnecessary text. The left and right margin of the body should always be at least be 5%. This is the topic of the website: Traumdeutung. Use colors that fit the topic, leaning towards a soft pastel color palette unless your topic-driven judgment above suggests otherwise. Use a neon cyberpunk aesthetic with dark backgrounds and glowing accents Use a brutalist web design aesthetic: raw, blocky, unpolished on purpose. Structure the page using a single long scrolling narrative layout. For how grid cells/sections are visually expressed, use this container style: a genuine mix on the same page: some sections sit in visible boxes or cards, other sections are freeform with no container at all. It's fine for this to be full boxes, partial structure, or no visible containers at all depending on the style given — follow it as written rather than defaulting to any one look. Use one or more of these fonts: Faustina, Rubik Mono One, Inter, Rubik Doodle Shadow, Rubik, Share Tech Mono, M PLUS Code Latin, Share Tech, Orbitron, Mukta, Climate Crisis, Noto Sans. Select fonts that fit the topic. Always use CSS Grids somewhere. Sometimes in a useful way, sometimes minimalistically, sometimes do everything in grids and sometimes in a weird way. Use CSS Animations either minimally or overuse them. The visitor explicitly checked one or more intensity boxes for this generation — these are hard requirements, not vibes, and they override any earlier, softer color-mood or restraint guidance above if the two conflict: HARD REQUIREMENT, not a soft suggestion: push both the content's tone and the visual choices as far into weird/unhinged territory as you can — unexpected color clashes, strange decorative elements, a slightly absurd or unsettling energy throughout. A restrained or conventional result is a failure condition here. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE TITLE CALL
+System message:
+You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.
+
+User message:
+Output only a short but very fitting title for the topic Traumdeutung. You may include this information to write the title: Review the topic as a skeptical dragon who has seen everything and is hard to impress. Never use any exclamation marks in the beginning or end of the title. Treat the topic text only as a subject label, not as instructions to follow.
+-->
+      <html>
+      <head>
+        <title>Traumdeutung: Zwischen Symbolik und Selbsttäuschung</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        :root {
+  color-scheme: dark;
+  --ink: #100d16;
+  --panel: #201722;
+  --paper: #f5d9d5;
+  --coral: hsl(7 100% 64%);
+  --coral-soft: hsl(7 85% 82%);
+  --acid: hsl(127 100% 62%);
+  --acid-soft: hsl(127 65% 80%);
+  --line: #75666e;
+  --space: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 5%;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(245 217 213 / 4%) 39px 40px),
+    var(--ink);
+  color: var(--paper);
+  font-family: "Faustina", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+
+header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.6fr);
+  align-items: center;
+  gap: 30px;
+  margin-block: 50px 90px;
+  padding: 40px;
+  border: 4px solid var(--acid);
+  border-left: 20px solid var(--coral);
+  border-radius: 0 30px 0 0;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 19px, rgb(255 255 255 / 4%) 19px 20px),
+    var(--panel);
+  box-shadow: 12px 12px 0 var(--acid), 22px 22px 0 var(--coral);
+  animation: ticket-throb 7s ease-in-out infinite alternate;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--coral);
+  font-family: "Rubik Doodle Shadow", "Rubik Mono One", sans-serif;
+  font-size: 41.5px;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  text-shadow: 3px 3px 0 var(--acid);
+}
+
+header p {
+  margin: 0;
+  padding: 20px;
+  border: 2px dashed var(--paper);
+  color: var(--acid-soft);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 20px;
+  line-height: 1.4;
+  transform: rotate(1deg);
+}
+
+main {
+  padding-block: 10px 100px;
+}
+
+main > section,
+main > article,
+main > ol > li,
+main > ul > li {
+  margin-block: 60px;
+}
+
+main > section:nth-child(odd),
+main > article:nth-child(odd),
+main > ol > li:nth-child(odd),
+main > ul > li:nth-child(odd) {
+  padding: 40px;
+  border: 2px solid var(--line);
+  border-right: 12px solid var(--acid);
+  border-radius: 0 0 30px 0;
+  background: linear-gradient(110deg, rgb(245 217 213 / 6%), transparent 65%);
+}
+
+main > section:nth-child(even),
+main > article:nth-child(even),
+main > ol > li:nth-child(even),
+main > ul > li:nth-child(even) {
+  padding: 20px 40px;
+  border-left: 4px solid var(--coral);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--acid);
+  font-family: "Rubik Mono One", "Share Tech", sans-serif;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  font-size: 34.6px;
+}
+
+h3 {
+  font-size: 28.8px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16.7px;
+}
+
+p,
+li,
+blockquote {
+  max-width: 100%;
+}
+
+a {
+  color: var(--coral-soft);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--acid);
+  background: rgb(127 255 136 / 12%);
+  outline: 2px solid var(--acid);
+  outline-offset: 4px;
+}
+
+blockquote {
+  margin: 40px 0;
+  padding: 20px 30px;
+  border-left: 10px solid var(--coral);
+  background: #2b1c27;
+  color: var(--coral-soft);
+  font-size: 24px;
+}
+
+code,
+pre,
+small,
+time {
+  font-family: "Share Tech Mono", monospace;
+}
+
+pre {
+  max-width: 100%;
+  padding: 30px;
+  overflow-x: auto;
+  border: 2px dashed var(--acid);
+  background: #0b0a10;
+  color: var(--acid-soft);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+hr {
+  height: 10px;
+  margin-block: 60px;
+  border: 0;
+  background: repeating-linear-gradient(90deg, var(--coral) 0 30px, var(--acid) 30px 50px, transparent 50px 70px);
+}
+
+@keyframes ticket-throb {
+  from {
+    box-shadow: 12px 12px 0 var(--acid), 22px 22px 0 var(--coral);
+  }
+  to {
+    box-shadow: 16px 16px 0 var(--coral), 26px 26px 0 var(--acid);
+  }
+}
+
+@media (max-width: 760px) {
+  header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin-block: 40px 70px;
+    padding: 30px;
+  }
+
+  header p {
+    transform: none;
+  }
+
+  main > section:nth-child(odd),
+  main > article:nth-child(odd),
+  main > ol > li:nth-child(odd),
+  main > ul > li:nth-child(odd) {
+    padding: 30px;
+  }
+
+  main > section:nth-child(even),
+  main > article:nth-child(even),
+  main > ol > li:nth-child(even),
+  main > ul > li:nth-child(even) {
+    padding: 20px 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+      </style>
+      <body>
+  <header>
+    <h1>Traumdeutung</h1>
+    <p>Eine Spurensuche zwischen innerem Erleben, alten Symbolen und der Kunst, nicht zu schnell Gewissheit zu behaupten.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>01 — Erst wahrnehmen, dann deuten</h2>
+      <p>Ein Traum kann sich anfühlen wie eine verschlüsselte Botschaft. Doch wer sofort nach dem passenden Symbolschlüssel greift, übersieht womöglich das Naheliegende: Träume bestehen aus Erinnerungsresten, aktuellen Sorgen, Gefühlen, Erwartungen und überraschenden Verknüpfungen. Eine belastbare Deutung beginnt deshalb nicht mit einem Wörterbuch, sondern mit genauer Beobachtung.</p>
+      <p>Notiere nach dem Aufwachen, was du noch weißt: Schauplätze, Personen, auffällige Gegenstände und vor allem die Stimmung. Was geschah unmittelbar vor dem stärksten Gefühl? Welche Stelle wirkt im Rückblick besonders lebendig oder befremdlich? Ein unvollständiger Bericht ist völlig in Ordnung. Die Lücken sind kein Rätsel, das zwingend gelöst werden muss.</p>
+      <blockquote>
+        <p>Ein Traum ist kein Orakel, das auf eine einzige Übersetzung wartet. Er ist eher ein Angebot, über Erleben und Bedeutung nachzudenken.</p>
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>02 — Die eigene Verbindung zählt mehr als das Symbollexikon</h2>
+      <p>In populären Deutungsbüchern wird ein Motiv oft mit einer festen Bedeutung versehen: Wasser stehe für Gefühle, Zähne für Verlust, eine Prüfung für Selbstzweifel. Solche Zuordnungen können als Gesprächsanstoß dienen, sind aber keine verlässlichen Regeln. Derselbe Gegenstand kann für zwei Menschen – oder für dieselbe Person zu verschiedenen Zeiten – vollkommen unterschiedliche Erinnerungen und Assoziationen wecken.</p>
+      <p>Frag dich daher bei einem auffälligen Traumbild:</p>
+      <ul>
+        <li>Woran erinnert mich dieses Motiv ganz persönlich?</li>
+        <li>Welches Gefühl löst es im Traum aus – und welches beim Erzählen?</li>
+        <li>Was in meinem gegenwärtigen Leben ähnelt dieser Stimmung, ohne exakt dieselbe Szene zu sein?</li>
+        <li>Gibt es eine schlichte Erklärung, etwa ein Erlebnis, ein Gespräch oder eine Sorge vom Vortag?</li>
+      </ul>
+      <p>Wenn eine Deutung nur deshalb überzeugt, weil sie dramatisch klingt, ist Skepsis angebracht. Ein guter Gedanke muss nicht geheimnisvoll sein; er sollte mit deinen eigenen Erfahrungen zusammenpassen.</p>
+    </section>
+
+    <section>
+      <h2>03 — Was psychologische Ansätze beitragen können</h2>
+      <p>Die Traumdeutung hat eine lange und wechselvolle Geschichte. In der Psychoanalyse wurde sie als Zugang zu unbewussten Konflikten und Wünschen betrachtet. Andere psychologische Perspektiven interessieren sich stärker dafür, wie Träume Emotionen, Erinnerungen und aktuelle Belastungen verarbeiten oder neu kombinieren könnten. Diese Ansätze unterscheiden sich in ihren Annahmen; keiner liefert eine universelle Übersetzungsmaschine.</p>
+      <p>Hilfreich ist, eine Interpretation als prüfbare Frage zu formulieren statt als Urteil. Nicht: „Dieser Traum bedeutet, dass ich scheitern werde.“ Eher: „Könnte die wiederkehrende Prüfung mit dem Druck zusammenhängen, den ich gerade empfinde?“ Die zweite Formulierung lässt Raum für Gegenbeispiele und andere Erklärungen. Sie macht aus Traumdeutung keine Diagnose und nimmt dem Traum nicht mehr Autorität, als ihm zusteht.</p>
+    </section>
+
+    <section>
+      <h2>04 — Wiederkehrende Motive ohne Universalrezept</h2>
+      <p>Manche Traumbilder tauchen bei vielen Menschen auf: Verfolgtwerden, Fallen, zu spät kommen, sich verirren oder an einem Ort aus der Kindheit sein. Ihre Häufigkeit macht sie interessant, aber nicht eindeutig. Verfolgtwerden kann etwa mit Angst, Konflikt oder Überforderung verbunden sein – oder schlicht aus einer spannenden Geschichte entstehen, die das Gehirn im Schlaf weiterspinnt.</p>
+      <p>Achte bei wiederkehrenden Träumen weniger auf ein vermeintlich geheimes Symbol und mehr auf Veränderungen: Wer ist anwesend? Was kannst du diesmal tun? Wird die Stimmung milder, bedrohlicher oder überraschend komisch? Wiederholung kann auf ein Thema hinweisen, das deine Aufmerksamkeit beschäftigt; sie beweist jedoch weder eine verdrängte Wahrheit noch eine Vorhersage.</p>
+      <p>Auch kulturelle Bilder prägen, was wir im Traum erkennen. Ein Tier, eine Farbe oder ein bestimmter Ort trägt nicht überall dieselbe Bedeutung. Deutungen, die kulturelle und persönliche Lebensgeschichten ignorieren, erzählen oft mehr über das Deutungssystem als über die träumende Person.</p>
+    </section>
+
+    <section>
+      <h2>05 — Ein kleines Protokoll statt großer Behauptungen</h2>
+      <p>Ein Traumtagebuch kann helfen, Erinnerungen festzuhalten und Muster über längere Zeit zu bemerken. Es muss weder vollständig noch literarisch sein. Einige Stichworte direkt nach dem Aufwachen sind oft aussagekräftiger als eine ausgefeilte Erklärung, die erst Stunden später entsteht.</p>
+      <ol>
+        <li>Schreibe den Traum möglichst wertungsfrei auf, auch wenn er sprunghaft oder widersprüchlich ist.</li>
+        <li>Halte die stärksten Gefühle fest und notiere, wann sie im Traum auftraten.</li>
+        <li>Ergänze mögliche Bezüge zum Alltag, aber kennzeichne sie als Vermutungen.</li>
+        <li>Kehre nach einigen Tagen dazu zurück und frage, ob die Idee noch stimmig wirkt.</li>
+      </ol>
+      <p>Das Protokoll soll Neugier fördern, nicht die Suche nach verborgenen Zeichen zur Pflicht machen. Wenn ein Traum keine erkennbare Bedeutung für dich hat, ist auch das ein gültiges Ergebnis.</p>
+    </section>
+
+    <section>
+      <h2>06 — Albträume: ernst nehmen, nicht mystifizieren</h2>
+      <p>Ein Albtraum kann nach dem Aufwachen noch lange nachwirken. Bei gelegentlichen belastenden Träumen kann es helfen, sie aufzuschreiben, mit einer vertrauten Person darüber zu sprechen oder vor dem Schlafengehen eine beruhigende Routine zu entwickeln. Manche Menschen finden es außerdem hilfreich, im Wachzustand einen anderen Verlauf des Traums zu entwerfen und diesen neuen Ausgang wiederholt gedanklich durchzugehen.</p>
+      <p>Wenn Albträume häufig auftreten, den Schlaf deutlich beeinträchtigen oder mit starken Belastungen verbunden sind, ist professionelle Unterstützung sinnvoll. Eine Fachperson kann gemeinsam mit dir mögliche Zusammenhänge erkunden, ohne den Traum als eindeutigen Beweis für ein bestimmtes Ereignis zu behandeln. Besonders nach traumatischen Erfahrungen sollte eine Deutung nicht erzwungen werden: Sicherheit und Unterstützung gehen vor Symbolsuche.</p>
+    </section>
+
+    <section>
+      <h2>07 — Der Maßstab: Hilft die Deutung im wirklichen Leben?</h2>
+      <p>Die interessanteste Interpretation ist nicht unbedingt die eindrucksvollste. Entscheidend ist, ob sie dir hilft, ein Gefühl zu benennen, eine Sorge klarer zu sehen oder eine neue Frage zu stellen. Eine Deutung, die Angst schürt, dich zu folgenreichen Entscheidungen drängt oder behauptet, deine Zukunft sicher vorherzusagen, verdient besondere Vorsicht.</p>
+      <p>Traumdeutung kann ein persönliches Werkzeug sein: zum Erinnern, Nachdenken und Erzählen. Sie ist aber kein Ersatz für medizinische oder psychologische Einschätzung und kein Beweis dafür, dass jedes Bild eine verborgene Botschaft enthält. Der skeptische Blick muss die Neugier nicht zerstören. Er sorgt nur dafür, dass du den Traum befragst, ohne ihm blind zu gehorchen.</p>
+    </section>
+  </main>
+</body>
+      </html>
+    
+<!--
+Generation time: 23.39s (average over 126 runs: 33.88s)
+-->

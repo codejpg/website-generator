@@ -1,0 +1,383 @@
+
+      <!DOCTYPE html>
+      <!--
+GENERATOR DEBUG INFO (why this page looks the way it does)
+
+Topic: grief counseling after loss
+Topic source: provided by the visitor
+Viewport: 1440x900 (landscape, aspect 1.60); max text columns allowed: 4
+Design tokens: accent hue 237, secondary hue 327, spacing unit 4px, type scale ratio 1.333
+
+MODE & VISITOR INPUTS
+Mode: serious
+Style direction: editorial (an editorial/magazine-style publication)
+Brightness: light (visitor selected)
+Visitor info text: (none provided)
+Visitor design text: (none provided)
+Extras selected: (none)
+
+RANDOM DIRECTIVE PICKS
+Topic angle(s): Keep the writing concise and focused — avoid padding or filler. Write a policy brief that states the issue, available options, and implications for decision-makers.
+Design flavor(s): Use a high-fashion editorial aesthetic with dramatic whitespace and oversized display type as the dominant visual element
+Color mood: a cool icy color palette
+Layout style: a poster-style full-bleed layout
+Container style: solid flat color fields that fill entire grid cells edge-to-edge, no padding-box look, no drop shadows
+Corner style: a generous, soft border-radius (16px or more) on boxed or bordered elements
+Header style: a huge, oversized type-only header where the page title is the dominant visual element, filling most of the viewable width, with no imagery or decorative shapes competing for attention
+Brightness: a bright, high-key background built from two or three saturated colors
+Content structure: a Q&A / interview format alternating short questions and answers
+Content length directive: Keep it efficient and tight — enough content to feel complete and satisfying, but don't pad it out further than the topic actually needs.
+Font subset offered: Rubik Doodle Shadow, Bungee, JetBrains Mono, Chakra Petch, Pirata One, Ubuntu, Faustina, Open Sans, Mukta, Grape Nuts, Roboto Slab, Climate Crisis, Inter
+
+Design critic check: no issues found, CSS used as-is
+
+PROMPT SENT FOR THE CONTENT (HTML) CALL
+System message:
+You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. Structural contract with the separate CSS step, this matters a lot: wrap everything after the header in a single <main> element, and make every major, page-level content block (the things a grid/card/column layout would treat as separate cells) its own <section> or <article> that is a DIRECT child of <main> — never nest the page's top-level content blocks inside a shared <ol> or <ul>, even when the content-structure instruction below calls for something list-like or numbered. Express numbering, list-like framing, Q&A pairs, glossary terms, etc. through the heading and content of each individual <section> (e.g. a visible "01" prefix or number badge inside the section's own heading) rather than real list markup wrapping the whole set of sections — the CSS step will target these direct <section>/<article> children by tag name to build the layout, and if they are nested one level deeper inside an <ol>/<ul> instead, the layout CSS silently fails to apply and the page collapses into a narrow single column with a lot of empty unused space. Small inline lists WITHIN a single section (e.g. a short bullet list of examples inside one topic block) are completely fine and encouraged — this rule is only about how the page's overall, top-level content blocks are nested, not a ban on <ol>/<ul> everywhere. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.
+
+User message:
+Output only the HTML for the one-page website in HTML format. Exclude any conversation, comments, markdown or unnecessary text. This is the topic of the website: grief counseling after loss. Fill the site with information on the topic. If you use facts, never use facts as a title but choose fitting titles instead. Use captivating titles for each part. If the text has less than 500 words add more information — that is always the minimum, regardless of the length guidance below. Keep it efficient and tight — enough content to feel complete and satisfying, but don't pad it out further than the topic actually needs. Keep the writing concise and focused — avoid padding or filler. Write a policy brief that states the issue, available options, and implications for decision-makers.. This page should read and function as an editorial/magazine-style publication. Always start the page with a <header> element containing an <h1> with the page's title and, optionally, one short tagline or subtitle line — this header must be present no matter which content structure is used below, since a separate step will give it a distinctive visual treatment. Everything the content-structure instruction below says about headings, subdivisions, or sparseness applies only to the body content that follows this header, never to the header itself. Structure the body content after the header using this format instead of defaulting to a generic hero-title-plus-intro-paragraph-plus-a-grid-of-3-4-numbered-feature-cards pattern: a Q&A / interview format alternating short questions and answers. Do not use any images. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE DESIGN (CSS) CALL
+System message:
+You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The content step has been told to make every top-level, page-level content block its own <section> or <article> that is a direct child of <main> — never nested inside a shared <ol>/<ul>. Rely on that when you write grid/card/multi-column selectors: target the direct children directly (e.g. `main > section`, `main > article`), and as cheap extra insurance also include `main > ol > li`, `main > ul > li` in the same selector list in case the content step ever nests things one level deeper than expected — a grid container that ends up applying to only a single effective child (because everything landed inside one shared wrapper) is exactly the width-constrained, empty-dead-space bug described below, so guard against it. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.
+
+User message:
+Concrete, measured facts about this specific visitor, use them instead of guessing: their browser window is exactly 1440px wide and 900px tall (aspect ratio 1.60, landscape). Given the required 5% side margins, at most 4 column(s) of readable body text at 300px+ each can fit side by side at this width — never plan a layout with more simultaneous text columns than that number, even temporarily at any point in the page; when in doubt use fewer.
+
+Two required numeric design tokens, do not override them with your own preference: build the entire color palette starting from HSL hue 237 as the primary accent and HSL hue 327 as a secondary/complementary accent (pick whatever saturation/lightness fits the brightness instruction below, but the hues themselves are fixed); base all spacing (margins, paddings, gaps) on multiples of 4px rather than a generic 8px/16px/24px scale; scale heading sizes from the body text size using a ratio of 1.333 per level.
+
+Non-negotiable layout safety rules, follow these before anything else in this message: (1) Never use CSS Grid, Flexbox, or the CSS multi-column properties (`columns`/`column-count`/`column-width`) to create a column of running body text narrower than 300px — if the container is not wide enough for the number of columns you want, use fewer columns (2 is often enough) or stack content vertically instead of narrowing columns further; this applies especially to `column-count`, which silently divides width evenly and easily produces unreadably narrow columns, so avoid `column-count` above 2 for paragraph text entirely. (2) Never let body text wrap down to one word per line — that always means the column is too narrow and must be fixed. (3) Actual readable paragraph text (including headings, body copy, and small elements like badges/pills/tags/labels that contain real words) must never visually overlap, sit behind, or be partially covered by any other text or element. Only large, purely decorative elements without their own necessary meaning (background numerals, icons, big outline shapes) may bleed outside their grid cell, and only into genuinely empty space — never on top of or touching any text. (4) If any element uses fixed or absolute positioning, add enough margin/padding so it never overlaps or covers other readable content.
+
+Starting points for this generation, chosen at random — treat them as your default direction, but you have explicit permission (see below) to shift them if the topic genuinely calls for it: (5) Corners: a generous, soft border-radius (16px or more) on boxed or bordered elements. (6) HARD REQUIREMENT, overriding the "starting points, chosen at random" framing above and the topic-judgment permission below: the visitor explicitly selected a light background for this generation — a bright, high-key background built from two or three saturated colors. This was a deliberate visitor choice, not a random suggestion, so unlike corners it does not flex for topic tone — even a somber, weighty, or serious-sounding topic must still render with a light background exactly as specified; express the topic's seriousness through typography, restraint, and color choice instead of by flipping brightness. (7) Balance, not sameness: the layout style given below (a poster-style full-bleed layout) should genuinely shape the composition — a full-bleed poster, a magazine multi-column spread, a sticky sidebar, a hero-then-blocks page, a dashboard of cards, and a single scrolling narrative should all look structurally different from each other, and none of them should default to "one narrow centered column with symmetric margins" unless that specific layout style calls for exactly that. The only mistake to actively avoid is a width-constrained block accidentally hugging one edge of the screen with empty dead space stacked only on the other side (e.g. forgetting margin-inline: auto on an off-center max-width block) — fix only that specific accident, do not impose uniform centering as a style choice on top of every layout.
+
+Let the topic's real character guide your judgment: this page's angle is "Keep the writing concise and focused — avoid padding or filler. Write a policy brief that states the issue, available options, and implications for decision-makers." and the topic itself is "grief counseling after loss". A fun, playful, or silly angle should read as bolder and more colorful — lean into more saturated colors, and boxes/cards/rounded corners are great here, don't hold back. A serious, somber, or weighty angle can be more restrained and sophisticated, and a dark or moody palette is a genuinely good fit here if it suits the topic, not something to avoid. That restraint-vs-boldness judgment is still only about corners, mood, and decoration — it is NOT permission to override the visitor's explicit brightness choice above; a somber or serious-sounding topic stays light as specified, expressed through restraint and typography rather than by switching brightness. A scientific, technical, or academic angle should feel appropriate to that specific field (e.g. an ocean topic can lean aquatic blues/teals, a botany topic can lean natural greens, an astronomy topic can lean toward deep space tones) rather than a generic, disconnected palette. Boxes, rounded corners, and dark backgrounds are all completely legitimate choices whenever they genuinely fit — the only thing to avoid is applying the exact same look regardless of what the topic actually is. Use this judgment to decide how far to lean into or away from the corner starting point above — brightness is fixed per the hard requirement above and is not part of this flexibility.
+
+This needs to read as genuinely professional, high-craft web design — the visual quality of an Awwwards-featured corporate site, a premium SaaS product, or a top design agency's own portfolio, not a generic template or a plain default-feeling page. Push for: real typographic hierarchy (a strong scale jump between the headline and body text, not just bold vs. regular weight of the same size); whitespace used with intent to create rhythm and grouping, not just as empty margin; tasteful depth (a soft shadow, a subtle gradient, considered layering) rather than everything sitting flat on one plane; and at least one deliberate, memorable visual moment per page (an oversized numeral, a bold typographic statement, a confident asymmetric composition, a striking accent shape) rather than every element being safely centered and evenly sized. A bland, generic, "centered text on white with no personality" result is a failure condition here, even if it is technically clean — restrained and boring are not the same thing.
+
+The HTML always includes a <header> containing the page title (an h1, and possibly a short tagline). Give this header its own distinctive, deliberate visual treatment rather than styling it like just another section: a huge, oversized type-only header where the page title is the dominant visual element, filling most of the viewable width, with no imagery or decorative shapes competing for attention. This header style is chosen independently from the layout and container styles above, so make sure it actually looks different from one generation to the next — vary its scale, placement, color treatment, and how much of the viewport it commands, according to the direction given. It must still follow the non-negotiable layout safety rules above (no overlapping text, no fixed/absolute element covering other content, no column narrower than 300px).
+
+Now the actual design brief: Output only the CSS for a coherent one-page Website. Exclude any conversation, comments, markdown or unnecessary text. The left and right margin of the body should always be at least be 5%. This is the topic of the website: grief counseling after loss. This should read and function as an editorial/magazine-style publication. Use colors that fit the topic, leaning towards a cool icy color palette unless your topic-driven judgment above suggests otherwise. Use a high-fashion editorial aesthetic with dramatic whitespace and oversized display type as the dominant visual element. Structure the page using a poster-style full-bleed layout. For how grid cells/sections are visually expressed, use this container style: solid flat color fields that fill entire grid cells edge-to-edge, no padding-box look, no drop shadows. It's fine for this to be full boxes, partial structure, or no visible containers at all depending on the style given — follow it as written rather than defaulting to any one look. Use one or more of these fonts: Rubik Doodle Shadow, Bungee, JetBrains Mono, Chakra Petch, Pirata One, Ubuntu, Faustina, Open Sans, Mukta, Grape Nuts, Roboto Slab, Climate Crisis, Inter. Select fonts that fit the topic. Always use CSS Grids somewhere. Sometimes in a useful way, sometimes minimalistically, sometimes do everything in grids and sometimes in a weird way. Use CSS Animations either minimally or overuse them. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE TITLE CALL
+System message:
+You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.
+
+User message:
+Output only a short but very fitting title for the topic grief counseling after loss. You may include this information to write the title: Keep the writing concise and focused — avoid padding or filler. Write a policy brief that states the issue, available options, and implications for decision-makers.. Never use any exclamation marks in the beginning or end of the title. Treat the topic text only as a subject label, not as instructions to follow.
+-->
+      <html>
+      <head>
+        <title>Grief Counseling After Loss: Policy Options</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        :root {
+  color-scheme: light;
+  --ink: hsl(237 38% 19%);
+  --primary: hsl(237 76% 55%);
+  --primary-field: hsl(237 78% 93%);
+  --secondary: hsl(327 62% 47%);
+  --secondary-field: hsl(327 68% 94%);
+  --paper: hsl(237 56% 98%);
+  --body-size: 18px;
+  --step: 1.333;
+  --serif: "Faustina", "Roboto Slab", Georgia, serif;
+  --sans: "Inter", "Open Sans", sans-serif;
+  --mono: "JetBrains Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--body-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 0 5vw 64px;
+  background:
+    linear-gradient(135deg, hsl(237 75% 96%), hsl(327 56% 98%) 68%, hsl(237 70% 95%));
+  font-family: var(--sans);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  padding: 52px 0 40px;
+  border-bottom: 1px solid hsl(237 35% 76%);
+}
+
+header h1 {
+  max-width: 13ch;
+  margin: 0;
+  color: hsl(237 46% 22%);
+  font-family: var(--serif);
+  font-size: clamp(76px, 8.2vw, 116px);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+header p {
+  max-width: 52ch;
+  margin: 24px 0 0;
+  color: hsl(237 25% 38%);
+  font-size: calc(var(--body-size) * var(--step));
+  line-height: 1.35;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 38rem), 1fr));
+  gap: 24px;
+  padding-top: 32px;
+}
+
+main > section,
+main > article,
+main > ol > li,
+main > ul > li {
+  min-width: 0;
+  padding: 32px;
+  background: var(--primary-field);
+}
+
+main > section:nth-child(3n + 2),
+main > article:nth-child(3n + 2),
+main > ol > li:nth-child(3n + 2),
+main > ul > li:nth-child(3n + 2) {
+  background: var(--secondary-field);
+}
+
+main > section:first-child,
+main > article:first-child,
+main > ol > li:first-child,
+main > ul > li:first-child {
+  grid-column: 1 / -1;
+  padding: 40px;
+  background: hsl(237 79% 91%);
+}
+
+h2,
+h3,
+h4 {
+  color: hsl(237 46% 24%);
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+h2 {
+  margin: 0 0 24px;
+  font-size: calc(var(--body-size) * var(--step) * var(--step) * var(--step));
+  line-height: 1.08;
+}
+
+h3 {
+  margin: 32px 0 16px;
+  font-size: calc(var(--body-size) * var(--step) * var(--step));
+  line-height: 1.16;
+}
+
+h4 {
+  margin: 24px 0 12px;
+  font-size: calc(var(--body-size) * var(--step));
+  line-height: 1.25;
+}
+
+p,
+ul,
+ol {
+  max-width: 68ch;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  padding-inline-start: 24px;
+}
+
+li + li {
+  margin-top: 12px;
+}
+
+strong {
+  color: hsl(237 54% 28%);
+  font-weight: 700;
+}
+
+a {
+  color: hsl(327 62% 39%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+blockquote {
+  margin: 32px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 4px solid var(--secondary);
+  color: hsl(237 40% 27%);
+  font-family: var(--serif);
+  font-size: calc(var(--body-size) * var(--step) * var(--step));
+  line-height: 1.35;
+}
+
+small,
+time,
+.label,
+.badge,
+.tag {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.label,
+.badge,
+.tag {
+  display: inline-block;
+  max-width: 100%;
+  color: hsl(237 48% 30%);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+  header {
+    padding-top: 36px;
+    padding-bottom: 28px;
+  }
+
+  header h1 {
+    font-size: clamp(56px, 14vw, 80px);
+  }
+
+  main {
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li,
+  main > section:first-child,
+  main > article:first-child,
+  main > ol > li:first-child,
+  main > ul > li:first-child {
+    padding: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  header h1 {
+    animation: title-arrive 700ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+  }
+}
+
+@keyframes title-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+      </style>
+      <body>
+  <header>
+    <h1>When Loss Rewrites the Day</h1>
+    <p>A policy brief on making grief counseling timely, humane, and accessible</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is the issue?</h2>
+      <p><strong>Answer:</strong> Bereavement is a common human experience, but support after a death is uneven. Some people find help through family, community, faith, or time; others face isolation, practical upheaval, or distress that becomes difficult to manage. Counseling can offer a place to make sense of loss and rebuild daily life, yet cost, long waits, limited local services, stigma, and uncertainty about where to turn can put it out of reach.</p>
+      <p>The policy challenge is not to medicalize grief or prescribe a single timetable for recovery. It is to make appropriate support available, recognize when additional care may help, and let bereaved people choose what fits their needs and circumstances.</p>
+    </section>
+
+    <section>
+      <h2>What should decision-makers understand about grief?</h2>
+      <p><strong>Answer:</strong> Grief does not follow a uniform sequence. It may involve sadness, anger, relief, numbness, changes in sleep or concentration, and periods of relative calm. Its course can be shaped by the relationship, the circumstances of the death, prior experiences, health, culture, and the practical consequences of losing someone. A person’s outward functioning does not reveal the whole story.</p>
+      <p>Services should therefore avoid rigid expectations about how someone ought to grieve. A respectful first step is to ask what has changed, what support the person wants, and whether immediate safety or urgent practical needs are present.</p>
+    </section>
+
+    <section>
+      <h2>When can counseling help?</h2>
+      <p><strong>Answer:</strong> Counseling may help people talk about the person who died, navigate painful emotions, address disrupted routines, and make decisions about life after loss. Some seek brief, practical support; others want ongoing individual, family, group, or culturally grounded care. No one should have to prove that grief is severe enough to deserve a conversation.</p>
+      <p>At the same time, grief itself is not automatically a disorder. Clinicians should distinguish expected variation from distress or impairment that may warrant specialized assessment, while explaining options without pressure. When someone expresses immediate danger to themselves or another person, the response must shift to urgent safety support.</p>
+    </section>
+
+    <section>
+      <h2>Which options are available?</h2>
+      <p><strong>Answer:</strong> Decision-makers can support a range of responses rather than relying on counseling alone:</p>
+      <ul>
+        <li>Offer clear, voluntary information about grief and local sources of support.</li>
+        <li>Provide peer groups, community programs, and bereavement support through trusted organizations.</li>
+        <li>Expand access to individual or family counseling, including remote appointments where suitable.</li>
+        <li>Ensure pathways to specialized mental health care for people with persistent, severe, or complex needs.</li>
+      </ul>
+      <p>These options are complements, not substitutes for one another. Choice matters: some people prefer a peer group or faith community, while others want confidential professional care or no formal service at all.</p>
+    </section>
+
+    <section>
+      <h2>How should services be organized?</h2>
+      <p><strong>Answer:</strong> A stepped approach can make support easier to find without assuming everyone needs therapy. At the first contact, a trained staff member can listen, explain available choices, and ask permission to follow up. People who want more help can be connected to a suitable service, with a clear route to higher-intensity care when needed.</p>
+      <p>Referral should not mean handing someone a phone number and ending the conversation. Warm connections, flexible appointment formats, and coordination with primary care or community partners can reduce practical barriers. Participation should remain voluntary, and people should be able to return for support as their needs change.</p>
+    </section>
+
+    <section>
+      <h2>Who might current systems leave behind?</h2>
+      <p><strong>Answer:</strong> Barriers are not distributed evenly. People with low incomes, limited transportation, disabilities, language barriers, insecure housing, or little time away from work may struggle to attend conventional appointments. Rural residents may have fewer nearby providers. Some communities also face mistrust, stigma, or services that do not reflect their traditions and understandings of mourning.</p>
+      <p>Equitable policy requires more than a general referral pathway. It means involving bereaved people and community organizations in service design, offering language access and accessible formats, and considering practical supports such as flexible scheduling. Outreach should make help visible without making assumptions about who is grieving or what kind of help they want.</p>
+    </section>
+
+    <section>
+      <h2>What are the trade-offs?</h2>
+      <p><strong>Answer:</strong> Expanding services requires funding, a trained workforce, and careful coordination. A program focused only on specialist therapy may leave many people without timely, low-intensity support. A broad screening effort without enough referral capacity can create frustration and raise privacy concerns. Digital services can improve reach for some while excluding people without reliable internet, private space, or comfort with remote care.</p>
+      <p>Decision-makers should match the scale of identification efforts to actual service capacity. Clear consent, confidentiality protections, culturally responsive practice, and non-digital routes are essential. The goal is not to maximize referrals; it is to make a useful next step available when a person asks for one.</p>
+    </section>
+
+    <section>
+      <h2>How can leaders judge whether a policy is working?</h2>
+      <p><strong>Answer:</strong> Evaluation should look beyond the number of appointments delivered. Useful measures include time from request to first contact, whether people can access their preferred form of support, completion of requested referrals, reported respect and cultural safety, and differences in access across communities. Feedback should be gathered from participants and from people who could not or chose not to use the service.</p>
+      <p>Measures must be interpreted with care: grief is personal, and no single score can define recovery. Protect privacy, avoid treating continued sadness as program failure, and use findings to improve access and choice rather than to impose a standard emotional outcome.</p>
+    </section>
+
+    <section>
+      <h2>What is the decision now?</h2>
+      <p><strong>Answer:</strong> Fund a connected, voluntary system that pairs community-based first-line support with timely access to professional counseling and specialized care. Give providers practical training in listening, choice, referral, and safety; resource trusted local partners; and build accessibility into delivery from the outset. Start with a clear service map and a defined pathway, then review uptake, wait times, participant experience, and equity gaps.</p>
+      <p>The central policy choice is whether bereaved people must navigate fragmented services alone or can find a compassionate, reliable point of entry. Good policy cannot remove loss. It can make sure that asking for help is met with a meaningful response.</p>
+    </section>
+  </main>
+</body>
+      </html>
+    
+<!--
+Generation time: 24.22s (average over 120 runs: 32.85s)
+-->

@@ -8,9 +8,9 @@ Dieses Projekt ist die Überarbeitung meine Machine Learning II Projekts. Dieses
 
 Die erste Version ist im Januar 2024 im Kurs Machine Learning II bei Alexander Walmsley entstanden.
 
-Die Grundidee war einfach: bei jedem Neuladen der Seite wählt ChatGPT zufällig ein Thema aus seinem Wissen, schreibt dazu einen Text und gestaltet passendes HTML und CSS. Content und Design kamen also beide von derselben KI, ohne dass ich als Entwicklerin auf das konkrete Aussehen Einfluss genommen habe. Genau das war der eigentliche Untersuchungsgegenstand des Projekts: was passiert, wenn ChatGPT nicht nur Inhalte liefert, sondern auch die Gestaltung übernimmt?
+Die Grundidee: bei jedem Neuladen der Seite wählt ChatGPT zufällig ein Thema aus seinem Wissen, schreibt dazu einen Text und gestaltet passendes HTML und CSS. Content und Design kamen also beide von derselben KI, ohne dass ich als Entwicklerin auf das konkrete Aussehen Einfluss genommen habe. Genau das war der eigentliche Untersuchungsgegenstand des Projekts: was passiert, wenn ChatGPT nicht nur Inhalte liefert, sondern auch die Gestaltung übernimmt?
 
-Das Projekt hatte zwei klare Probleme. Erstens ließ es sich nicht kostenlos deployen, weil ein einzelner API-Request für Text und Design zu lange dauerte und dadurch die Zeitlimits von kostenlosen Hosting-Anbietern gesprengt hat. Zweitens gab es keinerlei Rückmeldung während der Wartezeit von 10 bis 20 Sekunden, die Besucher:innen sahen einfach nur eine leere, unreagierende Seite.
+Damals habe ich zwei Probleme benannt. Erstens ließ sich das Projekt nicht kostenlos deployen, weil ein einzelner API-Request für Text und Design zu lange dauerte und dadurch die Zeitlimits von kostenlosen Hosting-Anbietern gesprengt hat. Zweitens gab es keinerlei Rückmeldung während der Wartezeit von 20 bis 40 Sekunden, die Besucher:innen sahen einfach nur eine leere Seite.
 
 ## Ziele für die Überarbeitung
 
@@ -53,7 +53,7 @@ Nachdem Text und Design generiert wurden, prüft ein weiterer KI-Durchlauf das E
 
 ### Galerie
 
-Ein eigener Ordner für handverlesene, besonders gelungene Ergebnisse, durch die man mit Pfeiltasten und einer Positionsanzeige blättern kann.
+Ein eigener Ordner für besonders gelungene Ergebnisse, durch die man mit Pfeiltasten und einer Positionsanzeige blättern kann.
 
 ### Weitere Verbesserungen
 
