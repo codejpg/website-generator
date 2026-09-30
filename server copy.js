@@ -1,3 +1,4 @@
+//previous version of server.js, which is now server copy.js, used for testing and debugging purposes
 const express = require("express");
 const axios = require("axios");
 const fs = require("fs");
