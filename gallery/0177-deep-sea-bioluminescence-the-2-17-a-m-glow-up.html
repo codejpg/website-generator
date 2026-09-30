@@ -1,0 +1,556 @@
+
+      <!DOCTYPE html>
+      <!--
+GENERATOR DEBUG INFO (why this page looks the way it does)
+
+Topic: Category: Marine biology  
+Topic: Bioluminescence in deep-sea organisms
+Topic source: chosen randomly by the topic-selection call
+Viewport: 2560x1323 (landscape, aspect 1.93); max text columns allowed: 6
+Design tokens: accent hue 325, secondary hue 55, spacing unit 14px, type scale ratio 1.618
+
+MODE & VISITOR INPUTS
+Mode: fun
+Style direction: (not used in fun mode)
+Brightness: light (fun mode always randomizes this, not selectable)
+Visitor info text: (none provided)
+Visitor design text: (none provided)
+Extras selected: extraBunt, extraTrashy
+
+RANDOM DIRECTIVE PICKS
+Topic angle(s): Write the content as a suspiciously specific late-night infomercial that oversells the topic
+Design flavor(s): Give some elements hover effects
+Color mood: a washed-out, faded vintage color palette
+Layout style: a single long scrolling narrative layout
+Container style: solid flat color fields that fill entire grid cells edge-to-edge, no padding-box look, no drop shadows
+Corner style: sharp, perfectly square corners everywhere (border-radius: 0)
+Header style: a vertical or rotated header running along one edge of the page rather than sitting horizontally at the top
+Brightness: a crisp white or near-white background with bold black type and one or two accent colors
+Content structure: a myth-vs-fact format with short contrasting statements side by side
+Content length directive: This topic has a lot of ground to cover — go noticeably longer and deeper than a typical one-pager, well beyond the minimum, if the topic genuinely supports it.
+Font subset offered: Open Sans, DM Serif Display, Creepster, Mukta, Ubuntu, Codystar, JetBrains Mono, Roboto, Orbitron, Ubuntu Mono, Rubik
+
+Design critic check: critic found one or more known issues and supplied a corrected CSS
+
+PROMPT SENT FOR THE CONTENT (HTML) CALL
+System message:
+You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. Structural contract with the separate CSS step, this matters a lot: wrap everything after the header in a single <main> element, and make every major, page-level content block (the things a grid/card/column layout would treat as separate cells) its own <section> or <article> that is a DIRECT child of <main> — never nest the page's top-level content blocks inside a shared <ol> or <ul>, even when the content-structure instruction below calls for something list-like or numbered. Express numbering, list-like framing, Q&A pairs, glossary terms, etc. through the heading and content of each individual <section> (e.g. a visible "01" prefix or number badge inside the section's own heading) rather than real list markup wrapping the whole set of sections — the CSS step will target these direct <section>/<article> children by tag name to build the layout, and if they are nested one level deeper inside an <ol>/<ul> instead, the layout CSS silently fails to apply and the page collapses into a narrow single column with a lot of empty unused space. Small inline lists WITHIN a single section (e.g. a short bullet list of examples inside one topic block) are completely fine and encouraged — this rule is only about how the page's overall, top-level content blocks are nested, not a ban on <ol>/<ul> everywhere. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.
+
+User message:
+Output only the HTML for the one-page website in HTML format. Exclude any conversation, comments, markdown or unnecessary text. This is the topic of the website: Category: Marine biology  
+Topic: Bioluminescence in deep-sea organisms. Fill the site with information on the topic. If you use facts, never use facts as a title but choose fitting titles instead. Use captivating titles for each part. If the text has less than 500 words add more information — that is always the minimum, regardless of the length guidance below. This topic has a lot of ground to cover — go noticeably longer and deeper than a typical one-pager, well beyond the minimum, if the topic genuinely supports it. Write the content as a suspiciously specific late-night infomercial that oversells the topic. Feel free to break the content up with elements like subheadings, bullet or numbered lists, short callouts, or pull-quotes — make the page feel lively and easy to explore rather than a single wall of paragraphs, as long as it still fits the content-structure instruction below. Always start the page with a <header> element containing an <h1> with the page's title and, optionally, one short tagline or subtitle line — this header must be present no matter which content structure is used below, since a separate step will give it a distinctive visual treatment. Everything the content-structure instruction below says about headings, subdivisions, or sparseness applies only to the body content that follows this header, never to the header itself. Structure the body content after the header using this format instead of defaulting to a generic hero-title-plus-intro-paragraph-plus-a-grid-of-3-4-numbered-feature-cards pattern: a myth-vs-fact format with short contrasting statements side by side. Do not use any images. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE DESIGN (CSS) CALL
+System message:
+You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The content step has been told to make every top-level, page-level content block its own <section> or <article> that is a direct child of <main> — never nested inside a shared <ol>/<ul>. Rely on that when you write grid/card/multi-column selectors: target the direct children directly (e.g. `main > section`, `main > article`), and as cheap extra insurance also include `main > ol > li`, `main > ul > li` in the same selector list in case the content step ever nests things one level deeper than expected — a grid container that ends up applying to only a single effective child (because everything landed inside one shared wrapper) is exactly the width-constrained, empty-dead-space bug described below, so guard against it. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.
+
+User message:
+Concrete, measured facts about this specific visitor, use them instead of guessing: their browser window is exactly 2560px wide and 1323px tall (aspect ratio 1.93, landscape). Given the required 5% side margins, at most 6 column(s) of readable body text at 300px+ each can fit side by side at this width — never plan a layout with more simultaneous text columns than that number, even temporarily at any point in the page; when in doubt use fewer.
+
+Two required numeric design tokens, do not override them with your own preference: build the entire color palette starting from HSL hue 325 as the primary accent and HSL hue 55 as a secondary/complementary accent (pick whatever saturation/lightness fits the brightness instruction below, but the hues themselves are fixed); base all spacing (margins, paddings, gaps) on multiples of 14px rather than a generic 8px/16px/24px scale; scale heading sizes from the body text size using a ratio of 1.618 per level.
+
+Non-negotiable layout safety rules, follow these before anything else in this message: (1) Never use CSS Grid, Flexbox, or the CSS multi-column properties (`columns`/`column-count`/`column-width`) to create a column of running body text narrower than 300px — if the container is not wide enough for the number of columns you want, use fewer columns (2 is often enough) or stack content vertically instead of narrowing columns further; this applies especially to `column-count`, which silently divides width evenly and easily produces unreadably narrow columns, so avoid `column-count` above 2 for paragraph text entirely. (2) Never let body text wrap down to one word per line — that always means the column is too narrow and must be fixed. (3) Actual readable paragraph text (including headings, body copy, and small elements like badges/pills/tags/labels that contain real words) must never visually overlap, sit behind, or be partially covered by any other text or element. Only large, purely decorative elements without their own necessary meaning (background numerals, icons, big outline shapes) may bleed outside their grid cell, and only into genuinely empty space — never on top of or touching any text. (4) If any element uses fixed or absolute positioning, add enough margin/padding so it never overlaps or covers other readable content.
+
+Starting points for this generation, chosen at random — treat them as your default direction, but you have explicit permission (see below) to shift them if the topic genuinely calls for it: (5) Corners: sharp, perfectly square corners everywhere (border-radius: 0). (6) Overall brightness: a crisp white or near-white background with bold black type and one or two accent colors. (7) Balance, not sameness: the layout style given below (a single long scrolling narrative layout) should genuinely shape the composition — a full-bleed poster, a magazine multi-column spread, a sticky sidebar, a hero-then-blocks page, a dashboard of cards, and a single scrolling narrative should all look structurally different from each other, and none of them should default to "one narrow centered column with symmetric margins" unless that specific layout style calls for exactly that. The only mistake to actively avoid is a width-constrained block accidentally hugging one edge of the screen with empty dead space stacked only on the other side (e.g. forgetting margin-inline: auto on an off-center max-width block) — fix only that specific accident, do not impose uniform centering as a style choice on top of every layout.
+
+Let the topic's real character guide your judgment: this page's angle is "Write the content as a suspiciously specific late-night infomercial that oversells the topic" and the topic itself is "Category: Marine biology  
+Topic: Bioluminescence in deep-sea organisms". A fun, playful, or silly angle should read as bolder and more colorful — lean into more saturated colors, and boxes/cards/rounded corners are great here, don't hold back. A serious, somber, or weighty angle can be more restrained and sophisticated, and a dark or moody palette is a genuinely good fit here if it suits the topic, not something to avoid. A scientific, technical, or academic angle should feel appropriate to that specific field (e.g. an ocean topic can lean aquatic blues/teals, a botany topic can lean natural greens, an astronomy topic can lean toward deep space tones) rather than a generic, disconnected palette. Boxes, rounded corners, and dark backgrounds are all completely legitimate choices whenever they genuinely fit — the only thing to avoid is applying the exact same look regardless of what the topic actually is. Use this judgment to decide how far to lean into or away from the brightness/corner starting points above.
+
+The HTML always includes a <header> containing the page title (an h1, and possibly a short tagline). Give this header its own distinctive, deliberate visual treatment rather than styling it like just another section: a vertical or rotated header running along one edge of the page rather than sitting horizontally at the top. This header style is chosen independently from the layout and container styles above, so make sure it actually looks different from one generation to the next — vary its scale, placement, color treatment, and how much of the viewport it commands, according to the direction given. It must still follow the non-negotiable layout safety rules above (no overlapping text, no fixed/absolute element covering other content, no column narrower than 300px).
+
+Now the actual design brief: Output only the CSS for a coherent one-page Website. Exclude any conversation, comments, markdown or unnecessary text. The left and right margin of the body should always be at least be 5%. This is the topic of the website: Category: Marine biology  
+Topic: Bioluminescence in deep-sea organisms. Use colors that fit the topic, leaning towards a washed-out, faded vintage color palette unless your topic-driven judgment above suggests otherwise. Give some elements hover effects. Structure the page using a single long scrolling narrative layout. For how grid cells/sections are visually expressed, use this container style: solid flat color fields that fill entire grid cells edge-to-edge, no padding-box look, no drop shadows. It's fine for this to be full boxes, partial structure, or no visible containers at all depending on the style given — follow it as written rather than defaulting to any one look. Use one or more of these fonts: Open Sans, DM Serif Display, Creepster, Mukta, Ubuntu, Codystar, JetBrains Mono, Roboto, Orbitron, Ubuntu Mono, Rubik. Select fonts that fit the topic. Always use CSS Grids somewhere. Sometimes in a useful way, sometimes minimalistically, sometimes do everything in grids and sometimes in a weird way. Use CSS Animations either minimally or overuse them. The visitor explicitly checked one or more intensity boxes for this generation — these are hard requirements, not vibes, and they override any earlier, softer color-mood or restraint guidance above if the two conflict: HARD REQUIREMENT, not a soft suggestion: use at least 5-6 clearly distinct, highly saturated hues across the page — including the background itself, not just one accent color on a neutral base. A tasteful two-tone or muted palette is a failure condition here, even if it looks polished — the whole point is that it reads as almost too much color at first glance. HARD REQUIREMENT, not a soft suggestion: go deliberately tacky and so-bad-it's-good — clashing colors, gaudy gradients, loud novelty fonts, glittery/neon energy, over-the-top borders or drop shadows. A clean, elegant, minimal, or generally 'tasteful' result is the opposite of what's being asked for and is a failure condition here, even if it's well-executed. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE TITLE CALL
+System message:
+You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.
+
+User message:
+Output only a short but very fitting title for the topic Category: Marine biology  
+Topic: Bioluminescence in deep-sea organisms. You may include this information to write the title: Write the content as a suspiciously specific late-night infomercial that oversells the topic. Never use any exclamation marks in the beginning or end of the title. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE RANDOM TOPIC-SELECTION CALL
+System message:
+You are an interesting person and your task is to choose a topic from your entire knowledge. Do not answer anything else except for that topic. You are not aware of anything relating to quantum theory or black holes.
+
+User message:
+Randomly select a category and then randomly select a topic from that category.
+-->
+      <html>
+      <head>
+        <title>Deep-Sea Bioluminescence: The 2:17 A.M. Glow-Up</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        :root {
+  --body-size: 18px;
+  --step-1: calc(var(--body-size) * 1.618);
+  --step-2: calc(var(--step-1) * 1.618);
+  --step-3: calc(var(--step-2) * 1.618);
+  --step-4: calc(var(--step-3) * 1.618);
+  --pink: hsl(325 100% 52%);
+  --yellow: hsl(55 100% 52%);
+  --cyan: hsl(190 100% 48%);
+  --violet: hsl(270 100% 56%);
+  --lime: hsl(112 100% 48%);
+  --orange: hsl(18 100% 52%);
+  --blue: hsl(220 100% 55%);
+  --ink: hsl(248 75% 9%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--yellow);
+}
+
+body {
+  width: 90%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 14px;
+  color: var(--ink);
+  background:
+    linear-gradient(132deg, var(--cyan) 0%, var(--violet) 46%, var(--pink) 100%);
+  font-family: "Open Sans", Ubuntu, sans-serif;
+  font-size: var(--body-size);
+  line-height: 1.6;
+}
+
+header {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: stretch;
+  padding: 28px 14px;
+  color: var(--yellow);
+  background: linear-gradient(180deg, var(--pink), var(--orange) 48%, var(--violet));
+  border-inline: 7px solid var(--yellow);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+header h1 {
+  margin: 0;
+  font-family: Creepster, "DM Serif Display", serif;
+  font-size: var(--step-3);
+  line-height: 1.05;
+  letter-spacing: 0.035em;
+  text-shadow: 3px 3px 0 var(--blue), 6px 6px 0 var(--ink);
+}
+
+header p {
+  margin: 28px 0 0;
+  color: white;
+  font-family: "JetBrains Mono", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 14px;
+  padding-block: 14px;
+}
+
+main > section,
+main > article,
+main > ol > li,
+main > ul > li {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  padding: 42px;
+  border: 7px solid var(--ink);
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+main > section:nth-child(6n + 1),
+main > article:nth-child(6n + 1),
+main > ol > li:nth-child(6n + 1),
+main > ul > li:nth-child(6n + 1) {
+  color: var(--ink);
+  background: var(--yellow);
+  border-color: var(--pink);
+}
+
+main > section:nth-child(6n + 2),
+main > article:nth-child(6n + 2),
+main > ol > li:nth-child(6n + 2),
+main > ul > li:nth-child(6n + 2) {
+  color: white;
+  background: var(--blue);
+  border-color: var(--yellow);
+}
+
+main > section:nth-child(6n + 3),
+main > article:nth-child(6n + 3),
+main > ol > li:nth-child(6n + 3),
+main > ul > li:nth-child(6n + 3) {
+  color: var(--ink);
+  background: var(--lime);
+  border-color: var(--violet);
+}
+
+main > section:nth-child(6n + 4),
+main > article:nth-child(6n + 4),
+main > ol > li:nth-child(6n + 4),
+main > ul > li:nth-child(6n + 4) {
+  color: white;
+  background: var(--pink);
+  border-color: var(--cyan);
+}
+
+main > section:nth-child(6n + 5),
+main > article:nth-child(6n + 5),
+main > ol > li:nth-child(6n + 5),
+main > ul > li:nth-child(6n + 5) {
+  color: var(--ink);
+  background: var(--orange);
+  border-color: var(--blue);
+}
+
+main > section:nth-child(6n),
+main > article:nth-child(6n),
+main > ol > li:nth-child(6n),
+main > ul > li:nth-child(6n) {
+  color: white;
+  background: var(--violet);
+  border-color: var(--lime);
+}
+
+main > section:hover,
+main > article:hover,
+main > ol > li:hover,
+main > ul > li:hover {
+  border-color: white;
+}
+
+h2 {
+  margin: 0 0 28px;
+  font-family: Orbitron, "DM Serif Display", serif;
+  font-size: var(--step-2);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+h3 {
+  margin: 14px 0;
+  font-family: Orbitron, "JetBrains Mono", monospace;
+  font-size: var(--step-1);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p,
+ul,
+ol,
+blockquote {
+  max-width: 82ch;
+  margin: 0 auto 28px;
+}
+
+p:last-child,
+ul:last-child,
+ol:last-child,
+blockquote:last-child {
+  margin-bottom: 0;
+}
+
+li {
+  margin-block: 14px;
+}
+
+a {
+  color: inherit;
+  font-weight: 800;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--yellow);
+  background-color: var(--ink);
+  outline: 7px solid var(--ink);
+}
+
+blockquote {
+  padding: 28px;
+  border-inline-start: 14px solid var(--yellow);
+  background: hsl(0 0% 100% / 0.24);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: var(--step-1);
+  line-height: 1.35;
+}
+
+code,
+pre,
+small,
+.label,
+.tag {
+  font-family: "JetBrains Mono", "Ubuntu Mono", monospace;
+}
+
+small,
+.label,
+.tag {
+  display: inline-block;
+  max-width: 100%;
+  padding: 7px 14px;
+  color: var(--ink);
+  background: var(--yellow);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.myth-fact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.myth-fact > article {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  padding: 42px;
+  border: 7px solid var(--ink);
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.myth-fact > article:nth-child(odd) {
+  color: var(--ink);
+  background: var(--yellow);
+  border-color: var(--pink);
+}
+
+.myth-fact > article:nth-child(even) {
+  color: white;
+  background: var(--blue);
+  border-color: var(--yellow);
+}
+
+.myth-fact > article:hover {
+  border-color: white;
+}
+
+.callout {
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 28px;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 7px solid var(--ink);
+}
+
+@media (max-width: 760px) {
+  body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  header {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 28px;
+    writing-mode: horizontal-tb;
+    border: 7px solid var(--yellow);
+  }
+
+  header h1 {
+    font-size: var(--step-2);
+  }
+
+  header p {
+    margin-top: 14px;
+  }
+
+  main {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li {
+    padding: 28px;
+  }
+
+  .myth-fact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .myth-fact > article {
+    padding: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+      </style>
+      <body>
+  <header>
+    <h1>Lights Out, Ocean On!</h1>
+    <p>The suspiciously specific midnight showcase of deep-sea bioluminescence—no batteries, no checkout code required.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>The Deep-Sea Light Show Is Not One Giant Glow Stick</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: The whole deep ocean shines like a neon aquarium.</h3>
+          <p>Simply descend below the sunlit surface and—ta-da!—every trench, ridge, and passing animal bursts into continuous color. What a deal!</p>
+        </article>
+        <article>
+          <h3>Fact: Darkness is the rule; flashes are the event.</h3>
+          <p>Sunlight fades quickly with depth, and below the mesopelagic zone—roughly 200 to 1,000 meters—there is too little sunlight for photosynthesis. Many deep-sea animals make light, but they do not illuminate the ocean evenly. Their glows are often brief, localized signals: a pulse, a spark, or a trail of luminous mucus. The result is less “underwater Las Vegas” and more a scattered conversation conducted in darkness.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Your Deluxe Glow Package: Chemistry, Not Electricity</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: A glowing animal must be carrying a tiny lamp.</h3>
+          <p>Our imaginary premium bundle includes a miniature bulb, a switch, and complimentary extension cord for the abyss.</p>
+        </article>
+        <article>
+          <h3>Fact: Living light usually comes from a chemical reaction.</h3>
+          <p>Bioluminescence is light produced by an organism through chemistry. In a common arrangement, a light-emitting molecule called luciferin reacts with oxygen, often with help from an enzyme such as luciferase. The reaction releases energy as light rather than as much heat, making it an efficient way to glow. The exact ingredients differ among organisms, and not every luminous species uses the same chemical recipe. Some animals make the necessary compounds themselves; others acquire them through food or house light-producing bacteria.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Anglerfish: The Bait-and-Switch Special</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: The anglerfish’s glowing lure is just a decorative forehead ornament.</h3>
+          <p>Looks fabulous, does absolutely nothing—except perhaps inspire a very niche hat collection.</p>
+        </article>
+        <article>
+          <h3>Fact: On some species, the lure helps bring prey within striking distance.</h3>
+          <p>Many deep-sea anglerfish have a modified dorsal-fin ray that extends over the mouth. Its tip, called the esca, can glow; in some species, bacteria living inside the esca produce the light. A curious animal drawn toward the glow may come close enough to be caught. It is not a universal fishing trick, though: anglerfish species vary, and their lures differ in shape, movement, and light. The glowing invitation is less a guaranteed meal plan than a risky, carefully placed advertisement.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Free Disguise Upgrade: The Counterillumination System</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: The brightest animal is always the easiest to spot.</h3>
+          <p>Turn the glow to maximum and every predator will politely look away. Satisfaction guaranteed—or your darkness back.</p>
+        </article>
+        <article>
+          <h3>Fact: Carefully matched light can help an animal disappear.</h3>
+          <p>When a predator looks upward, an animal swimming below may stand out as a dark silhouette against the faint light filtering down from the surface. Some squid, fish, and other animals use photophores—specialized light-producing organs—to shine downward and soften that silhouette. This strategy is called counterillumination. The animal may adjust its brightness to match its surroundings, turning light into camouflage rather than a beacon. It is a remarkably subtle trick: the goal is not to glow more, but to be harder to see.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Emergency Escape: The Luminous Smoke Screen</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: Deep-sea creatures have nowhere to hide when trouble arrives.</h3>
+          <p>Once spotted, the pursuit is over. No exits, no distractions, no dramatic getaway music.</p>
+        </article>
+        <article>
+          <h3>Fact: Some species use light to confuse, distract, or misdirect.</h3>
+          <p>Certain squid and shrimp can release luminous material into the water, creating a glowing cloud that may distract a predator while the animal escapes. Other species produce bursts or trails of light that could draw attention away from vulnerable body parts. Some small crustaceans eject glowing secretions; others flash from organs on their bodies. These defenses are not magic invisibility cloaks, and their effectiveness depends on the predator and circumstances. Still, in an environment where hiding places can be scarce, a sudden sparkling diversion is a serious upgrade.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Meet the In-House Bacteria: Tiny Partners, Big Luminosity</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: Every luminous animal manufactures its glow alone.</h3>
+          <p>One creature, one laboratory, one enormous research budget. No outside assistance needed!</p>
+        </article>
+        <article>
+          <h3>Fact: Some animals share the job with luminous microbes.</h3>
+          <p>Bioluminescent bacteria can live in specialized light organs, where the animal provides a protected home and nutrients while the microbes produce light. The Hawaiian bobtail squid, for example, houses luminous bacteria that help it camouflage itself at night. In deep-sea anglerfish, bacterial light is found in the lures of some species. These partnerships are not all alike: some hosts acquire bacteria from the environment, while other relationships are more specialized. The arrangement can benefit both partners, but maintaining the right bacterial population is a biological balancing act, not a plug-and-play accessory.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Not All Ocean Sparkle Is the Same Deal</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: Fluorescence, reflected light, and bioluminescence are interchangeable.</h3>
+          <p>If it glows, it glows. Put every bright thing in the same shopping cart!</p>
+        </article>
+        <article>
+          <h3>Fact: These are different ways to produce or show light.</h3>
+          <p>A bioluminescent organism makes light through a chemical process. A fluorescent organism absorbs light at one wavelength and re-emits some of it at another; fluorescence therefore needs an outside light source. A reflective animal simply bounces available light back toward an observer. In the deep sea, where outside light is scarce, bioluminescence is especially useful because an animal can create its own signal. The distinction matters to researchers, too: a glowing specimen under a blue laboratory lamp may be fluorescent, bioluminescent, or both.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>What the Flash Is Saying</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: A flash is just decoration for the abyss.</h3>
+          <p>Beautiful, certainly—but biologically about as useful as sequins on a submarine.</p>
+        </article>
+        <article>
+          <h3>Fact: Light can help animals hunt, hide, defend themselves, or communicate.</h3>
+          <p>Depending on the species and situation, a glow can act as bait, camouflage, a warning, a decoy, or a signal to a potential mate. Some midwater animals produce short pulses; others make steady light or patterned displays. A flash’s meaning is not always obvious to human observers, and scientists continue to investigate which signals attract prey, startle predators, or convey information between members of a species. The same basic ability—making light—can solve very different problems in a habitat where vision works at close range and every signal may also be noticed by someone unwanted.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Fine Print from the Abyss</h2>
+      <div class="myth-fact">
+        <article>
+          <h3>Myth: The deep sea is too remote to matter to people.</h3>
+          <p>Out of sight, out of mind, and conveniently outside every science budget.</p>
+        </article>
+        <article>
+          <h3>Fact: Studying these lights can reveal how ocean life works.</h3>
+          <p>Researchers use remotely operated vehicles, submersibles, sensitive cameras, and careful laboratory studies to observe fragile animals without bright lights that could alter their behavior. Luminous systems also interest scientists studying chemical reactions, cell biology, and the evolution of communication. Much remains unknown: deep-sea habitats are vast, difficult to reach, and easily disturbed by sampling and equipment. That makes responsible observation important. The abyss may not offer a return policy, but it does offer an extraordinary reminder that life can turn darkness into a tool.</p>
+        </article>
+      </div>
+      <p class="callout"><strong>Tonight’s spectacular takeaway:</strong> bioluminescence is not merely a glow. It is chemistry, camouflage, communication, and survival—sold here in one astonishing package, delivered in darkness, and powered by life itself.</p>
+    </section>
+  </main>
+</body>
+      </html>
+    
+<!--
+Generation time: 46.28s (average over 97 runs: 32.71s)
+-->
