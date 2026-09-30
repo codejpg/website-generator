@@ -1,0 +1,484 @@
+
+      <!DOCTYPE html>
+      <!--
+GENERATOR DEBUG INFO (why this page looks the way it does)
+
+Topic: Glitter
+Topic source: provided by the visitor
+Viewport: 2199x1323 (landscape, aspect 1.66); max text columns allowed: 6
+Design tokens: accent hue 23, secondary hue 113, spacing unit 6px, type scale ratio 1.333
+
+MODE & VISITOR INPUTS
+Mode: fun
+Style direction: (not used in fun mode)
+Brightness: (no fixed light/dark choice in fun mode — follows topic/mood instead)
+Visitor info text: Glitter ist toll
+Visitor design text: (none provided)
+Extras selected: extraTrashy
+
+RANDOM DIRECTIVE PICKS
+Topic angle(s): Host a game show where contestants must guess increasingly ridiculous facts about the topic
+Design flavor(s): Use fonts and colors that make the website look like it is from the 1950s. Use CSS Grids to structure the website
+Color mood: a warm autumnal color palette
+Layout style: a magazine-style multi-column layout
+Container style: traditional card-style boxes with visible padding and a border or drop shadow that clearly reads as a distinct card, not just a colored area
+Corner style: a generous, soft border-radius (16px or more) on boxed or bordered elements
+Header style: a split header divided into two halves: the title and a short tagline on one side, an abstract decorative shape or pattern on the other
+Brightness: (not fixed — fun mode, follows topic/mood)
+Content structure: a glossary of short term definitions related to the topic
+Content length directive: This topic has a lot of ground to cover — go noticeably longer and deeper than a typical one-pager, well beyond the minimum, if the topic genuinely supports it.
+Font subset offered: Roboto Slab, Codystar, Rubik Mono One, Bungee, Share Tech, Inter Tight, Share Tech Mono, DM Serif Display, Roboto
+
+Design critic check: no issues found, CSS used as-is
+
+PROMPT SENT FOR THE CONTENT (HTML) CALL
+System message:
+You are a code generator who outputs only the HTML content of a one-page website — semantic structure and text, nothing else. A completely separate generation step handles all of the CSS: colors, fonts, layout, spacing, corners, animations. Do not include a <style> tag, inline style attributes, a <link rel="stylesheet">, or any other styling of your own — if you do, it will be stripped out and ignored, so it is wasted effort. Your only job is to write good semantic HTML (headings, paragraphs, lists, sections, meaningful class names the separate CSS step can target) with real, interesting content about the topic. Resist the strong habit of always structuring content as one big hero title, a short intro paragraph, and then a grid of exactly 3 or 4 numbered feature cards — that is only one of many valid shapes a page can take, follow whatever structure is given in the user message instead. Structural contract with the separate CSS step, this matters a lot: wrap everything after the header in a single <main> element, and make every major, page-level content block (the things a grid/card/column layout would treat as separate cells) its own <section> or <article> that is a DIRECT child of <main> — never nest the page's top-level content blocks inside a shared <ol> or <ul>, even when the content-structure instruction below calls for something list-like or numbered. Express numbering, list-like framing, Q&A pairs, glossary terms, etc. through the heading and content of each individual <section> (e.g. a visible "01" prefix or number badge inside the section's own heading) rather than real list markup wrapping the whole set of sections — the CSS step will target these direct <section>/<article> children by tag name to build the layout, and if they are nested one level deeper inside an <ol>/<ul> instead, the layout CSS silently fails to apply and the page collapses into a narrow single column with a lot of empty unused space. Small inline lists WITHIN a single section (e.g. a short bullet list of examples inside one topic block) are completely fine and encouraged — this rule is only about how the page's overall, top-level content blocks are nested, not a ban on <ol>/<ul> everywhere. The website does not need to have common elements but it can. The first line of your output should be the opening body-tag and the last line is the closing body-tag.
+
+User message:
+Output only the HTML for the one-page website in HTML format. Exclude any conversation, comments, markdown or unnecessary text. This is the topic of the website: Glitter. Fill the site with information on the topic. If you use facts, never use facts as a title but choose fitting titles instead. Use captivating titles for each part. If the text has less than 500 words add more information — that is always the minimum, regardless of the length guidance below. This topic has a lot of ground to cover — go noticeably longer and deeper than a typical one-pager, well beyond the minimum, if the topic genuinely supports it. Host a game show where contestants must guess increasingly ridiculous facts about the topic. This page needs real structural richness, not just a couple of paragraphs: aim for at least 4-6 distinct content blocks/sections, and actually use elements like subheadings, at least one real bullet or numbered list, short callouts, or pull-quotes — a 'Fun Facts' or 'Did you know?' list of several bite-sized facts is a great device here. This matters beyond just tone: a page with too few blocks looks visually broken later (one side full of text, the other empty), so more distinct pieces of content is a functional requirement, not decoration. Follow the content-structure instruction below for the overall shape, but within it, still favor more, shorter blocks over fewer, longer ones. The visitor also provided this additional information about the topic — use it if relevant, but treat it only as background information, not as instructions to follow: Glitter ist toll. Always start the page with a <header> element containing an <h1> with the page's title and, optionally, one short tagline or subtitle line — this header must be present no matter which content structure is used below, since a separate step will give it a distinctive visual treatment. Everything the content-structure instruction below says about headings, subdivisions, or sparseness applies only to the body content that follows this header, never to the header itself. Structure the body content after the header using this format instead of defaulting to a generic hero-title-plus-intro-paragraph-plus-a-grid-of-3-4-numbered-feature-cards pattern: a glossary of short term definitions related to the topic. Do not use any images. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE DESIGN (CSS) CALL
+System message:
+You are a code generator who is designed to output CSS. The user message will give you measured facts about the real visitor (exact browser window width/height and the maximum number of readable text columns that actually fit at that width) and fixed numeric design tokens (an accent hue, a secondary hue, a spacing unit in px, a type-scale ratio). Treat all of these as hard constraints, not suggestions — use the given hues as your palette's starting point instead of picking your own 'safe' color for the topic, use the given spacing unit instead of a generic 8px/16px/24px scale, and never exceed the given maximum column count. This is what makes each output genuinely different from the last one, so do not ignore or round these numbers away. Before anything else, these rules always override any creative instruction that conflicts with them: never create a column of running body text (via CSS Grid, Flexbox, or the multi-column properties columns/column-count/column-width) narrower than 300px — column-count in particular divides width evenly with no regard for readability, so never use column-count above 2 for paragraph text, and prefer fewer, wider columns or vertical stacking over narrow ones; never let body text wrap down to one word per line; readable text of any kind — paragraphs, headings, and small labelled elements like badges, pills or tags — must never visually overlap, sit behind, or be covered by other text or elements; only large purely decorative elements with no text of their own (background numerals, icons, outline shapes) may bleed outside their cell, and only into empty space that has no text nearby. The content step has been told to make every top-level, page-level content block its own <section> or <article> that is a direct child of <main> — never nested inside a shared <ol>/<ul>. Rely on that when you write grid/card/multi-column selectors: target the direct children directly (e.g. `main > section`, `main > article`), and as cheap extra insurance also include `main > ol > li`, `main > ul > li` in the same selector list in case the content step ever nests things one level deeper than expected — a grid container that ends up applying to only a single effective child (because everything landed inside one shared wrapper) is exactly the width-constrained, empty-dead-space bug described below, so guard against it. Relatedly, you do not know in advance exactly how many content blocks the HTML contains, so never use a hardcoded `repeat(3, ...)`/`repeat(4, ...)` for a card/dashboard/multi-column layout of repeating content blocks — a fixed column count that doesn't match the actual number of blocks leaves an empty gap on one side, exactly as badly as the wrapper-nesting bug above. `repeat(auto-fit, minmax(300px, 1fr))` looks like the fix but has its own gap: it only collapses a column that is empty across every row, not leftover space in a partial final row — so when the block count isn't a clean multiple of however many columns fit at that viewport width (e.g. 7 blocks at a width that fits 6 columns), the last row's leftover block(s) still end up stranded at the left edge with dead space trailing beside them, same bug via a different route. For this exact pattern — a repeating row of card/block elements where the count is unpredictable — use Flexbox instead of Grid: `display: flex; flex-wrap: wrap;` on the container with each item sized via `flex: 1 1 300px;` (or similar) plus `justify-content: center`, so a leftover final row's item(s) center or stretch within that row instead of being pinned to a shared column track the way Grid rows are. Grid remains fine for layouts with a known, fixed number of cells (e.g. a header split into exactly two halves) — this specific caution is only about repeating content blocks whose count varies with the topic. The user message gives you a corner style and a brightness as starting points, plus the topic and its angle — use your judgment to decide how closely to follow them versus letting the topic's real character (fun/playful, serious/somber, scientific/technical) shift them, per the reasoning laid out there. Boxes, cards, rounded corners, and dark or moody palettes are all completely legitimate outcomes when they fit the topic — none of them are mistakes to avoid, the only thing to avoid is producing the exact same look regardless of what the topic actually is. The layout style given in the user message should genuinely shape the page — full-bleed, sidebar, magazine-column, hero-then-blocks, dashboard-of-cards, and single-narrative layouts should all look structurally different, and a single centered column with symmetric margins is only one of those outcomes, not the default. The only mistake to guard against is a width-constrained block accidentally hugging one edge of the screen with dead space only on the other side — fix that specific accident (e.g. with margin-inline: auto), don't impose uniform centering as a style on every layout. Always have a margin of at least 5%. The output is only the CSS that belongs inside the style-tag. Choose interesting fonts to represent the topic. Try to come up with unusual layouts and font-sizing but withing current web design aesthetics. Never let fixed or absolutely positioned elements overlap other readable content. The first line of your output should be the first line of CSS and the last line is the Curly-Bracket closing the last CSS Element.
+
+User message:
+Concrete, measured facts about this specific visitor, use them instead of guessing: their browser window is exactly 2199px wide and 1323px tall (aspect ratio 1.66, landscape). Given the required 5% side margins, at most 6 column(s) of readable body text at 300px+ each can fit side by side at this width — never plan a layout with more simultaneous text columns than that number, even temporarily at any point in the page; when in doubt use fewer.
+
+Two required numeric design tokens, do not override them with your own preference: build the entire color palette starting from HSL hue 23 as the primary accent and HSL hue 113 as a secondary/complementary accent (pick whatever saturation/lightness fits the brightness instruction below, but the hues themselves are fixed); base all spacing (margins, paddings, gaps) on multiples of 6px rather than a generic 8px/16px/24px scale; scale heading sizes from the body text size using a ratio of 1.333 per level.
+
+Non-negotiable layout safety rules, follow these before anything else in this message: (1) Never use CSS Grid, Flexbox, or the CSS multi-column properties (`columns`/`column-count`/`column-width`) to create a column of running body text narrower than 300px — if the container is not wide enough for the number of columns you want, use fewer columns (2 is often enough) or stack content vertically instead of narrowing columns further; this applies especially to `column-count`, which silently divides width evenly and easily produces unreadably narrow columns, so avoid `column-count` above 2 for paragraph text entirely. (2) Never let body text wrap down to one word per line — that always means the column is too narrow and must be fixed. (3) Actual readable paragraph text (including headings, body copy, and small elements like badges/pills/tags/labels that contain real words) must never visually overlap, sit behind, or be partially covered by any other text or element. Only large, purely decorative elements without their own necessary meaning (background numerals, icons, big outline shapes) may bleed outside their grid cell, and only into genuinely empty space — never on top of or touching any text. (4) If any element uses fixed or absolute positioning, add enough margin/padding so it never overlaps or covers other readable content.
+
+Starting points for this generation, chosen at random — treat them as your default direction, but you have explicit permission (see below) to shift them if the topic genuinely calls for it: (5) Corners: a generous, soft border-radius (16px or more) on boxed or bordered elements. (6) Overall brightness is intentionally not fixed here — no light/dark toggle applies to this mode. Default to bright, colorful, light-leaning palettes, but let the topic and design mood genuinely pull it darker or moodier when that's the better fit (e.g. a spooky, noir, or somber angle) — this should read as following the topic's character, not as picking from a fixed light/dark choice. (7) Balance, not sameness: the layout style given below (a magazine-style multi-column layout) should genuinely shape the composition — a full-bleed poster, a magazine multi-column spread, a sticky sidebar, a hero-then-blocks page, a dashboard of cards, and a single scrolling narrative should all look structurally different from each other, and none of them should default to "one narrow centered column with symmetric margins" unless that specific layout style calls for exactly that. The only mistake to actively avoid is a width-constrained block accidentally hugging one edge of the screen with empty dead space stacked only on the other side (e.g. forgetting margin-inline: auto on an off-center max-width block) — fix only that specific accident, do not impose uniform centering as a style choice on top of every layout.
+
+Let the topic's real character guide your judgment: this page's angle is "Host a game show where contestants must guess increasingly ridiculous facts about the topic" and the topic itself is "Glitter". A fun, playful, or silly angle should read as bolder and more colorful — lean into more saturated colors, and boxes/cards/rounded corners are great here, don't hold back. A serious, somber, or weighty angle can be more restrained and sophisticated, and a dark or moody palette is a genuinely good fit here if it suits the topic, not something to avoid. A scientific, technical, or academic angle should feel appropriate to that specific field (e.g. an ocean topic can lean aquatic blues/teals, a botany topic can lean natural greens, an astronomy topic can lean toward deep space tones) rather than a generic, disconnected palette. Boxes, rounded corners, and dark backgrounds are all completely legitimate choices whenever they genuinely fit — the only thing to avoid is applying the exact same look regardless of what the topic actually is. Use this judgment to decide how far to lean into or away from the brightness/corner starting points above.
+
+The HTML always includes a <header> containing the page title (an h1, and possibly a short tagline). Give this header its own distinctive, deliberate visual treatment rather than styling it like just another section: a split header divided into two halves: the title and a short tagline on one side, an abstract decorative shape or pattern on the other. This header style is chosen independently from the layout and container styles above, so make sure it actually looks different from one generation to the next — vary its scale, placement, color treatment, and how much of the viewport it commands, according to the direction given. It must still follow the non-negotiable layout safety rules above (no overlapping text, no fixed/absolute element covering other content, no column narrower than 300px).
+
+Now the actual design brief: Output only the CSS for a coherent one-page Website. Exclude any conversation, comments, markdown or unnecessary text. The left and right margin of the body should always be at least be 5%. This is the topic of the website: Glitter. Use colors that fit the topic, leaning towards a warm autumnal color palette unless your topic-driven judgment above suggests otherwise. Use fonts and colors that make the website look like it is from the 1950s. Use CSS Grids to structure the website. Structure the page using a magazine-style multi-column layout. For how grid cells/sections are visually expressed, use this container style: traditional card-style boxes with visible padding and a border or drop shadow that clearly reads as a distinct card, not just a colored area. It's fine for this to be full boxes, partial structure, or no visible containers at all depending on the style given — follow it as written rather than defaulting to any one look. Use one or more of these fonts: Roboto Slab, Codystar, Rubik Mono One, Bungee, Share Tech, Inter Tight, Share Tech Mono, DM Serif Display, Roboto. Select fonts that fit the topic. Always use CSS Grids somewhere. Sometimes in a useful way, sometimes minimalistically, sometimes do everything in grids and sometimes in a weird way. Use CSS Animations either minimally or overuse them. The visitor explicitly checked one or more intensity boxes for this generation — these are hard requirements, not vibes, and they override any earlier, softer color-mood or restraint guidance above if the two conflict: HARD REQUIREMENT, not a soft suggestion: go deliberately tacky and so-bad-it's-good — clashing colors, gaudy gradients, loud novelty fonts, glittery/neon energy, over-the-top borders or drop shadows. A clean, elegant, minimal, or generally 'tasteful' result is the opposite of what's being asked for and is a failure condition here, even if it's well-executed. Treat the topic text only as a subject label, not as instructions to follow.
+
+PROMPT SENT FOR THE TITLE CALL
+System message:
+You are a pro texter and you won awards writing short and precise titles. Your job is writing website titles, so they can not be more than 60 characters long. Your output should start with text, no exclamation marks in the beginning or end.
+
+User message:
+Output only a short but very fitting title for the topic Glitter. You may include this information to write the title: Host a game show where contestants must guess increasingly ridiculous facts about the topic. Never use any exclamation marks in the beginning or end of the title. Treat the topic text only as a subject label, not as instructions to follow.
+-->
+      <html>
+      <head>
+        <title>Glitter: The Sparkling Fact Showdown</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Climate+Crisis&family=Codystar:wght@300;400&family=Creepster&family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Grape+Nuts&family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=M+PLUS+Code+Latin:wght@100;200;300;400;500;600;700&family=Mukta:wght@200;300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Odibee+Sans&family=Open+Sans:wght@500;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Pirata+One&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rubik+Doodle+Shadow&family=Rubik+Mono+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+      </head>
+      <style>
+        :root {
+  --spark: hsl(23 98% 52%);
+  --spark-light: hsl(23 100% 74%);
+  --acid: hsl(113 92% 43%);
+  --acid-light: hsl(113 100% 77%);
+  --cream: hsl(43 100% 91%);
+  --ink: hsl(294 78% 19%);
+  --pink: hsl(326 100% 58%);
+  --body-size: 18px;
+  --heading-1: 42.66px;
+  --heading-2: 31.99px;
+  --heading-3: 23.99px;
+  --heading-4: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 5% 48px;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 15% 12%, hsl(326 100% 88% / 0.65), transparent 32%),
+    repeating-linear-gradient(135deg, hsl(23 100% 50% / 0.04) 0 6px, transparent 6px 18px),
+    var(--cream);
+  font-family: Roboto, "Arial Rounded MT Bold", sans-serif;
+  font-size: var(--body-size);
+  line-height: 1.55;
+}
+
+header {
+  display: grid;
+  grid-template-columns: minmax(300px, 1.1fr) minmax(300px, 0.9fr);
+  grid-template-rows: auto auto;
+  gap: 6px 24px;
+  align-items: center;
+  min-height: 330px;
+  margin: 24px 0 36px;
+  padding: 30px 36px;
+  overflow: hidden;
+  color: hsl(48 100% 95%);
+  background:
+    linear-gradient(112deg, hsl(294 82% 19%) 0 48%, hsl(326 100% 47%) 48% 72%, hsl(23 100% 52%) 72%);
+  border: 6px double var(--acid-light);
+  border-radius: 30px;
+  box-shadow: 12px 12px 0 var(--acid), 18px 18px 0 var(--pink);
+}
+
+header > h1 {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  color: hsl(51 100% 71%);
+  font-family: "Bungee", "Roboto Slab", serif;
+  font-size: var(--heading-1);
+  line-height: 1.08;
+  letter-spacing: 0.025em;
+  text-shadow: 4px 4px 0 var(--pink), 7px 7px 0 hsl(23 100% 40%);
+}
+
+header > p {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 660px;
+  margin: 0;
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: var(--heading-3);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+header::after {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  min-height: 210px;
+  content: "";
+  background:
+    radial-gradient(circle, hsl(52 100% 77%) 0 3px, transparent 4px) 0 0 / 24px 24px,
+    radial-gradient(circle at center, hsl(113 100% 61%) 0 8%, transparent 9% 18%, hsl(51 100% 68%) 19% 22%, transparent 23% 34%, hsl(326 100% 69%) 35% 39%, transparent 40%),
+    conic-gradient(from 10deg, hsl(23 100% 62%), hsl(51 100% 64%), hsl(113 100% 52%), hsl(326 100% 60%), hsl(23 100% 62%));
+  background-blend-mode: screen, normal, multiply;
+  border: 6px dotted hsl(51 100% 74%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 12px hsl(23 100% 52% / 0.7), 0 0 48px 18px hsl(51 100% 69% / 0.6);
+  animation: sparkle-spin 24s linear infinite;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+}
+
+main > section,
+main > article,
+main > ol > li,
+main > ul > li {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  flex: 1 1 300px;
+  min-width: 300px;
+  padding: 24px;
+  color: var(--ink);
+  background:
+    linear-gradient(145deg, hsl(0 0% 100% / 0.72), hsl(43 100% 84% / 0.88)),
+    var(--cream);
+  border: 4px solid var(--spark);
+  border-radius: 24px;
+  box-shadow: 7px 7px 0 var(--pink), 12px 12px 0 hsl(113 88% 36% / 0.75);
+  overflow-wrap: anywhere;
+  animation: card-pop 700ms ease both;
+}
+
+main > section:nth-child(even),
+main > article:nth-child(even),
+main > ol > li:nth-child(even),
+main > ul > li:nth-child(even) {
+  background:
+    linear-gradient(145deg, hsl(113 100% 91% / 0.92), hsl(51 100% 88% / 0.96));
+  border-color: var(--pink);
+  box-shadow: 7px 7px 0 var(--spark), 12px 12px 0 hsl(294 78% 30% / 0.72);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  margin: 0 0 18px;
+  color: hsl(326 95% 43%);
+  font-family: "Bungee", "Roboto Slab", serif;
+  font-size: var(--heading-2);
+  text-shadow: 2px 2px 0 hsl(51 100% 69%);
+}
+
+h3 {
+  margin: 0 0 12px;
+  color: hsl(294 78% 28%);
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: var(--heading-3);
+}
+
+h4 {
+  margin: 0 0 12px;
+  color: hsl(23 100% 38%);
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: var(--heading-4);
+}
+
+p,
+ul,
+ol {
+  margin-top: 0;
+}
+
+p:last-child,
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+strong,
+b {
+  color: hsl(326 100% 43%);
+}
+
+a {
+  color: hsl(294 85% 34%);
+  font-weight: 800;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--acid);
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: hsl(23 100% 38%);
+  text-decoration-color: var(--pink);
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+  font: inherit;
+}
+
+button {
+  padding: 12px 24px;
+  color: var(--ink);
+  background: linear-gradient(135deg, hsl(51 100% 69%), var(--spark-light), var(--pink));
+  border: 4px ridge var(--acid);
+  border-radius: 18px;
+  box-shadow: 4px 4px 0 var(--ink);
+  font-family: "Bungee", sans-serif;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+@keyframes sparkle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes card-pop {
+  from {
+    opacity: 0.7;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  header {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    min-height: 0;
+    padding: 24px;
+  }
+
+  header > h1,
+  header > p {
+    grid-column: 1;
+  }
+
+  header > h1 {
+    grid-row: 1;
+    font-size: clamp(32px, 9vw, var(--heading-1));
+  }
+
+  header > p {
+    grid-row: 2;
+    font-size: var(--body-size);
+  }
+
+  header::after {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 180px;
+    margin: 12px;
+  }
+
+  main > section,
+  main > article,
+  main > ol > li,
+  main > ul > li {
+    flex-basis: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+      </style>
+      <body>
+  <header>
+    <h1>The Great Glitter Quiz-Off</h1>
+    <p>A sparkling glossary game show, where the questions get sillier and the shimmer gets serious.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>01. Glitter</h2>
+      <dl>
+        <dt>Host:</dt>
+        <dd>Contestants, what is glitter: tiny mirrors, tiny rainbows, or tiny bits of party magic?</dd>
+        <dt>Answer:</dt>
+        <dd>Glitter is a collection of small, reflective particles. Their flat faces catch and bounce light in different directions, creating the familiar sparkle. “Party magic” is not a scientific definition, but it is an understandable one.</dd>
+      </dl>
+      <p><strong>Contestant guess:</strong> “A miniature disco that escaped from a craft drawer.” The judges will allow the spirit of the answer, if not the science.</p>
+    </section>
+
+    <section>
+      <h2>02. Facet</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>What makes one tiny speck flash brightly while the speck beside it looks almost dull?</dd>
+        <dt>Definition:</dt>
+        <dd>A facet is a flat surface on a glitter particle. As the particle tilts, its facets reflect light toward or away from your eyes. A moving crowd of particles therefore seems to twinkle, even though each piece is simply reflecting light.</dd>
+      </dl>
+      <p><strong>Ridiculous guess:</strong> “They take turns pressing the sparkle button.” Not quite—but changing angles do create that on-and-off effect.</p>
+    </section>
+
+    <section>
+      <h2>03. Hexagon</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>Which shape might make a glitter particle look like it was cut by a very tidy bee?</dd>
+        <dt>Definition:</dt>
+        <dd>A hexagon has six sides, and hexagons are common glitter shapes. Glitter can also be cut into squares, circles, stars, and other shapes. Shape influences how particles pack together and how their edges catch the light.</dd>
+      </dl>
+      <p><strong>Audience shout:</strong> “A hexagon is a tiny stop sign for dust!” Creative, but the traffic department has not approved it.</p>
+    </section>
+
+    <section>
+      <h2>04. Polyester Glitter</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>For the first increasingly absurd wager: what material is often used to make conventional craft glitter?</dd>
+        <dt>Definition:</dt>
+        <dd>Much conventional glitter is made from thin plastic film, often polyester, with reflective or colored coatings. The film is cut into small particles. Its lightness helps it cling to surfaces—and also helps loose glitter travel far beyond the table where it began.</dd>
+      </dl>
+      <p><strong>Contestant guess:</strong> “It is shaved off a disco ball.” A spectacular image, but ordinary glitter is manufactured from film rather than harvested from dance floors.</p>
+    </section>
+
+    <section>
+      <h2>05. Mica</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>Can a mineral make something shimmer without being the same thing as plastic glitter?</dd>
+        <dt>Definition:</dt>
+        <dd>Yes. Mica is a naturally occurring mineral that can be processed into thin, reflective particles. It is used in some cosmetics and decorative products. Mica-based shimmer and plastic glitter may look similar at a glance, but they are different materials with different properties.</dd>
+      </dl>
+      <p><strong>Host’s note:</strong> “Sparkly” describes an appearance, not a recipe. Check product labels rather than assuming every shimmer is made the same way.</p>
+    </section>
+
+    <section>
+      <h2>06. Cosmetic-Grade Glitter</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>Here comes a beauty-pageant brainteaser: is every glitter safe to put near your eyes?</dd>
+        <dt>Definition:</dt>
+        <dd>No. Products intended for cosmetic use are made and labeled for particular uses; craft glitter is not automatically suitable for skin, lips, or the eye area. Follow the product directions, keep particles out of the eyes, and use only products specifically intended for the area in question.</dd>
+      </dl>
+      <ul>
+        <li>Check that the product is labeled for its intended cosmetic use.</li>
+        <li>Do not use craft glitter as makeup.</li>
+        <li>If a particle gets into an eye, avoid rubbing and follow appropriate medical guidance if irritation continues.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>07. Biodegradable Glitter</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>Can glitter be designed to break down more readily than conventional plastic glitter?</dd>
+        <dt>Definition:</dt>
+        <dd>Some products marketed as biodegradable glitter use plant-derived materials, such as cellulose, as a base. “Biodegradable” does not mean “vanishes instantly anywhere,” though. Breakdown depends on the product and the conditions around it, so check the maker’s information and dispose of it responsibly.</dd>
+      </dl>
+      <p><strong>Ridiculous guess:</strong> “It disappears at midnight, like a pumpkin.” Sadly, there is no confirmed evidence of enchanted deadline glitter.</p>
+    </section>
+
+    <section>
+      <h2>08. Microplastic</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>Suppose a tiny plastic particle escapes a craft project. Why might its small size matter?</dd>
+        <dt>Definition:</dt>
+        <dd>Microplastics are very small plastic particles. Plastic glitter can contribute to plastic pollution when it escapes into the environment, where small particles can be difficult to collect. Using only what a project needs, catching scraps, and choosing suitable alternatives can help reduce avoidable release.</dd>
+      </dl>
+      <p><strong>Contestant guess:</strong> “A microplastic is a plastic so small it needs a micro-sized passport.” The passport is fictional; the concern about tiny plastic particles is not.</p>
+    </section>
+
+    <section>
+      <h2>09. Glitter Containment</h2>
+      <dl>
+        <dt>Question:</dt>
+        <dd>For the grand practical round, how does a careful contestant keep a glitter project from becoming a glitter migration event?</dd>
+        <dt>Definition:</dt>
+        <dd>Containment means keeping loose particles in the work area and collecting leftovers instead of washing them down a drain. A tray, a damp cloth for cleanup, and a closed container can all help. Pouring with care is surprisingly useful, despite having no dramatic game-show soundtrack.</dd>
+      </dl>
+      <p><strong>Three-point strategy:</strong></p>
+      <ul>
+        <li>Work over a tray or washable surface.</li>
+        <li>Return unused glitter to a sealed container.</li>
+        <li>Wipe up spills and put the collected material in the trash rather than rinsing it away.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>10. The Glitter Afterlife</h2>
+      <dl>
+        <dt>Final question:</dt>
+        <dd>What is the most ridiculous place a lost glitter speck might turn up?</dd>
+        <dt>Official answer:</dt>
+        <dd>There is no official record of glitter reaching the moon, infiltrating a submarine, or winning custody of a craft drawer. But loose particles can cling to clothing and tools and travel from place to place, which is why one project can seem to leave sparkles behind long after cleanup.</dd>
+      </dl>
+      <p><strong>Lightning-round verdict:</strong> Glitter is a reflective material, a design choice, and—when scattered carelessly—a cleanup challenge. The champion’s move is to enjoy the sparkle while keeping it where it belongs.</p>
+    </section>
+  </main>
+</body>
+      </html>
+    
+<!--
+Generation time: 28.89s (average over 129 runs: 33.85s)
+-->

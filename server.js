@@ -604,7 +604,7 @@ app.get("/", (req, res) => {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 24px 6% 24px 16%;
+        padding: 24px;
         text-align: center;
       }
       #screen-result {
@@ -917,7 +917,6 @@ app.get("/", (req, res) => {
 
           <div class="menu-actions">
             <button id="generateButton">Generieren</button>
-            <button id="luckyButton">I'm feeling lucky</button>
           </div>
           </div>
         </div>
@@ -1270,10 +1269,6 @@ app.get("/", (req, res) => {
           style: currentMode === "serious" ? document.getElementById("styleSelect").value : "",
           extras: collectCheckedExtras(extrasId),
         });
-      });
-
-      document.getElementById("luckyButton").addEventListener("click", function () {
-        runGenerate({ topic: "", info: "", design: "", brightness: "", style: "", extras: [] });
       });
     </script>
       </body>

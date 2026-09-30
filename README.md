@@ -72,7 +72,7 @@ Die Generierung ist durch die parallelen Anfragen spürbar schneller geworden al
 
 ## Live-Galerie
 
-Ich möchte eine Auswahl generierter Seiten zusätzlich live zur Verfügung stellen, damit man sich Ergebnisse ansehen kann, ohne das Projekt selbst zum Laufen bringen zu müssen. Da die Galerie nur bereits fertige, gespeicherte Seiten zeigt und keine neue Generierung braucht, lässt sie sich anders als der Rest des Projekts auch kostenlos hosten. Der Link folgt hier, sobald das eingerichtet ist.
+Ich möchte eine Auswahl generierter Seiten zusätzlich live zur Verfügung stellen, damit man sich Ergebnisse ansehen kann, ohne das Projekt selbst zum Laufen bringen zu müssen. Da die Galerie nur bereits fertige, gespeicherte Seiten zeigt und keine neue Generierung braucht, lässt sie sich anders als der Rest des Projekts auch kostenlos hosten. [Hex Hex Hexcode Galerie](https://codejpg.github.io/hex-hex-hexcode-gallery/)
 
 ## Screenshots
 
